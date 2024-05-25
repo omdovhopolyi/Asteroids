@@ -1,0 +1,3 @@
+[submodule "submodules/ShapesEngine2"]
+	path = submodules/ShapesEngine2
+	url = https://github.com/omdovhopolyi/ShapesEngine2.git
