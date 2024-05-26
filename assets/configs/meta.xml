@@ -1,0 +1,6 @@
+<?xml version = "1.0"?>
+<items>
+   <item id="textures" file="textures.xml"/>
+   <item id="shaders" file="shaders.xml"/>
+   <item id="maps" file="maps/"/>
+</items>

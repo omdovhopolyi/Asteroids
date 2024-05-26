@@ -1,0 +1,7 @@
+<?xml version = "1.0"?>
+<items>
+   <item id="tank" path="../assets/images/tank-panther-right.png"/>
+   <item id="chopper" path="../assets/images/chopper.png"/>
+   <item id="landing-base" path="../assets/images/landing-base.png"/>
+   <item id="tile" path="../assets/tilemaps/jungle.png"/>
+</items>

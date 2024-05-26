@@ -1,0 +1,96 @@
+<?xml version = "1.0"?>
+<items>
+   <entity>
+      <component type="camera">
+         <position x="400" y="320"/>
+         <size x="800" y="640"/>
+      </component>
+      <component type="playerInput">
+         <array>
+            <item val="CameraMoveCommand"/>
+            <item val="CameraZoomCommand"/>
+         </array>
+      </component>
+   </entity>
+   <entity>
+      <component type="sprite">
+         <texture val="landing-base"/>
+         <rect x="0" y="0" w="32" h="32"/>
+         <shader val="SimpleShaderTex"/>
+         <anchor x="16" y="16"/>
+      </component>
+      <component type="transform">
+         <position x="100" y="100"/>
+         <rotation val="0"/>
+      </component>
+      <component type="spriteFrameAnimation">
+         <frameTime val="0.5"/>
+         <frames>
+            <rect x="0" y="0" w="32" h="32"/>
+            <rect x="32" y="0" w="32" h="32"/>
+         </frames>
+      </component>
+      <component type="color">
+         <color r="0" g="255" b="0" a="125"/>
+      </component>
+      <component type="rigidBody">
+         <type val="DynamicBody"/>
+      </component>
+      <component type="playerInput">
+         <array>
+            <item val="MoveCommand"/>
+            <item val="RotateCommand"/>
+         </array>
+      </component>
+      <component type="mover"/>
+   </entity>
+   <entity>
+      <component type="sprite">
+         <texture val="tile"/>
+         <rect x="0" y="0" w="32" h="32"/>
+         <shader val="SimpleShaderTex"/>
+         <anchor x="16" y="16"/>
+      </component>
+      <component type="transform">
+         <position x="350" y="60"/>
+         <rotation val="40"/>
+      </component>
+      <component type="rigidBody">
+         <type val="DynamicBody"/>
+      </component>
+   </entity>
+   <entity>
+      <component type="sprite">
+         <texture val="tile"/>
+         <rect x="0" y="0" w="32" h="32"/>
+         <anchor x="16" y="16"/>
+      </component>
+      <component type="transform">
+         <position x="200" y="300"/>
+         <rotation val="40"/>
+         <scale x="10" y="1"/>
+      </component>
+      <!--<component type="playerInput"/>-->
+      <component type="rigidBody">
+         <type val="StaticBody"/>
+         <size x="10" y="1"/>
+      </component>
+   </entity>
+   <entity>
+      <component type="sprite">
+         <texture val="tile"/>
+         <rect x="0" y="0" w="32" h="32"/>
+         <anchor x="16" y="16"/>
+      </component>
+      <component type="transform">
+         <position x="300" y="300"/>
+         <rotation val="0"/>
+         <scale x="10" y="1"/>
+      </component>
+      <!--<component type="playerInput"/>-->
+      <component type="rigidBody">
+         <type val="DynamicBody"/>
+         <size x="10" y="1"/>
+      </component>
+   </entity>
+</items>

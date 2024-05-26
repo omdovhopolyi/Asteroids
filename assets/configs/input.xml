@@ -1,0 +1,15 @@
+<?xml version = "1.0"?>
+<items>
+    <item key="w" mouseBtn="None" inputEventType="Hold" command="MoveUpCommand"/>
+    <item key="d" mouseBtn="None" inputEventType="Hold" command="MoveRightCommand"/>
+    <item key="s" mouseBtn="None" inputEventType="Hold" command="MoveDownCommand"/>
+    <item key="a" mouseBtn="None" inputEventType="Hold" command="MoveLeftCommand"/>
+    <item mouseBtn="None" inputEventType="MouseMove" command="RotateCommand"/>
+
+    <item key="i" mouseBtn="None" inputEventType="Hold" command="CameraMoveUpCommand"/>
+    <item key="l" mouseBtn="None" inputEventType="Hold" command="CameraMoveRightCommand"/>
+    <item key="k" mouseBtn="None" inputEventType="Hold" command="CameraMoveDownCommand"/>
+    <item key="j" mouseBtn="None" inputEventType="Hold" command="CameraMoveLeftCommand"/>
+
+    <item inputEventType="Scroll" command="CameraZoomCommand"/>
+</items>
