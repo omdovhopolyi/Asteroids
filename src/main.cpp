@@ -1,13 +1,13 @@
 
-//#include "Game/Game.h"
+#include "Game/Game.h"
 
 int main(int argc, char* argv[])
 {
-    //shen::Game game;
+    shen::Game game;
 
-    //game.Initialize();
-    //game.Run();
-    //game.Destroy();
+    game.Initialize();
+    game.Run();
+    game.Destroy();
 
     return 0;
 }
