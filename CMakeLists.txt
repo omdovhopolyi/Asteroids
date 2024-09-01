@@ -27,7 +27,16 @@ target_compile_definitions(${TARGET_NAME} PRIVATE SHEN_NO_MAIN)
 set(SHEN_STATIC ON CACHE BOOL "" FORCE)
 
 add_subdirectory(submodules/ShapesEngine2)
-target_link_libraries(${TARGET_NAME} ShapesEngine2)
+
+if(MSVC)
+    target_link_libraries(${TARGET_NAME} ShapesEngine2)
+    target_link_options(${TARGET_NAME} PRIVATE /WHOLEARCHIVE:ShapesEngine2)
+else()
+    target_link_libraries(${TARGET_NAME} PRIVATE -Wl,--whole-archive ShapesEngine2 -Wl,--no-whole-archive)
+endif()
+
+#target_link_libraries(${TARGET_NAME} -Wl,--whole-archive ShapesEngine2 -Wl,--no-whole-archive)
+#target_link_libraries(${TARGET_NAME} ShapesEngine2)
 include_directories(submodules/ShapesEngine2/src)
 
 add_compile_definitions(_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING)
