@@ -35,9 +35,9 @@ else()
     target_link_libraries(${TARGET_NAME} PRIVATE -Wl,--whole-archive ShapesEngine2 -Wl,--no-whole-archive)
 endif()
 
-#target_link_libraries(${TARGET_NAME} -Wl,--whole-archive ShapesEngine2 -Wl,--no-whole-archive)
-#target_link_libraries(${TARGET_NAME} ShapesEngine2)
 include_directories(submodules/ShapesEngine2/src)
+include_directories(submodules/ShapesEngine2/submodules/entt/src)
+include_directories(submodules/ShapesEngine2/submodules/spdlog/include)
 
 add_compile_definitions(_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING)
 
