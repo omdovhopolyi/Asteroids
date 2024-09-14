@@ -1,0 +1,12 @@
+<?xml version = "1.0"?>
+<items>
+   <sprite id="button_idle" tex="button_idle">
+      <rect  x="0" y="0" w="2400" h="740"/>
+   </sprite>
+   <sprite id="button_pressed" tex="button_pressed">
+      <rect  x="0" y="0" w="2400" h="740"/>
+   </sprite>
+   <sprite id="button_hover" tex="button_hover">
+      <rect  x="0" y="0" w="2400" h="740"/>
+   </sprite>
+</items>

@@ -1,30 +1,27 @@
 <?xml version = "1.0"?>
 <items>
    <entity>
-      <component type="camera">
+      <component type="camera" cameraType="World">
          <position x="400" y="320"/>
          <size x="800" y="640"/>
       </component>
       <component type="playerInput">
-         <array>
+         <input>
             <item val="CameraMoveCommand"/>
             <item val="CameraZoomCommand"/>
-         </array>
+            <item val="CameraMouseMoveCommand"/>
+         </input>
       </component>
    </entity>
    <entity>
-      <component type="sprite">
-         <texture val="landing-base"/>
+      <component type="sprite" shader="SimpleShaderTex" texture="chopper">
          <rect x="0" y="0" w="32" h="32"/>
-         <shader val="SimpleShaderTex"/>
          <anchor x="16" y="16"/>
       </component>
-      <component type="transform">
-         <position x="100" y="100"/>
-         <rotation val="0"/>
+      <component type="transform" rotation="0">
+         <position x="700" y="100"/>
       </component>
-      <component type="spriteFrameAnimation">
-         <frameTime val="0.5"/>
+      <component type="spriteFrameAnimation" frameTime="0.5">
          <frames>
             <rect x="0" y="0" w="32" h="32"/>
             <rect x="32" y="0" w="32" h="32"/>
@@ -33,63 +30,50 @@
       <component type="color">
          <color r="0" g="255" b="0" a="125"/>
       </component>
-      <component type="rigidBody">
-         <type val="DynamicBody"/>
+      <component type="rigidBody" bodyType="DynamicBody">
       </component>
       <component type="playerInput">
-         <array>
+         <input>
             <item val="MoveCommand"/>
             <item val="RotateCommand"/>
-         </array>
+         </input>
       </component>
       <component type="mover"/>
    </entity>
    <entity>
-      <component type="sprite">
-         <texture val="tile"/>
+      <component type="sprite" texture="tile" shader="SimpleShaderTex">
          <rect x="0" y="0" w="32" h="32"/>
-         <shader val="SimpleShaderTex"/>
          <anchor x="16" y="16"/>
       </component>
-      <component type="transform">
+      <component type="transform" rotation="40">
          <position x="350" y="60"/>
-         <rotation val="40"/>
       </component>
-      <component type="rigidBody">
-         <type val="DynamicBody"/>
+      <component type="rigidBody" bodyType="DynamicBody">
       </component>
    </entity>
    <entity>
-      <component type="sprite">
-         <texture val="tile"/>
+      <component type="sprite" texture="tile">
          <rect x="0" y="0" w="32" h="32"/>
          <anchor x="16" y="16"/>
       </component>
-      <component type="transform">
+      <component type="transform" rotation="90">
          <position x="200" y="300"/>
-         <rotation val="40"/>
          <scale x="10" y="1"/>
       </component>
-      <!--<component type="playerInput"/>-->
-      <component type="rigidBody">
-         <type val="StaticBody"/>
+      <component type="rigidBody" bodyType="StaticBody">
          <size x="10" y="1"/>
       </component>
    </entity>
    <entity>
-      <component type="sprite">
-         <texture val="tile"/>
+      <component type="sprite" texture="tile">
          <rect x="0" y="0" w="32" h="32"/>
          <anchor x="16" y="16"/>
       </component>
-      <component type="transform">
+      <component type="transform" rotation="0">
          <position x="300" y="300"/>
-         <rotation val="0"/>
          <scale x="10" y="1"/>
       </component>
-      <!--<component type="playerInput"/>-->
-      <component type="rigidBody">
-         <type val="DynamicBody"/>
+      <component type="rigidBody" bodyType="DynamicBody">
          <size x="10" y="1"/>
       </component>
    </entity>

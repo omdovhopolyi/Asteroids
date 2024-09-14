@@ -1,0 +1,29 @@
+<?xml version = "1.0"?>
+<systems>
+    <system type="WindowsManager"/>
+    <system type="SfmlTexturesCollection"/>
+    <system type="SfmlFontsCollection"/>
+    <system type="SfmlSpritesCollection"/>
+    <system type="InputCommandsCollection"/>
+    <system type="MapLoaderSystem"/>
+    <system type="SfmlGameWindowSystem"/>
+    <system type="ComponentsRegistration"/>
+
+    <system type="TimeSystem"/>
+    <system type="SfmlInputSystem"/>
+    <system type="PlayerInputSystem"/>
+    <system type="WorldInputSystem"/>
+    <system type="UIInputSystem"/>
+    <system type="CameraSystem"/>
+    <system type="MovementSystem"/>
+    <system type="RotationSystem"/>
+    <system type="PhysicsBox2DSystem"/>
+    <system type="SpriteFrameAnimationSystem"/>
+    <system type="StateMachineSystem"/>
+
+    <system type="SfmlWindowBeginFrameSystem"/>
+    <system type="SfmlSpriteRenderSystem"/>
+    <system type="WindowsRenderSystem"/>
+    <system type="SfmlRenderTargetsSystem"/>
+    <system type="SfmlWindowEndFrameSystem"/>
+</systems>
