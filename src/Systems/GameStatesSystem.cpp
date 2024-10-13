@@ -23,6 +23,6 @@ namespace asteroids
         RegisterState<PauseGameState>(PauseGameState::StateId);
         RegisterState<GameOverGameState>(GameOverGameState::StateId);
 
-        ScheduleState(LoadingGameState::StateId);
+        ScheduleState(MenuGameState::StateId);
     }
 }

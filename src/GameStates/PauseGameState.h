@@ -10,6 +10,8 @@ namespace asteroids
     public:
         static std::string StateId;
 
+        PauseGameState(const std::string& id);
+
         void Update() override;
 
     private:

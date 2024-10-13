@@ -10,6 +10,9 @@ namespace asteroids
     public:
         static std::string StateId;
 
+        MenuGameState(const std::string& id);
+
+        void Init(shen::StateMachineSystem* stateMachineSystem) override;
         void Update() override;
 
     private:
