@@ -12,6 +12,7 @@ namespace asteroids
 
         PlayingGameState(const std::string& id);
 
+        void OnEnter(const std::string&) override;
         void Update() override;
 
     private:

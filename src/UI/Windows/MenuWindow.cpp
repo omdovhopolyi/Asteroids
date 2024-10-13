@@ -1,7 +1,7 @@
 #include "MenuWindow.h"
+#include "MessengerEvents/Common.h"
 #include <UI/UIWindow.h>
 #include <UI/Components/UIButtonComponent.h>
-#include <Messenger/Messenger.h>
 #include <Messenger/Events/Common.h>
 
 namespace asteroids
@@ -24,7 +24,7 @@ namespace asteroids
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
-                bool check = true;
+                shen::Messenger::Instance().Broadcast<MenuStatePlayButtonPressedEvent>();
             });
         }
 
@@ -32,7 +32,7 @@ namespace asteroids
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
-                // TODO
+                shen::Messenger::Instance().Broadcast<MenuStatePlayButtonPressedEvent>();
             });
         }
 

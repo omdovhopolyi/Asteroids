@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ECS/Systems/GameStates/State.h"
+#include <Messenger/SubscriptionsContainer.h>
 
 namespace asteroids
 {
@@ -14,7 +15,13 @@ namespace asteroids
 
         void Init(shen::StateMachineSystem* stateMachineSystem) override;
         void Update() override;
+        void OnExit(const std::string&) override;
 
     private:
+        void OpenMenuWindow();
+        void InitSubscriptions();
+
+    private:
+        shen::SubcriptionsContainer _subscriptions;
     };
 }
