@@ -1,0 +1,4 @@
+<?xml version = "1.0"?>
+<window name="Asteroids">
+   <size x="800" y="640"/>
+</window>
