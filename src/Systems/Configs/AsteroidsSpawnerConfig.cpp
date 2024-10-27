@@ -1,6 +1,7 @@
 #include "AsteroidsSpawnerConfig.h"
 #include "Serialization/Serialization.h"
 #include "GameEnums/AsteroidTypeEnum.h"
+#include "Utils/FilePath.h"
 
 namespace asteroids
 {
@@ -33,7 +34,7 @@ namespace asteroids
 
     void SpawnerConfig::Load()
     {
-        const std::string fileName = "../assets/configs/asteroids_spawner.xml";
+        const auto fileName = shen::FilePath::Path("assets/configs/asteroids_spawner.xml");
         auto serialization = shen::Serialization{ _systems, fileName };
         serialization.SetupElement("spawner");
         if (auto levelsElement = serialization.GetElement("levels"); levelsElement.IsValid())
