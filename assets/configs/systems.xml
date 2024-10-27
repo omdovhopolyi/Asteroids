@@ -7,6 +7,7 @@
     <system type="InputCommandsCollection"/>
     <system type="MapLoaderSystem"/>
     <system type="SfmlGameWindowSystem"/>
+    <system type="SpawnerConfig"/>
     <system type="ComponentsRegistration"/>
 
     <system type="TimeSystem"/>

@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<spawner>
+   <levels>
+      <level index="1">
+         <item type="Common" amount="10"/>
+      </level>
+   </levels>
+</spawner>
