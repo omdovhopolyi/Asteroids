@@ -1,11 +1,11 @@
 #pragma once
 
-#include "ECS/Systems/BaseSystems/UpdateSystem.h"
+#include "ECS/Systems/BaseSystems/System.h"
 
 namespace asteroids
 {
     class ComponentsRegistration
-        : public shen::UpdateSystem
+        : public shen::System
     {
         SYSTEMS_FACTORY(ComponentsRegistration)
 

@@ -23,6 +23,7 @@
     <system type="RotationSystem"/>
     <system type="PhysicsBox2DSystem"/>
     <system type="SpriteFrameAnimationSystem"/>
+    <system type="AsteroidsSpawnerSystem"/>
 
     <system type="SfmlWindowBeginFrameSystem"/>
     <system type="SfmlSpriteRenderSystem"/>
