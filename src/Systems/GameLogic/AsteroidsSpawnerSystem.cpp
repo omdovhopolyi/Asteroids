@@ -32,11 +32,14 @@ namespace asteroids
 
     void AsteroidsSpawnerSystem::Spawn(AsteroidType type)
     {
+        // TODO
+
         auto& world = _systems->GetWorld();
         
         auto entity = world.CreateEntity();
         world.AddComponent<Asteroid>(entity);
         auto transform = world.AddComponent<shen::Transform>(entity);
+        transform->position.y = 310.f;
         auto rigidBody = world.AddComponent<shen::RigidBody>(entity);
         rigidBody->sensor = true;
 

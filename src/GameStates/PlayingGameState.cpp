@@ -15,7 +15,7 @@ namespace asteroids
         auto systems = GetSystemsManager();
         if (auto mapLoader = systems->GetSystem<shen::MapLoaderSystem>())
         {
-            mapLoader->LoadMap("map_test");
+            mapLoader->LoadMap("level_1");
         }
     }
 
