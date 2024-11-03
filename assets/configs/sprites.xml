@@ -9,4 +9,8 @@
    <sprite id="button_hover" tex="button">
       <rect  x="0" y="100" w="200" h="50"/>
    </sprite>
+   <sprite id="asteroid" tex="landing-base">
+      <rect x="0" y="0" w="32" h="32"/>
+      <anchor x="16" y="16"/>
+   </sprite>
 </items>
