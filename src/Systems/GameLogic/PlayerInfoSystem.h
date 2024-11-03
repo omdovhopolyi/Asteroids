@@ -7,10 +7,10 @@
 
 namespace asteroids
 {
-    class PlayerInfo
+    class PlayerInfoSystem
         : public shen::System
     {
-        SYSTEMS_FACTORY(PlayerInfo)
+        SYSTEMS_FACTORY(PlayerInfoSystem)
 
     public:
         void Start() override;

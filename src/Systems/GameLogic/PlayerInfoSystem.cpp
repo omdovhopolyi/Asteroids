@@ -1,45 +1,45 @@
-#include "PlayerInfo.h"
+#include "PlayerInfoSystem.h"
 
 namespace asteroids
 {
-    REGISTER_SYSTEMS_FACTORY(PlayerInfo)
+    REGISTER_SYSTEMS_FACTORY(PlayerInfoSystem)
 
-    void PlayerInfo::Start()
+    void PlayerInfoSystem::Start()
     {
 
     }
 
-    void PlayerInfo::Save()
-    {
-        // TODO implement
-    }
-
-    void PlayerInfo::Load()
+    void PlayerInfoSystem::Save()
     {
         // TODO implement
     }
 
-    void PlayerInfo::SetFlag(const std::string& flag)
+    void PlayerInfoSystem::Load()
+    {
+        // TODO implement
+    }
+
+    void PlayerInfoSystem::SetFlag(const std::string& flag)
     {
         _flags.insert(flag);
     }
 
-    void PlayerInfo::ResetFlag(const std::string& flag)
+    void PlayerInfoSystem::ResetFlag(const std::string& flag)
     {
         _flags.erase(flag);
     }
 
-    bool PlayerInfo::IsFlagSet(const std::string& flag)
+    bool PlayerInfoSystem::IsFlagSet(const std::string& flag)
     {
         return _flags.contains(flag);
     }
 
-    void PlayerInfo::ResetAllFlags()
+    void PlayerInfoSystem::ResetAllFlags()
     {
         _flags.clear();
     }
 
-    int PlayerInfo::GetResource(ResourceType type) const
+    int PlayerInfoSystem::GetResource(ResourceType type) const
     {
         if (const auto it = _resources.find(type); it != _resources.cend())
         {
@@ -49,7 +49,7 @@ namespace asteroids
         return 0;
     }
 
-    void PlayerInfo::IncResource(ResourceType type)
+    void PlayerInfoSystem::IncResource(ResourceType type)
     {
         if (auto it = _resources.find(type); it != _resources.end())
         {
@@ -57,7 +57,7 @@ namespace asteroids
         }
     }
 
-    void PlayerInfo::DecResource(ResourceType type)
+    void PlayerInfoSystem::DecResource(ResourceType type)
     {
         if (auto it = _resources.find(type); it != _resources.end())
         {
@@ -65,7 +65,7 @@ namespace asteroids
         }
     }
 
-    void PlayerInfo::AddResource(ResourceType type, int amount)
+    void PlayerInfoSystem::AddResource(ResourceType type, int amount)
     {
         if (auto it = _resources.find(type); it != _resources.end())
         {
@@ -73,7 +73,7 @@ namespace asteroids
         }
     }
 
-    void PlayerInfo::SetResource(ResourceType type, int amount)
+    void PlayerInfoSystem::SetResource(ResourceType type, int amount)
     {
         if (auto it = _resources.find(type); it != _resources.end())
         {
@@ -81,32 +81,32 @@ namespace asteroids
         }
     }
 
-    void PlayerInfo::ResetResource(ResourceType type)
+    void PlayerInfoSystem::ResetResource(ResourceType type)
     {
         _resources.erase(type);
     }
 
-    void PlayerInfo::ResetAllResources()
+    void PlayerInfoSystem::ResetAllResources()
     {
         _resources.clear();
     }
 
-    void PlayerInfo::SetLevel(int level)
+    void PlayerInfoSystem::SetLevel(int level)
     {
         _level = level;
     }
 
-    int PlayerInfo::GetLevel() const
+    int PlayerInfoSystem::GetLevel() const
     {
         return _level;
     }
 
-    void PlayerInfo::IncLevel()
+    void PlayerInfoSystem::IncLevel()
     {
         _level++;
     }
 
-    void PlayerInfo::ResetLevel()
+    void PlayerInfoSystem::ResetLevel()
     {
         _level = 1;
     }

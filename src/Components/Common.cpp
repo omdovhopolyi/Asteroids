@@ -1,4 +1,4 @@
-#include "CommonComponents.h"
+#include "Common.h"
 #include "Serialization/Serialization.h"
 
 namespace asteroids
@@ -9,6 +9,16 @@ namespace asteroids
     }
 
     void Bullet::Save(Bullet& component, shen::Serialization& serialization)
+    {
+
+    }
+
+    void Asteroid::Load(Asteroid& component, const shen::Serialization& serialization)
+    {
+
+    }
+
+    void Asteroid::Save(Asteroid& component, shen::Serialization& serialization)
     {
 
     }
