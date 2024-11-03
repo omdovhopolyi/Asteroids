@@ -5,6 +5,5 @@
 namespace asteroids
 {
     struct MenuStatePlayButtonPressedEvent : shen::Event {};
-
     struct MenuStateSettingsButtonPressedEvent : shen::Event {};
 }

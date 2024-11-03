@@ -1,7 +1,7 @@
 #include "ComponentsRegistration.h"
 #include "ECS/Systems/MapLoaderSystem.h"
 #include "ECS/SystemsManager.h"
-#include "Components/CommonComponents.h"
+#include "Components/Common.h"
 
 namespace asteroids
 {
@@ -12,6 +12,7 @@ namespace asteroids
         if (auto mapLoader = _systems->GetSystem<shen::MapLoaderSystem>())
         {
             mapLoader->RegisterLoader<Bullet>("bullet");
+            mapLoader->RegisterLoader<Asteroid>("asteroid");
         }
     }
 }
