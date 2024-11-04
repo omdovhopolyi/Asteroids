@@ -16,8 +16,16 @@ namespace asteroids
         void SetAmount(AsteroidType type, int amount);
         int GetAmount(AsteroidType type) const;
 
+        void SetMinDelay(float delay);
+        float GetMinDelay() const;
+
+        void SetMaxDelay(float delay);
+        float GetMaxDelay() const;
+
     private:
         std::map<AsteroidType, int> _asteroidsPerLevel;
+        float _minDelay = 1.f;
+        float _maxDelay = 5.f;
     };
 
     class SpawnerConfig

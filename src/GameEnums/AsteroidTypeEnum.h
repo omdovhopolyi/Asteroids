@@ -5,6 +5,9 @@
 namespace asteroids
 {
     SHEN_ENUM(AsteroidType,
-        Common
+        Default,
+        Fast,
+        Strong,
+        FastStrong
     )
 }

@@ -22,6 +22,26 @@ namespace asteroids
         return 0;
     }
 
+    void SpawnerLevelConfig::SetMinDelay(float delay)
+    {
+        _minDelay = delay;
+    }
+
+    float SpawnerLevelConfig::GetMinDelay() const
+    {
+        return _minDelay;
+    }
+
+    void SpawnerLevelConfig::SetMaxDelay(float delay)
+    {
+        _maxDelay = delay;
+    }
+
+    float SpawnerLevelConfig::GetMaxDelay() const
+    {
+        return _maxDelay;
+    }
+
     const SpawnerLevelConfig::WeakPtr SpawnerConfig::GetLevelConfig(int level) const
     {
         if (auto it = _levels.find(level); it != _levels.end())
@@ -53,6 +73,12 @@ namespace asteroids
 
                         levelConfig->SetAmount(type, amount);
                     });
+
+                    const int minDelay = element.GetInt("minDelay", it->second->GetMinDelay());
+                    const int maxDelay = element.GetInt("maxDelay", it->second->GetMaxDelay());
+
+                    it->second->SetMinDelay(minDelay);
+                    it->second->SetMaxDelay(maxDelay);
                 }
             });
         }

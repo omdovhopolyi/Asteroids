@@ -1,0 +1,7 @@
+<?xml version = "1.0"?>
+<asteroids>
+   <asteroid type="Default" speed="2" lives="1"/>
+   <asteroid type="Fast" speed="5" lives="1"/>
+   <asteroid type="Strong" speed="3" lives="3"/>
+   <asteroid type="FastStrong" speed="5" lives="5"/>
+</asteroids>

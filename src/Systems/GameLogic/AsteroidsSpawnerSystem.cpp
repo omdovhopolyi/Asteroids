@@ -19,7 +19,7 @@ namespace asteroids
     {
         _updateFunc.SetFunc([&]()
         {
-            Spawn(AsteroidType::Common);
+            Spawn(AsteroidType::Default);
 
         }, _spawnDelay, shen::TimedFunctionType::Update);
     }
