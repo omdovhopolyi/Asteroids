@@ -20,7 +20,7 @@ namespace asteroids
 
     private:
         shen::TimedFunction _updateFunc;
-        float _spawnDelay = 1.f;
+        float _spawnDelay = 2.f;
 
     };
 }
