@@ -34,6 +34,7 @@
          <input>
             <item val="MoveCommand"/>
             <item val="RotateCommand"/>
+            <item val="FireCommand"/>
          </input>
       </component>
       <component type="mover"/>

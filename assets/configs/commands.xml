@@ -15,4 +15,5 @@
     <item type="RotateCommand" id="RotateCommand"/>
     <item type="CameraMouseMoveCommand" id="CameraMouseMoveCommand"/>
     <item type="CameraZoomCommand" id="CameraZoomCommand" speed="0.1"/>
+    <item type="FireCommand" id="PlayerFireCommand"/>
 </items>

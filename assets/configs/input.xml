@@ -7,4 +7,5 @@
     <item mouseBtn="None" inputEventType="MouseMove" command="RotateCommand"/>
     <item mouseBtn="Left" inputEventType="MouseMove" command="CameraMouseMoveCommand"/>
     <item mouseBtn="None" inputEventType="Scroll" command="CameraZoomCommand"/>
+    <item key=" " inputEventType="Up" command="PlayerFireCommand"/>
 </items>
