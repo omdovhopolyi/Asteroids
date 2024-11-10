@@ -9,6 +9,14 @@ namespace shen
 
 namespace asteroids
 {
+    struct Player
+    {
+        int lives = 3;
+
+        static void Load(Player& component, const shen::Serialization& serialization);
+        static void Save(Player& component, shen::Serialization& serialization);
+    };
+
     struct Bullet
     {
         int damage = 1;
@@ -19,6 +27,8 @@ namespace asteroids
 
     struct Asteroid : shen::TagBaseComponent
     {
+        int damage = 1;
+
         static void Load(Asteroid& component, const shen::Serialization& serialization);
         static void Save(Asteroid& component, shen::Serialization& serialization);
     };

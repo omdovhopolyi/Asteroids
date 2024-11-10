@@ -3,23 +3,33 @@
 
 namespace asteroids
 {
+    void Player::Load(Player& component, const shen::Serialization& serialization)
+    {
+        component.lives = serialization.GetInt("lives", component.lives);
+    }
+
+    void Player::Save(Player& component, shen::Serialization& serialization)
+    {
+        serialization.SetInt("lives", component.lives);
+    }
+
     void Bullet::Load(Bullet& component, const shen::Serialization& serialization)
     {
-
+        component.damage = serialization.GetInt("damage", component.damage);
     }
 
     void Bullet::Save(Bullet& component, shen::Serialization& serialization)
     {
-
+        serialization.SetInt("damage", component.damage);
     }
 
     void Asteroid::Load(Asteroid& component, const shen::Serialization& serialization)
     {
-
+        component.damage = serialization.GetInt("damage", component.damage);
     }
 
     void Asteroid::Save(Asteroid& component, shen::Serialization& serialization)
     {
-
+        serialization.SetInt("damage", component.damage);
     }
 }

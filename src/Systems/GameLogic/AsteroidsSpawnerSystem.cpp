@@ -21,7 +21,7 @@ namespace asteroids
         {
             Spawn(AsteroidType::Default);
 
-        }, _spawnDelay, shen::TimedFunctionType::OneShot);
+        }, _spawnDelay, shen::TimedFunctionType::Update);
     }
 
     void AsteroidsSpawnerSystem::Update()
