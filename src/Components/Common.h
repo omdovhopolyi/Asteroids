@@ -25,7 +25,7 @@ namespace asteroids
         static void Save(Bullet& component, shen::Serialization& serialization);
     };
 
-    struct Asteroid : shen::TagBaseComponent
+    struct Asteroid
     {
         int damage = 1;
 

@@ -10,4 +10,5 @@
    <item id="button_hover" path="../assets/images/button_hover.png"/>
    <item id="button" path="../assets/images/ui/button.png"/>
    <item id="menu_background" path="../assets/images/ui/menu_background.png"/>
+   <item id="bullet" path="../assets/images/bullet.png"/>
 </items>

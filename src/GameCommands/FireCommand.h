@@ -3,7 +3,7 @@
 #include "Commands/Command.h"
 #include <SFML/System/Vector2.hpp>
 
-namespace shen
+namespace asteroids
 {
     class FireCommand
         : public shen::Command
