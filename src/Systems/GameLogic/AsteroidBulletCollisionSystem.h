@@ -4,10 +4,10 @@
 
 namespace asteroids
 {
-    class CollisionHandlerSystem
+    class AsteroidBulletCollisionSystem
         : public shen::UpdateSystem
     {
-        SYSTEMS_FACTORY(CollisionHandlerSystem)
+        SYSTEMS_FACTORY(AsteroidBulletCollisionSystem)
 
     public:
         void Update() override;

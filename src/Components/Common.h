@@ -28,6 +28,7 @@ namespace asteroids
     struct Asteroid
     {
         int damage = 1;
+        int lives = 3;
 
         static void Load(Asteroid& component, const shen::Serialization& serialization);
         static void Save(Asteroid& component, shen::Serialization& serialization);

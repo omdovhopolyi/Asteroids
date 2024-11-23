@@ -26,7 +26,8 @@
     <system type="SpriteFrameAnimationSystem"/>
     <system type="AsteroidsSpawnerSystem"/>
     <system type="PlayerInfoSystem"/>
-    <system type="CollisionHandlerSystem"/>
+    <system type="PlayerAsteroidCollisionSystem"/>
+    <system type="AsteroidBulletCollisionSystem"/>
     <system type="CollisionCleanupSystem"/>
     <system type="CleanupSystem"/>
 

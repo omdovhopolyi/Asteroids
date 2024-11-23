@@ -54,7 +54,7 @@ namespace asteroids
         if (auto physicsSystem = GetSystem<shen::PhysicsBox2DSystem>())
         {
             physicsSystem->SetupRigidBody(entity);
-            physicsSystem->ApplyLinearImpulseToCenter(entity, { 1.f, 0.f });
+            physicsSystem->SetLinearVelocity(entity, { 1.f, 0.f });
         }
     }
 }

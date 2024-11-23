@@ -12,7 +12,7 @@ namespace asteroids
 {
     void FireCommand::Execute(const shen::CommandContext& context) const
     {
-        // TODO maybe implement assets instantiation
+        // TODO maybe implement some kind of asset instantiation
 
         auto& world = context.systems->GetWorld();
 
@@ -40,6 +40,7 @@ namespace asteroids
                 if (auto rigidBody = world.AddComponent<shen::RigidBody>(bulletEntity))
                 {
                     rigidBody->sensor = true;
+                    rigidBody->size = { 0.1f, 0.1f };
                 }
 
                 if (auto spriteCollection = context.systems->GetSystem<shen::SfmlSpritesCollection>())
@@ -52,11 +53,11 @@ namespace asteroids
 
                 if (auto physicsSystem = context.systems->GetSystem<shen::PhysicsBox2DSystem>())
                 {
-                    const auto speed = 10.f;
+                    const auto speed = 2.f;
                     velocity *= speed;
 
                     physicsSystem->SetupRigidBody(bulletEntity);
-                    physicsSystem->ApplyLinearImpulseToCenter(bulletEntity, velocity);
+                    physicsSystem->SetLinearVelocity(bulletEntity, velocity);
                 }
             }
         }

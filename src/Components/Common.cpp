@@ -26,10 +26,12 @@ namespace asteroids
     void Asteroid::Load(Asteroid& component, const shen::Serialization& serialization)
     {
         component.damage = serialization.GetInt("damage", component.damage);
+        component.lives = serialization.GetInt("lives", component.lives);
     }
 
     void Asteroid::Save(Asteroid& component, shen::Serialization& serialization)
     {
         serialization.SetInt("damage", component.damage);
+        serialization.SetInt("lives", component.lives);
     }
 }
