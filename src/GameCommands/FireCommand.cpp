@@ -6,58 +6,41 @@
 #include "ECS/Components/Render.h"
 #include "ECS/Systems/Sfml/SfmlSpritesCollection.h"
 #include "ECS/Systems/PhysicsBox2DSystem.h"
+#include "ECS/Systems/MapLoaderSystem.h"
 #include "Components/Common.h"
 
 namespace asteroids
 {
     void FireCommand::Execute(const shen::CommandContext& context) const
     {
-        // TODO maybe implement some kind of asset instantiation
-
-        auto& world = context.systems->GetWorld();
-
-        if (auto ownerTransform = world.GetComponent<shen::Transform>(context.entity))
+        if (auto loader = context.systems->GetSystem<shen::MapLoaderSystem>())
         {
-            auto bulletEntity = world.CreateEntity();
+            auto& world = context.systems->GetWorld();
 
-            const bool isValid = world.IsValid(bulletEntity);
-            if (isValid)
+            if (auto bulletEntity = loader->InstantiateAsset("bullet"); world.IsValid(bulletEntity))
             {
-                world.AddComponent<Bullet>(bulletEntity);
+                auto playerTransform = world.GetComponent<shen::Transform>(context.entity);
+                auto bulletTransform = world.GetComponent<shen::Transform>(bulletEntity);
+                auto bullet = world.GetComponent<Bullet>(bulletEntity);
 
-                auto velocity = sf::Vector2f{ 1.f, 0.f };
-
-                if (auto transform = world.AddComponent<shen::Transform>(bulletEntity))
+                const bool hasComponents = (bullet && playerTransform && bulletTransform);
+                if (hasComponents)
                 {
-                    transform->position = ownerTransform->position;
+                    if (auto physicsSystem = context.systems->GetSystem<shen::PhysicsBox2DSystem>())
+                    {
+                        auto velocity = sf::Vector2f{ 1.f, 0.f };
 
-                    auto rotationTransform = sf::Transform::Identity;
-                    rotationTransform.rotate(ownerTransform->rotation);
+                        auto rotationTransform = sf::Transform::Identity;
+                        rotationTransform.rotate(playerTransform->rotation);
+                        velocity = rotationTransform.transformPoint(velocity);
 
-                    velocity = rotationTransform.transformPoint(velocity);                    
-                }
-                
-                if (auto rigidBody = world.AddComponent<shen::RigidBody>(bulletEntity))
-                {
-                    rigidBody->sensor = true;
-                    rigidBody->size = { 0.1f, 0.1f };
-                }
+                        bulletTransform->position = playerTransform->position;
+                        
+                        velocity *= bullet->speed;
 
-                if (auto spriteCollection = context.systems->GetSystem<shen::SfmlSpritesCollection>())
-                {
-                    auto spriteData = spriteCollection->GetSpriteData("bullet");
-                    auto spriteComponent = world.AddComponent<shen::Sprite>(bulletEntity);
-                    spriteComponent->sprite = spriteData.sprite;
-                    spriteComponent->textureId = spriteData.textureId;
-                }
-
-                if (auto physicsSystem = context.systems->GetSystem<shen::PhysicsBox2DSystem>())
-                {
-                    const auto speed = 2.f;
-                    velocity *= speed;
-
-                    physicsSystem->SetupRigidBody(bulletEntity);
-                    physicsSystem->SetLinearVelocity(bulletEntity, velocity);
+                        physicsSystem->SetupRigidBody(bulletEntity);
+                        physicsSystem->SetLinearVelocity(bulletEntity, velocity);
+                    }
                 }
             }
         }

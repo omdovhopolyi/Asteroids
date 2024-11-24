@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<objects>
+   <object id="bullet" path="assets/objects/bullet.xml"/>
+   <object id="asteroid_default" path="assets/objects/asteroid_default.xml"/>
+   <object id="asteroid_fast" path="assets/objects/asteroid_fast.xml"/>
+   <object id="asteroid_fast_strong" path="assets/objects/asteroid_fast_strong.xml"/>
+   <object id="asteroid_strong" path="assets/objects/asteroid_strong.xml"/>
+</objects>

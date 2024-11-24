@@ -10,6 +10,6 @@ namespace asteroids
         SYSTEMS_FACTORY(ComponentsRegistration)
 
     public:
-        void Start() override;
+        void Load() override;
     };
 }

@@ -20,6 +20,7 @@ namespace asteroids
     struct Bullet
     {
         int damage = 1;
+        float speed = 10;
 
         static void Load(Bullet& component, const shen::Serialization& serialization);
         static void Save(Bullet& component, shen::Serialization& serialization);
@@ -29,6 +30,7 @@ namespace asteroids
     {
         int damage = 1;
         int lives = 3;
+        float speed = 1.f;
 
         static void Load(Asteroid& component, const shen::Serialization& serialization);
         static void Save(Asteroid& component, shen::Serialization& serialization);

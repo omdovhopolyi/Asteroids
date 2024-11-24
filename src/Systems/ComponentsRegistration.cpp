@@ -7,7 +7,7 @@ namespace asteroids
 {
     REGISTER_SYSTEMS_FACTORY(ComponentsRegistration)
 
-    void ComponentsRegistration::Start()
+    void ComponentsRegistration::Load()
     {
         if (auto mapLoader = _systems->GetSystem<shen::MapLoaderSystem>())
         {

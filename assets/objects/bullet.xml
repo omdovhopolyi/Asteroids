@@ -1,0 +1,12 @@
+<?xml version = "1.0"?>
+<object>
+   <component type="bullet" damage="1" speed="2"/>
+   <component type="transform" rotation="0"/>
+   <component type="rigidBody" bodyType="DynamicBody" sensor="true">
+      <size x="0.1" y="0.1"/>
+   </component>
+   <component type="sprite" texture="bullet">
+      <rect x="0" y="0" w="4" h="4"/>
+      <anchor x="2" y="2"/>
+   </component>
+</object>

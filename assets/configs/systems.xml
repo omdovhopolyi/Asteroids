@@ -5,11 +5,12 @@
     <system type="SfmlFontsCollection"/>
     <system type="SfmlSpritesCollection"/>
     <system type="InputCommandsCollection"/>
+    <system type="ComponentsRegistration"/>
+    <system type="ObjectsAssetsCollectonSystem"/>
     <system type="MapLoaderSystem"/>
     <system type="SfmlGameWindowSystem"/>
     <system type="SpawnerConfig"/>
     <system type="AsteroidsConfig"/>
-    <system type="ComponentsRegistration"/>
 
     <system type="TimeSystem"/>
     <system type="GameStatesSystem"/>
