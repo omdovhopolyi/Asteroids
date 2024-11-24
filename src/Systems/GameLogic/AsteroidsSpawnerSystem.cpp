@@ -32,29 +32,32 @@ namespace asteroids
 
     void AsteroidsSpawnerSystem::Spawn(AsteroidType type)
     {
-        // TODO
+        // TODO randomize spawn point and direction
 
-        auto& world = _systems->GetWorld();
-        
-        auto entity = world.CreateEntity();
-        world.AddComponent<Asteroid>(entity);
-        auto transform = world.AddComponent<shen::Transform>(entity);
-        transform->position.y = 310.f;
-        auto rigidBody = world.AddComponent<shen::RigidBody>(entity);
-        rigidBody->sensor = true;
+        if (auto loader = GetSystem<shen::MapLoaderSystem>())
+        {
+            auto& world = _systems->GetWorld();
 
-        if (auto spriteCollection = GetSystem<shen::SfmlSpritesCollection>())
-        {
-            auto spriteData = spriteCollection->GetSpriteData("asteroid");
-            auto spriteComponent = world.AddComponent<shen::Sprite>(entity);
-            spriteComponent->sprite = spriteData.sprite;
-            spriteComponent->textureId = spriteData.textureId;
-        }
-        
-        if (auto physicsSystem = GetSystem<shen::PhysicsBox2DSystem>())
-        {
-            physicsSystem->SetupRigidBody(entity);
-            physicsSystem->SetLinearVelocity(entity, { 1.f, 0.f });
+            if (auto entity = loader->InstantiateAsset("asteroid_default"); world.IsValid(entity))
+            {
+                auto transform = world.GetComponent<shen::Transform>(entity);
+                auto asteroid = world.GetComponent<Asteroid>(entity);
+
+                const bool hasComponents = (asteroid && transform);
+                if (hasComponents)
+                {
+                    if (auto physicsSystem = GetSystem<shen::PhysicsBox2DSystem>())
+                    {
+                        transform->position.y = 300.f;
+
+                        auto velocity = sf::Vector2f{ 1.f, 0.f };
+                        velocity *= asteroid->speed;
+
+                        physicsSystem->SetupRigidBody(entity);
+                        physicsSystem->SetLinearVelocity(entity, velocity);
+                    }
+                }
+            }
         }
     }
 }

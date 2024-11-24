@@ -7,8 +7,8 @@
     <system type="InputCommandsCollection"/>
     <system type="ComponentsRegistration"/>
     <system type="ObjectsAssetsCollectonSystem"/>
-    <system type="MapLoaderSystem"/>
     <system type="SfmlGameWindowSystem"/>
+    <system type="MapLoaderSystem"/>
     <system type="SpawnerConfig"/>
     <system type="AsteroidsConfig"/>
 
