@@ -29,6 +29,7 @@
     <system type="PlayerInfoSystem"/>
     <system type="PlayerAsteroidCollisionSystem"/>
     <system type="AsteroidBulletCollisionSystem"/>
+    <system type="LifetimeSystem"/>
     <system type="CollisionCleanupSystem"/>
     <system type="CleanupSystem"/>
 

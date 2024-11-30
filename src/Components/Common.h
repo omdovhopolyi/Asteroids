@@ -35,4 +35,12 @@ namespace asteroids
         static void Load(Asteroid& component, const shen::Serialization& serialization);
         static void Save(Asteroid& component, shen::Serialization& serialization);
     };
+
+    struct Lifetime
+    {
+        float time = 0.f;
+
+        static void Load(Lifetime& component, const shen::Serialization& serialization);
+        static void Save(Lifetime& component, shen::Serialization& serialization);
+    };
 }

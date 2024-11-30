@@ -38,4 +38,14 @@ namespace asteroids
         serialization.SetInt("lives", component.lives);
         serialization.SetFloat("speed", component.speed);
     }
+
+    void Lifetime::Load(Lifetime& component, const shen::Serialization& serialization)
+    {
+        component.time = serialization.GetFloat("time", component.time);
+    }
+
+    void Lifetime::Save(Lifetime& component, shen::Serialization& serialization)
+    {
+        serialization.SetFloat("time", component.time);
+    }
 }
