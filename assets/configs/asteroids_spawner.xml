@@ -1,8 +1,6 @@
 <?xml version = "1.0"?>
-<spawner>
-   <levels>
-      <level index="1">
-         <item type="Default" amount="10"/>
-      </level>
-   </levels>
-</spawner>
+<assets>
+   <asset id="level_1">
+      <item type="Default" amount="10"/>
+   </asset>
+</assets>

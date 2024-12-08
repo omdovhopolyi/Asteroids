@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ECS/Components/TagComponent.h"
+#include "GameEnums/AsteroidTypeEnum.h"
 
 namespace shen
 {
@@ -34,6 +35,19 @@ namespace asteroids
 
         static void Load(Asteroid& component, const shen::Serialization& serialization);
         static void Save(Asteroid& component, shen::Serialization& serialization);
+    };
+
+    struct AsteroidSpawner
+    {
+        std::string config;
+
+        float minDelay = 1.f;
+        float maxDelay = 2.f;
+        float currentDelay = 0.f;
+        std::map<AsteroidType, int> asteroidsToLunch;
+
+        static void Load(AsteroidSpawner& component, const shen::Serialization& serialization);
+        static void Save(AsteroidSpawner& component, shen::Serialization& serialization);
     };
 
     struct Lifetime

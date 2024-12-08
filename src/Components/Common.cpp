@@ -39,6 +39,16 @@ namespace asteroids
         serialization.SetFloat("speed", component.speed);
     }
 
+    void AsteroidSpawner::Load(AsteroidSpawner& component, const shen::Serialization& serialization)
+    {
+        component.config = serialization.GetStr("config");
+    }
+
+    void AsteroidSpawner::Save(AsteroidSpawner& component, shen::Serialization& serialization)
+    {
+        serialization.SetStr("config", component.config);
+    }
+
     void Lifetime::Load(Lifetime& component, const shen::Serialization& serialization)
     {
         component.time = serialization.GetFloat("time", component.time);

@@ -7,19 +7,30 @@ namespace asteroids
 {
     REGISTER_SYSTEMS_FACTORY(SpawnerConfig);
 
-    void SpawnerLevelConfig::SetAmount(AsteroidType type, int amount)
+    void SpawnerLevelConfig::SetAmount(AsteroidType type, const AsteroidTypeData& data)
     {
-        _asteroidsPerLevel[type] = amount;
+        _asteroidsPerLevel[type] = data;
     }
 
     int SpawnerLevelConfig::GetAmount(AsteroidType type) const
     {
         if (auto it = _asteroidsPerLevel.find(type); it != _asteroidsPerLevel.end())
         {
-            return it->second;
+            return it->second.amount;
         }
 
         return 0;
+    }
+
+    const std::string& SpawnerLevelConfig::GetAssetId(AsteroidType type) const
+    {
+        if (auto it = _asteroidsPerLevel.find(type); it != _asteroidsPerLevel.end())
+        {
+            return it->second.assetId;
+        }
+
+        static std::string empty;
+        return empty;
     }
 
     void SpawnerLevelConfig::SetMinDelay(float delay)
@@ -42,9 +53,14 @@ namespace asteroids
         return _maxDelay;
     }
 
-    const SpawnerLevelConfig::WeakPtr SpawnerConfig::GetLevelConfig(int level) const
+    const std::map<AsteroidType, AsteroidTypeData>& SpawnerLevelConfig::GetAsteroids() const
     {
-        if (auto it = _levels.find(level); it != _levels.end())
+        return _asteroidsPerLevel;
+    }
+
+    const SpawnerLevelConfig::Ptr SpawnerConfig::GetConfig(const std::string& id) const
+    {
+        if (auto it = _levels.find(id); it != _levels.end())
         {
             return it->second;
         }
@@ -56,31 +72,29 @@ namespace asteroids
     {
         const auto fileName = shen::FilePath::Path("assets/configs/asteroids_spawner.xml");
         auto serialization = shen::Serialization{ _systems, fileName };
-        serialization.SetupElement("spawner");
-        if (auto levelsElement = serialization.GetElement("levels"); levelsElement.IsValid())
+        serialization.SetupElement("assets");
+        serialization.ForAllChildElements("asset", [&](const shen::Serialization& element)
         {
-            levelsElement.ForAllChildElements("level", [&](const shen::Serialization& element)
+            const auto id = element.GetStr("id");
+            auto [it, isInserted] = _levels.insert({ id, std::make_shared<SpawnerLevelConfig>() });
+
+            if (isInserted)
             {
-                const auto level = element.GetInt("index");
-                auto [it, isInserted] = _levels.insert({ level, std::make_shared<SpawnerLevelConfig>() });
-
-                if (isInserted)
+                element.ForAllChildElements("item", [&, levelConfig = it->second](const shen::Serialization& item)
                 {
-                    element.ForAllChildElements("item", [&, levelConfig = it->second](const shen::Serialization& item)
-                    {
-                        const auto type = AsteroidTypeEnum.FromString(item.GetStr("type"));
-                        const auto amount = item.GetInt("amount");
+                    const auto type = AsteroidTypeEnum.FromString(item.GetStr("type"));
+                    const auto amount = item.GetInt("amount");
+                    const auto assetId = item.GetStr("assetId");
 
-                        levelConfig->SetAmount(type, amount);
-                    });
+                    levelConfig->SetAmount(type, { amount, assetId });
+                });
 
-                    const int minDelay = element.GetInt("minDelay", it->second->GetMinDelay());
-                    const int maxDelay = element.GetInt("maxDelay", it->second->GetMaxDelay());
+                const int minDelay = element.GetInt("minDelay", it->second->GetMinDelay());
+                const int maxDelay = element.GetInt("maxDelay", it->second->GetMaxDelay());
 
-                    it->second->SetMinDelay(minDelay);
-                    it->second->SetMaxDelay(maxDelay);
-                }
-            });
-        }
+                it->second->SetMinDelay(minDelay);
+                it->second->SetMaxDelay(maxDelay);
+            }
+        });
     }
 }

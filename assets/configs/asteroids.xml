@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <asteroids>
-   <asteroid type="Default" speed="2" lives="1"/>
-   <asteroid type="Fast" speed="5" lives="1"/>
-   <asteroid type="Strong" speed="3" lives="3"/>
-   <asteroid type="FastStrong" speed="5" lives="5"/>
+   <asteroid type="Default" speed="2" lives="1" assetId="asteroid_default"/>
+   <asteroid type="Fast" speed="5" lives="1" assetId="asteroid_fast"/>
+   <asteroid type="Strong" speed="3" lives="3" assetId="asteroid_strong"/>
+   <asteroid type="FastStrong" speed="5" lives="5" assetId="asteroid_fast_strong"/>
 </asteroids>

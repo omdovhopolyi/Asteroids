@@ -19,9 +19,13 @@ namespace asteroids
         void SetLives(int lives);
         int GetLives() const;
 
+        void SetAsstetId(const std::string& assetId);
+        const std::string& GetAssetId() const;
+
     private:
         float _speed = 1.f;
         int _lives = 1;
+        std::string _assetId;
     };
 
     class AsteroidsConfig
@@ -34,6 +38,8 @@ namespace asteroids
         using WeakPtr = std::weak_ptr<AsteroidsConfig>;
 
         void Load() override;
+
+        std::shared_ptr<AsteroidConfig> GetConfig(AsteroidType type) const;
 
     private:
         std::map<AsteroidType, std::shared_ptr<AsteroidConfig>> _asteroids;

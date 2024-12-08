@@ -3,24 +3,50 @@
 #include "ECS/Systems/BaseSystems/UpdateSystem.h"
 #include "Utils/TimedFunction.h"
 #include "GameEnums/AsteroidTypeEnum.h"
+#include "Messenger/SubscriptionsContainer.h"
+#include <SFML/System/Vector2.hpp>
 
 namespace asteroids
 {
+    /*enum class ScreenSide
+    {
+        Top,
+        Right,
+        Bottom,
+        Left
+    };*/
+
+    struct AsteroidSpawnData
+    {
+        AsteroidType type = AsteroidType::Default;
+        sf::Vector2f position;
+        sf::Vector2f direction;
+    };
+
+    /*struct StarupPosition
+    {
+        sf::Vector2f position;
+        sf::Vector2f direction;
+    };*/
+
     class AsteroidsSpawnerSystem
         : public shen::UpdateSystem
     {
         SYSTEMS_FACTORY(AsteroidsSpawnerSystem)
 
     public:
+        void Init(shen::SystemsManager* systems) override;
         void Start() override;
         void Update() override;
 
     private:
-        void Spawn(AsteroidType type);
+        void InitSubscriptions();
+        void Spawn(const AsteroidSpawnData& spawnData);
+
+        void OnMapLoaded();
 
     private:
-        shen::TimedFunction _updateFunc;
-        float _spawnDelay = 2.f;
-
+        shen::SubcriptionsContainer _subscriptions;
+        //std::map<ScreenSide, StarupPosition> _spawnPositions;
     };
 }

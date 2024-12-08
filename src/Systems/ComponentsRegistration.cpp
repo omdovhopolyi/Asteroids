@@ -15,6 +15,7 @@ namespace asteroids
             mapLoader->RegisterLoader<Asteroid>("asteroid");
             mapLoader->RegisterLoader<Player>("player");
             mapLoader->RegisterLoader<Lifetime>("lifetime");
+            mapLoader->RegisterLoader<AsteroidSpawner>("asteroidSpawner");
         }
     }
 }
