@@ -59,6 +59,8 @@ namespace asteroids
                     const int typeIndex = shen::RandomInt(0, static_cast<int>(availableTypes.size() - 1));
                     const auto type = availableTypes[typeIndex];
 
+                    spawner.asteroidsToLunch[type]--;
+
                     AsteroidSpawnData spawnData;
                     spawnData.type = type;
                     spawnData.position = { 0.f, 50.f };

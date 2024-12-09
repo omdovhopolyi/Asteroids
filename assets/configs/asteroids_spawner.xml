@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <assets>
    <asset id="level_1">
-      <item type="Default" amount="10"/>
+      <item type="Default" amount="1"/>
    </asset>
 </assets>

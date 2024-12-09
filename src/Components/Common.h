@@ -57,4 +57,6 @@ namespace asteroids
         static void Load(Lifetime& component, const shen::Serialization& serialization);
         static void Save(Lifetime& component, shen::Serialization& serialization);
     };
+
+    struct OffscreenMover {};
 }
