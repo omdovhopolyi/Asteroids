@@ -1,0 +1,16 @@
+condition system
+levels changing (by conditions)
+hud
+level background (parallax?)
+player data
+playre's object slowing down?
+rework loaders registration (engien)
+get visible world rect function (engine)
+normalize ui nodes positioning (engine)
+saving/loading
+explosion animation
+particals system (engine rnd)
+async loading (engine)
+hide console (engine)
+templated update system for component
+rework asset's loading (engine)
