@@ -4,6 +4,7 @@
 #include "GameStates/PlayingGameState.h"
 #include "GameStates/PauseGameState.h"
 #include "GameStates/GameOverGameState.h"
+#include "GameStates/WinLevelState.h"
 
 namespace asteroids
 {
@@ -22,6 +23,7 @@ namespace asteroids
         RegisterState<PlayingGameState>(PlayingGameState::StateId);
         RegisterState<PauseGameState>(PauseGameState::StateId);
         RegisterState<GameOverGameState>(GameOverGameState::StateId);
+        RegisterState<WinLevelState>(WinLevelState::StateId);
 
         ScheduleState(MenuGameState::StateId);
     }
