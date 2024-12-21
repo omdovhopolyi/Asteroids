@@ -11,6 +11,7 @@
     <system type="MapLoaderSystem"/>
     <system type="SpawnerConfig"/>
     <system type="AsteroidsConfig"/>
+    <system type="LevelsConfig"/>
 
     <system type="TimeSystem"/>
     <system type="GameStatesSystem"/>
