@@ -1,0 +1,7 @@
+<?xml version = "1.0"?>
+<level map="level_1">
+    <conditions>
+        <win type=""/>
+        <lose type=""/>
+    </conditions>
+</level>
