@@ -1,4 +1,4 @@
-#include "GameOverGameState.h"
+#include "WinLevelState.h"
 #include "ECS/SystemsManager.h"
 #include "ECS/Systems/UI/WindowsManager.h"
 #include "MessengerEvents/Common.h"
@@ -6,28 +6,28 @@
 
 namespace asteroids
 {
-    std::string GameOverGameState::StateId = "GameOverState";
+    std::string WinLevelState::StateId = "WinLevelState";
 
-    GameOverGameState::GameOverGameState(const std::string& id)
+    WinLevelState::WinLevelState(const std::string& id)
         : shen::State(id)
     {}
 
-    void GameOverGameState::Init(shen::StateMachineSystem* stateMachineSystem)
+    void WinLevelState::Init(shen::StateMachineSystem* stateMachineSystem)
     {
         InitSubscriptions();
     }
 
-    void GameOverGameState::OnEnter(const std::string&)
+    void WinLevelState::OnEnter(const std::string&)
     {
         OpenWindow();
     }
 
-    void GameOverGameState::Update()
+    void WinLevelState::Update()
     {
 
     }
 
-    void GameOverGameState::OnExit(const std::string&)
+    void WinLevelState::OnExit(const std::string&)
     {
         auto systems = GetSystemsManager();
         if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
@@ -36,20 +36,20 @@ namespace asteroids
         }
     }
 
-    void GameOverGameState::OpenWindow()
+    void WinLevelState::OpenWindow()
     {
         auto systems = GetSystemsManager();
         if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
         {
             auto windowContext = shen::UIWindowContext{};
-            windowContext.windowId = "game_over_window";
+            windowContext.windowId = "win_level_window";
             windowContext.systems = systems;
 
             windowsManager->OpenWindow(windowContext);
         }
     }
 
-    void GameOverGameState::InitSubscriptions()
+    void WinLevelState::InitSubscriptions()
     {
         _subscriptions.Subscribe<WinLevelNextLevel>([this](const auto& event)
         {

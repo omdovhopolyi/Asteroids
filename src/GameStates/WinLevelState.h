@@ -5,13 +5,13 @@
 
 namespace asteroids
 {
-    class GameOverGameState
+    class WinLevelState
         : public shen::State
     {
     public:
         static std::string StateId;
 
-        GameOverGameState(const std::string& id);
+        WinLevelState(const std::string& id);
 
         void Init(shen::StateMachineSystem* stateMachineSystem) override;
         void OnEnter(const std::string&) override;
