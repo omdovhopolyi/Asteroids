@@ -1,0 +1,46 @@
+<?xml version = "1.0"?>
+<root>
+   <component type="WinLevelWindow" id="winLevelWindow">
+      <refs>
+         <ref id="nextButton" compId="nextButtonComp"/>
+         <ref id="quitButton" compId="quitButtonComp"/>
+      </refs>
+   </component>
+   <node name="window">
+      <node name="background">
+         <component type="UISpriteComponent" texture="win_level_background" fill="true"/>
+      </node>
+      <node name="nextButton">
+         <component type="UIButtonComponent" id="nextButtonComp">
+            <sprite type="Idle" sprite="button_idle"/>
+            <sprite type="Pressed" sprite="button_pressed"/>
+            <sprite type="Hovered" sprite="button_hover"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <position x="100" y="100"/>
+         </component>
+         <node name="text">
+            <component type="UITextComponent" text="NEXT LEVEL" font="arial"/>
+            <component type="UITransformComponent" rotation="0">
+               <position x="0" y="0"/>
+            </component>
+         </node>
+      </node>
+      <node name="quitButton">
+         <component type="UIButtonComponent" id="quitButtonComp">
+            <sprite type="Idle" sprite="button_idle"/>
+            <sprite type="Pressed" sprite="button_pressed"/>
+            <sprite type="Hovered" sprite="button_hover"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <position x="100" y="400"/>
+         </component>
+         <node name="text">
+            <component type="UITextComponent" text="QUIT" font="arial"/>
+            <component type="UITransformComponent" rotation="0">
+               <position x="0" y="0"/>
+            </component>
+         </node>
+      </node>
+   </node>
+</root>
