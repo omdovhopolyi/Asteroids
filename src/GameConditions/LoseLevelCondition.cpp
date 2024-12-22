@@ -1,6 +1,6 @@
 #include "LoseLevelCondition.h"
 #include "ECS/SystemsManager.h"
-#include "Components/Common.h"
+#include "Systems/GameLogic/PlayerInfoSystem.h"
 
 namespace asteroids
 {
@@ -10,11 +10,11 @@ namespace asteroids
 
         if (context.systems)
         {
-            auto& world = context.systems->GetWorld();
-            world.Each<Player>([&](auto entity, const Player& player)
+            if (auto playerInfo = context.systems->GetSystem<PlayerInfoSystem>())
             {
-                result = player.lives <= 0;
-            });
+                const int lives = playerInfo->GetResource(ResourceType::Lives);
+                result = lives <= 0;
+            }
         }
 
         return result;

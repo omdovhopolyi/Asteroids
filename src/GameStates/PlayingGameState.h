@@ -26,8 +26,8 @@ namespace asteroids
         std::shared_ptr<shen::ConditionBase> _winCondition;
         std::shared_ptr<shen::ConditionBase> _loseCondition;
         std::shared_ptr<shen::ConditionBase> _winGameCondition;
-        std::shared_ptr<shen::ActionBase> _winAction;
-        std::shared_ptr<shen::ActionBase> _loseAction;
+        std::vector<std::shared_ptr<shen::ActionBase>> _winActions;
+        std::vector<std::shared_ptr<shen::ActionBase>> _loseActions;
     };
 }
 

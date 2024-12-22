@@ -7,6 +7,7 @@
 #include "GameConditions/WinLevelCondition.h"
 #include "GameConditions/LoseLevelCondition.h"
 #include "GameActions/ScheduleGameStateAction.h"
+#include "GameActions/IncPlayerLevelAction.h"
 
 namespace asteroids
 {
@@ -26,30 +27,39 @@ namespace asteroids
 
     void PlayingGameState::OnEnter(const std::string&)
     {
-        StartLevel(1);
+        if (auto systems = GetSystemsManager())
+        {
+            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+            {
+                StartLevel(playerInfo->GetLevel());
+            }
+        }
     }
 
     void PlayingGameState::Update()
     {
+        // TODO incapsulate in some kind of transition class
+
         if (_winCondition)
         {
             const bool levelWon = _winCondition->Check(*_context);
             if (levelWon)
             {
-                if (_winAction)
+                for (const auto& action : _winActions)
                 {
-                    _winAction->Execute(*_context);
+                    action->Execute(*_context);
                 }
             }
         }
-        else if (_loseCondition)
+
+        if (_loseCondition)
         {
             const bool levelLose = _loseCondition->Check(*_context);
             if (levelLose)
             {
-                if (_loseAction)
+                for (const auto& action : _loseActions)
                 {
-                    _loseAction->Execute(*_context);
+                    action->Execute(*_context);
                 }
             }
         }
@@ -59,11 +69,10 @@ namespace asteroids
     {
         if (auto systems = GetSystemsManager())
         {
-            auto playerInfo = systems->GetSystem<PlayerInfoSystem>();
             auto mapLoader = systems->GetSystem<shen::MapLoaderSystem>();
             auto levelsConfigs = systems->GetSystem<LevelsConfig>();
 
-            if (playerInfo && mapLoader && levelsConfigs)
+            if (mapLoader && levelsConfigs)
             {
                 _currentConfig = levelsConfigs->GetConfig(index);
 
@@ -71,11 +80,18 @@ namespace asteroids
                 {
                     mapLoader->LoadMap(config->mapId);
 
+                    _winCondition = nullptr;
+                    _loseCondition = nullptr;
+                    _winActions.clear();
+                    _loseActions.clear();
+
                     // TODO refactor after new assets loading implementation
                     _winCondition = std::make_shared<WinLevelCondition>();
                     _loseCondition = std::make_shared<LoseLevelCondition>();
-                    _winAction = std::make_shared<ScheduleGameStateAction>("WinLevelState");
-                    _loseAction = std::make_shared<ScheduleGameStateAction>("GameOverState");
+
+                    _winActions.push_back(std::make_shared<ScheduleGameStateAction>("WinLevelState"));
+                    _winActions.push_back(std::make_shared<IncPlayerLevelAction>());
+                    _loseActions.push_back(std::make_shared<ScheduleGameStateAction>("GameOverState"));
                 }
             }
         }

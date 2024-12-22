@@ -4,6 +4,7 @@
 #include "ECS/Components/Common.h"
 #include "ECS/Components/Physics.h"
 #include "Components/Common.h"
+#include "Systems/GameLogic/PlayerInfoSystem.h"
 
 namespace asteroids
 {
@@ -11,28 +12,27 @@ namespace asteroids
 
     void PlayerAsteroidCollisionSystem::Update()
     {
-        auto& world = _systems->GetWorld();
-        world.Each<Player, shen::Collision>([&](auto playerEntity, Player& player, shen::Collision& collision)
+        if (auto playerInfo = GetSystem<PlayerInfoSystem>())
         {
-            auto asteroidEntity = collision.other;
-
-            if (auto asteroid = world.GetComponent<Asteroid>(asteroidEntity))
+            auto& world = _systems->GetWorld();
+            world.Each<Player, shen::Collision>([&](auto playerEntity, const Player&, shen::Collision& collision)
             {
-                player.lives -= asteroid->damage;
+                auto asteroidEntity = collision.other;
 
-                const bool needDestroy = (player.lives <= 0);
-                if (needDestroy)
+                if (auto asteroid = world.GetComponent<Asteroid>(asteroidEntity))
                 {
-                    world.AddComponent<shen::Destroy>(playerEntity);
+                    playerInfo->DecResource(ResourceType::Lives);
+                    const int currentLives = playerInfo->GetResource(ResourceType::Lives);
 
-                    if (auto rigidBody = world.GetComponent<shen::RigidBody>(playerEntity))
+                    const bool needDestroy = (currentLives <= 0);
+                    if (needDestroy)
                     {
-
+                        world.AddComponent<shen::Destroy>(shen::Entity(playerEntity));
                     }
-                }
 
-                world.AddComponent<shen::Destroy>(asteroidEntity);
-            }
-        });
+                    world.AddComponent<shen::Destroy>(asteroidEntity);
+                }
+            });
+        }
     }
 }

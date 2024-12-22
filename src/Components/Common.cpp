@@ -5,12 +5,12 @@ namespace asteroids
 {
     void Player::Load(Player& component, const shen::Serialization& serialization)
     {
-        component.lives = serialization.GetInt("lives", component.lives);
+        //component.lives = serialization.GetInt("lives", component.lives);
     }
 
     void Player::Save(Player& component, shen::Serialization& serialization)
     {
-        serialization.SetInt("lives", component.lives);
+        //serialization.SetInt("lives", component.lives);
     }
 
     void Bullet::Load(Bullet& component, const shen::Serialization& serialization)
