@@ -1,0 +1,6 @@
+<?xml version = "1.0"?>
+<data>
+   <resources>
+        <item type="lives" amount="3" />
+   </resources>
+</data>

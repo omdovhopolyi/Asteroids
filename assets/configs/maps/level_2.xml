@@ -34,8 +34,11 @@
          <input>
             <item val="MoveCommand"/>
             <item val="RotateCommand"/>
+            <item val="FireCommand"/>
          </input>
       </component>
-      <component type="mover"/>
+   </entity>
+   <entity>
+      <component type="asteroidSpawner" config="level_2"/>
    </entity>
 </items>

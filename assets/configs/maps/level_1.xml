@@ -37,7 +37,6 @@
             <item val="FireCommand"/>
          </input>
       </component>
-      <component type="mover"/>
    </entity>
    <entity>
       <component type="asteroidSpawner" config="level_1"/>

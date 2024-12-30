@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <root>
-   <component type="WinLevelWindow" id="winLevelWindow">
+   <component type="GameOverWindow" id="gameOverWindow">
       <refs>
          <ref id="retryButton" compId="retryButtonComp"/>
          <ref id="quitButton" compId="quitButtonComp"/>
@@ -20,7 +20,7 @@
             <position x="100" y="100"/>
          </component>
          <node name="text">
-            <component type="UITextComponent" text="NEXT LEVEL" font="arial"/>
+            <component type="UITextComponent" text="RESTART" font="arial"/>
             <component type="UITransformComponent" rotation="0">
                <position x="0" y="0"/>
             </component>

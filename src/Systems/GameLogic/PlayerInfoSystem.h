@@ -37,6 +37,9 @@ namespace asteroids
         void ResetLevel();
 
     private:
+        void LoadConfig();
+
+    private:
         int _level = 1;
         std::map<ResourceType, int> _resources;
         std::set<std::string> _flags;

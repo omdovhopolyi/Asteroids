@@ -51,7 +51,7 @@ namespace asteroids
 
     void GameOverGameState::InitSubscriptions()
     {
-        _subscriptions.Subscribe<WinLevelNextLevel>([this](const auto& event)
+        _subscriptions.Subscribe<GameOverRetry>([this](const auto& event)
         {
             ScheduleState("GameState");
         });

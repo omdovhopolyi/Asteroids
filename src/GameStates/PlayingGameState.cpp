@@ -8,6 +8,8 @@
 #include "GameConditions/LoseLevelCondition.h"
 #include "GameActions/ScheduleGameStateAction.h"
 #include "GameActions/IncPlayerLevelAction.h"
+#include "GameActions/ClearMapAction.h"
+#include "GameActions/ResetPlayerLevelAction.h"
 
 namespace asteroids
 {
@@ -89,9 +91,13 @@ namespace asteroids
                     _winCondition = std::make_shared<WinLevelCondition>();
                     _loseCondition = std::make_shared<LoseLevelCondition>();
 
+
+                    _winActions.push_back(std::make_shared<ClearMapAction>());
                     _winActions.push_back(std::make_shared<ScheduleGameStateAction>("WinLevelState"));
                     _winActions.push_back(std::make_shared<IncPlayerLevelAction>());
+                    _loseActions.push_back(std::make_shared<ClearMapAction>());
                     _loseActions.push_back(std::make_shared<ScheduleGameStateAction>("GameOverState"));
+                    _loseActions.push_back(std::make_shared<ResetPlayerLevelAction>());
                 }
             }
         }

@@ -23,7 +23,7 @@ namespace asteroids
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
-                shen::Messenger::Instance().Broadcast<MenuStatePlayButtonPressedEvent>();
+                shen::Messenger::Instance().Broadcast<GameOverRetry>();
             });
         }
 
