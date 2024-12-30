@@ -1,0 +1,38 @@
+<?xml version = "1.0"?>
+<root>
+   <component type="HudWindow" id="hudWindow">
+      <refs>
+         <ref id="testButton" compId="testButtonComp"/>
+      </refs>
+   </component>
+   <node name="top">
+        <node name="livesHolder">
+            <component type="UITransformComponent" rotation="0">
+                <position x="10" y="10"/>
+            </component>
+            <node name="icon">
+                <component type="UISpriteComponent" texture="lives_icon"/>
+            </node>
+            <node name="amount">
+                <component type="UITextComponent" text="0" font="arial"/>
+                <component type="UITransformComponent" rotation="0">
+                    <position x="50" y="0"/>
+                </component>
+            </node>
+        </node>
+        <node name="scoreHolder">
+            <component type="UITransformComponent" rotation="0">
+                <position x="700" y="10"/>
+            </component>
+            <node name="icon">
+                <component type="UISpriteComponent" texture="score_icon"/>
+            </node>
+            <node name="amount">
+                <component type="UITextComponent" text="0" font="arial"/>
+                <component type="UITransformComponent" rotation="0">
+                    <position x="50" y="0"/>
+                </component>
+            </node>
+        </node>
+    </node>
+</root>
