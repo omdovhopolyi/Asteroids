@@ -5,6 +5,7 @@
 #include "ECS/Components/Common.h"
 #include "ECS/Components/Render.h"
 #include "ECS/Components/Physics.h"
+#include "Components/Common.h"
 #include <box2d/box2d.h>
 
 namespace asteroids
@@ -30,10 +31,20 @@ namespace asteroids
                 viewBounds.left = center.x - size.x / 2.f;
                 viewBounds.top = center.y - size.y / 2.f;
 
-                world.Each<shen::RigidBody, shen::Transform>([&](const auto entity, shen::RigidBody& rigidBody, shen::Transform& transform)
+                world.Each<OffscreenMove, shen::Transform>([&](const auto entity, const OffscreenMove&, shen::Transform& transform)
                 {
-                    auto box2dPos = rigidBody.body->GetPosition();
-                    auto position = shen::PhysicsBox2DSystem::Box2dPosToWorld(box2dPos);
+                    sf::Vector2f position;
+
+                    auto rigidBody = world.GetComponent<shen::RigidBody>(entity);
+                    if (rigidBody)
+                    {
+                        auto box2dPos = rigidBody->body->GetPosition();
+                        position = shen::PhysicsBox2DSystem::Box2dPosToWorld(box2dPos);
+                    }
+                    else
+                    {
+                        position = transform.position;
+                    }
 
                     const bool needMove = !viewBounds.contains(position);
                     if (needMove)
@@ -55,9 +66,15 @@ namespace asteroids
                             position.y = viewBounds.height;
                         }
 
-                        box2dPos = shen::PhysicsBox2DSystem::WorldToBox2dPos(position);
-
-                        rigidBody.body->SetTransform(box2dPos, rigidBody.body->GetAngle());
+                        if (rigidBody)
+                        {
+                            auto box2dPos = shen::PhysicsBox2DSystem::WorldToBox2dPos(position);
+                            rigidBody->body->SetTransform(box2dPos, rigidBody->body->GetAngle());
+                        }
+                        else
+                        {
+                            transform.position = position;
+                        }
                     }
                 });
             }

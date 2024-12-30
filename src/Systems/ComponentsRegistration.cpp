@@ -16,6 +16,7 @@ namespace asteroids
             mapLoader->RegisterLoader<Player>("player");
             mapLoader->RegisterLoader<Lifetime>("lifetime");
             mapLoader->RegisterLoader<AsteroidSpawner>("asteroidSpawner");
+            mapLoader->RegisterLoader<OffscreenMove>("offscreenMove");
         }
     }
 }
