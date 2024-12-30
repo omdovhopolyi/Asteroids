@@ -1,5 +1,5 @@
 <?xml version = "1.0"?>
 <items>
-   <item id="arial" path="../assets/fonts/arial.ttf"/>
-   <item id="charriot" path="../assets/fonts/charriot.ttf"/>
+   <item id="arial" path="assets/fonts/arial.ttf"/>
+   <item id="charriot" path="assets/fonts/charriot.ttf"/>
 </items>

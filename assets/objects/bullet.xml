@@ -9,5 +9,5 @@
       <rect x="0" y="0" w="4" h="4"/>
       <anchor x="2" y="2"/>
    </component>
-   <component type="lifetime" time="1.5"/>
+   <component type="lifetime" time="2"/>
 </object>

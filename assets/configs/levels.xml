@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
 <levels>
-   <level index="1" mapId="level_1" lives="3">
+   <level index="1" mapId="level_1">
    </level>
    <level index="2" mapId="level_2">
    </level>
