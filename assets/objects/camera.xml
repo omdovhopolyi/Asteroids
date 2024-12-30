@@ -1,0 +1,14 @@
+<?xml version = "1.0"?>
+<object>
+    <component type="camera" cameraType="World">
+        <position x="400" y="320"/>
+        <size x="800" y="640"/>
+    </component>
+    <component type="playerInput">
+        <input>
+            <item val="CameraMoveCommand"/>
+            <item val="CameraZoomCommand"/>
+            <item val="CameraMouseMoveCommand"/>
+        </input>
+    </component>
+</object>

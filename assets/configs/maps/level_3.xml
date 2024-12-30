@@ -1,41 +1,12 @@
 <?xml version = "1.0"?>
 <items>
    <entity>
-      <component type="camera" cameraType="World">
-         <position x="400" y="320"/>
-         <size x="800" y="640"/>
-      </component>
-      <component type="playerInput">
-         <input>
-            <item val="CameraMoveCommand"/>
-            <item val="CameraZoomCommand"/>
-            <item val="CameraMouseMoveCommand"/>
-         </input>
-      </component>
+      <asset id="camera"/>
    </entity>
    <entity>
-      <component type="player"/>
-      <component type="sprite" texture="chopper">
-         <rect x="0" y="0" w="32" h="32"/>
-         <anchor x="16" y="16"/>
-      </component>
+      <asset id="player"/>
       <component type="transform" rotation="0">
          <position x="700" y="100"/>
-      </component>
-      <component type="spriteFrameAnimation" frameTime="0.5">
-         <frames>
-            <rect x="0" y="0" w="32" h="32"/>
-            <rect x="32" y="0" w="32" h="32"/>
-         </frames>
-      </component>
-      <component type="rigidBody" bodyType="DynamicBody">
-      </component>
-      <component type="playerInput">
-         <input>
-            <item val="MoveCommand"/>
-            <item val="RotateCommand"/>
-            <item val="FireCommand"/>
-         </input>
       </component>
    </entity>
    <entity>

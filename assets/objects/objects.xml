@@ -1,5 +1,7 @@
 <?xml version = "1.0"?>
 <objects>
+   <object id="camera" path="assets/objects/camera.xml"/>
+   <object id="player" path="assets/objects/player.xml"/>
    <object id="bullet" path="assets/objects/bullet.xml"/>
    <object id="asteroid_default" path="assets/objects/asteroid_default.xml"/>
    <object id="asteroid_fast" path="assets/objects/asteroid_fast.xml"/>
