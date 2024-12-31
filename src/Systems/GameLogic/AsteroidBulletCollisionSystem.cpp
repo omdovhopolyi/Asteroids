@@ -4,6 +4,9 @@
 #include "ECS/Components/Common.h"
 #include "ECS/Components/Physics.h"
 #include "Components/Common.h"
+#include "Systems/GameLogic/PlayerInfoSystem.h"
+#include "MessengerEvents/Common.h"
+#include "Messenger/Messenger.h"
 
 namespace asteroids
 {
@@ -11,6 +14,8 @@ namespace asteroids
 
     void AsteroidBulletCollisionSystem::Update()
     {
+        auto playerInfo = _systems->GetSystem<PlayerInfoSystem>();
+
         auto& world = _systems->GetWorld();
         world.Each<Asteroid, shen::Collision>([&](auto asteroidEntity, Asteroid& asteroid, shen::Collision& collision)
         {
@@ -24,6 +29,12 @@ namespace asteroids
                 if (needDestroy)
                 {
                     world.AddComponent<shen::Destroy>(asteroidEntity);
+
+                    if (playerInfo)
+                    {
+                        playerInfo->AddResource(ResourceType::Score, asteroid.points);
+                        shen::Messenger::Instance().Broadcast<UpdateHud>();
+                    }
                 }
 
                 world.AddComponent<shen::Destroy>(bulletEntity);

@@ -5,6 +5,8 @@
 #include "ECS/Components/Physics.h"
 #include "Components/Common.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
+#include "Messenger/Messenger.h"
+#include "MessengerEvents/Common.h"
 
 namespace asteroids
 {
@@ -31,6 +33,8 @@ namespace asteroids
                     }
 
                     world.AddComponent<shen::Destroy>(asteroidEntity);
+
+                    shen::Messenger::Instance().Broadcast<UpdateHud>();
                 }
             });
         }

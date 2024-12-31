@@ -19,6 +19,7 @@ namespace asteroids
 
     private:
         void StartLevel(int index);
+        void ShowHud();
 
     private:
         std::shared_ptr<shen::ContextBase> _context;

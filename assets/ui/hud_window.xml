@@ -2,7 +2,8 @@
 <root>
    <component type="HudWindow" id="hudWindow">
       <refs>
-         <ref id="testButton" compId="testButtonComp"/>
+         <ref id="lives" compId="lives"/>
+         <ref id="score" compId="score"/>
       </refs>
    </component>
    <node name="top">
@@ -14,7 +15,7 @@
                 <component type="UISpriteComponent" texture="lives_icon"/>
             </node>
             <node name="amount">
-                <component type="UITextComponent" text="0" font="arial"/>
+                <component type="UITextComponent" text="0" font="arial" id="lives"/>
                 <component type="UITransformComponent" rotation="0">
                     <position x="50" y="0"/>
                 </component>
@@ -28,7 +29,7 @@
                 <component type="UISpriteComponent" texture="score_icon"/>
             </node>
             <node name="amount">
-                <component type="UITextComponent" text="0" font="arial"/>
+                <component type="UITextComponent" text="0" font="arial" id="score"/>
                 <component type="UITransformComponent" rotation="0">
                     <position x="50" y="0"/>
                 </component>

@@ -9,4 +9,5 @@ namespace asteroids
     struct WinLevelNextLevel : shen::Event {};
     struct AfterLevelExit : shen::Event {};
     struct GameOverRetry : shen::Event {};
+    struct UpdateHud : shen::Event {};
 }

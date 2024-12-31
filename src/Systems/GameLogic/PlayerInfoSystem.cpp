@@ -71,18 +71,12 @@ namespace asteroids
 
     void PlayerInfoSystem::AddResource(ResourceType type, int amount)
     {
-        if (auto it = _resources.find(type); it != _resources.end())
-        {
-            it->second += amount;
-        }
+        _resources[type] += amount;
     }
 
     void PlayerInfoSystem::SetResource(ResourceType type, int amount)
     {
-        if (auto it = _resources.find(type); it != _resources.end())
-        {
-            it->second = amount;
-        }
+        _resources[type] = amount;
     }
 
     void PlayerInfoSystem::ResetResource(ResourceType type)

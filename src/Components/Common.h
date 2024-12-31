@@ -33,6 +33,7 @@ namespace asteroids
         int damage = 1;
         int lives = 3;
         float speed = 1.f;
+        int points = 1;
 
         static void Load(Asteroid& component, const shen::Serialization& serialization);
         static void Save(Asteroid& component, shen::Serialization& serialization);

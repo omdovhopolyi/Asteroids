@@ -2,6 +2,7 @@
 #include <ECS/Systems/MapLoaderSystem.h>
 #include <ECS/SystemsManager.h>
 #include "Systems/GameLogic/PlayerInfoSystem.h"
+#include <ECS/Systems/UI/WindowsManager.h>
 
 // TODO refactor after new assets loading implementation
 #include "GameConditions/WinLevelCondition.h"
@@ -36,6 +37,8 @@ namespace asteroids
                 StartLevel(playerInfo->GetLevel());
             }
         }
+
+        ShowHud();
     }
 
     void PlayingGameState::Update()
@@ -100,6 +103,19 @@ namespace asteroids
                     _loseActions.push_back(std::make_shared<ResetPlayerLevelAction>());
                 }
             }
+        }
+    }
+
+    void PlayingGameState::ShowHud()
+    {
+        auto systems = GetSystemsManager();
+        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
+        {
+            auto windowContext = shen::UIWindowContext{};
+            windowContext.windowId = "hud_window";
+            windowContext.systems = systems;
+
+            windowsManager->OpenWindow(windowContext);
         }
     }
 }
