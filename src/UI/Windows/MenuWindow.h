@@ -1,6 +1,7 @@
 #pragma once
 
 #include <UI/Components/UIWindowComponent.h>
+#include <UI/Components/UIButtonComponent.h>
 
 namespace asteroids
 {
@@ -15,9 +16,9 @@ namespace asteroids
         void InitButtonsSubscriptions();
 
     private:
-        std::weak_ptr<UIComponent> _playButton;
-        std::weak_ptr<UIComponent> _settingsButton;
-        std::weak_ptr<UIComponent> _quitButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _playButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _settingsButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _quitButton;
     };
 }
 

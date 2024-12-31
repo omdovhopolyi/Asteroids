@@ -1,6 +1,7 @@
 #pragma once
 
 #include <UI/Components/UIWindowComponent.h>
+#include <UI/Components/UIButtonComponent.h>
 
 namespace asteroids
 {
@@ -15,7 +16,7 @@ namespace asteroids
         void InitButtonsSubscriptions();
 
     private:
-        std::weak_ptr<UIComponent> _retryButton;
-        std::weak_ptr<UIComponent> _quitButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _retryButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _quitButton;
     };
 }

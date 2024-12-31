@@ -8,8 +8,8 @@ namespace asteroids
 {
     void GameOverWindow::RegisterReferences()
     {
-        RegisterReference("retryButton", &_retryButton);
-        RegisterReference("quitButton", &_quitButton);
+        RegisterReference("retryButton", _retryButton);
+        RegisterReference("quitButton", _quitButton);
     }
 
     void GameOverWindow::Init()
@@ -19,7 +19,7 @@ namespace asteroids
 
     void GameOverWindow::InitButtonsSubscriptions()
     {
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_retryButton.lock()))
+        if (auto button = _retryButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
@@ -27,7 +27,7 @@ namespace asteroids
             });
         }
 
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_quitButton.lock()))
+        if (auto button = _quitButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {

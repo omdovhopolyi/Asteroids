@@ -8,8 +8,8 @@ namespace asteroids
 {
     void WinLevelWindow::RegisterReferences()
     {
-        RegisterReference("nextButton", &_nextButton);
-        RegisterReference("quitButton", &_quitButton);
+        RegisterReference("nextButton", _nextButton);
+        RegisterReference("quitButton", _quitButton);
     }
 
     void WinLevelWindow::Init()
@@ -19,7 +19,7 @@ namespace asteroids
 
     void WinLevelWindow::InitButtonsSubscriptions()
     {
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_nextButton.lock()))
+        if (auto button = _nextButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
@@ -27,7 +27,7 @@ namespace asteroids
             });
         }
 
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_quitButton.lock()))
+        if (auto button = _quitButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {

@@ -8,9 +8,9 @@ namespace asteroids
 {
     void MenuWindow::RegisterReferences()
     {
-        RegisterReference("playButton", &_playButton);
-        RegisterReference("settingsButton", &_settingsButton);
-        RegisterReference("quitButton", &_quitButton);
+        RegisterReference("playButton", _playButton);
+        RegisterReference("settingsButton", _settingsButton);
+        RegisterReference("quitButton", _quitButton);
     }
 
     void MenuWindow::Init()
@@ -20,7 +20,7 @@ namespace asteroids
 
     void MenuWindow::InitButtonsSubscriptions()
     {
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_playButton.lock()))
+        if (auto button = _playButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
@@ -28,7 +28,7 @@ namespace asteroids
             });
         }
 
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_settingsButton.lock()))
+        if (auto button = _settingsButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
@@ -36,7 +36,7 @@ namespace asteroids
             });
         }
 
-        if (auto button = std::dynamic_pointer_cast<shen::UIButtonComponent>(_quitButton.lock()))
+        if (auto button = _quitButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
