@@ -31,11 +31,11 @@ namespace asteroids
 
     public:
         void Init(shen::SystemsManager* systems) override;
-        void Start() override;
         void Update() override;
 
     private:
         void InitSubscriptions();
+        void InitSpawnerComponent();
         void Spawn(const AsteroidSpawnData& spawnData);
 
         void OnMapLoaded();
@@ -45,6 +45,5 @@ namespace asteroids
 
     private:
         shen::SubcriptionsContainer _subscriptions;
-        //std::map<ScreenSide, StarupPosition> _spawnPositions;
     };
 }

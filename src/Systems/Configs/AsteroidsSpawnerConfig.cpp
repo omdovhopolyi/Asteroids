@@ -68,6 +68,16 @@ namespace asteroids
         return {};
     }
 
+    float SpawnerConfig::GetMinTorque() const
+    {
+        return _minTorque;
+    }
+
+    float SpawnerConfig::GetMaxTorque() const
+    {
+        return _maxTorque;
+    }
+
     void SpawnerConfig::Load()
     {
         const auto fileName = shen::FilePath::Path("assets/configs/asteroids_spawner.xml");

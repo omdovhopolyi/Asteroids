@@ -27,10 +27,6 @@ namespace asteroids
         InitSubscriptions();
     }
 
-    void AsteroidsSpawnerSystem::Start()
-    {
-    }
-
     void AsteroidsSpawnerSystem::Update()
     {
         auto& time = _systems->GetTime();
@@ -81,13 +77,40 @@ namespace asteroids
         });
     }
 
+    void AsteroidsSpawnerSystem::InitSpawnerComponent()
+    {
+        if (auto collection = GetSystem<SpawnerConfig>())
+        {
+            auto& world = _systems->GetWorld();
+            world.Each<AsteroidSpawner>([&](auto entity, AsteroidSpawner& spawner)
+            {
+                if (const auto& config = collection->GetConfig(spawner.config))
+                {
+                    spawner.minDelay = config->GetMinDelay();
+                    spawner.maxDelay = config->GetMaxDelay();
+
+                    spawner.asteroidsToLunch.clear();
+
+                    for (const auto& [type, data] : config->GetAsteroids())
+                    {
+                        spawner.asteroidsToLunch.insert({ type, data.amount });
+                    }
+                }
+            });
+        }
+    }
+
     void AsteroidsSpawnerSystem::Spawn(const AsteroidSpawnData& spawnData)
     {
         auto& world = _systems->GetWorld();
         auto assetsConfig = GetSystem<AsteroidsConfig>();
         auto loader = GetSystem<shen::MapLoaderSystem>();
+        auto spawnerConfig = GetSystem<SpawnerConfig>();
 
-        if (assetsConfig && loader)
+        const float minTorque = spawnerConfig->GetMinTorque();
+        const float maxTorque = spawnerConfig->GetMaxTorque();
+
+        if (assetsConfig && loader && spawnerConfig)
         {
             if (const auto asteroidConfig = assetsConfig->GetConfig(spawnData.type))
             {
@@ -109,6 +132,7 @@ namespace asteroids
 
                             physicsSystem->SetupRigidBody(entity);
                             physicsSystem->SetLinearVelocity(entity, velocity);
+                            physicsSystem->ApplyTorque(entity, shen::RandomFloat(minTorque, maxTorque));
                         }
                     }
                 }
@@ -118,25 +142,7 @@ namespace asteroids
 
     void AsteroidsSpawnerSystem::OnMapLoaded()
     {
-        auto& world = _systems->GetWorld();
-        world.Each<AsteroidSpawner>([&](auto entity, AsteroidSpawner& spawner)
-        {
-            if (auto collection = GetSystem<SpawnerConfig>())
-            {
-                if (const auto& config = collection->GetConfig(spawner.config))
-                {
-                    spawner.minDelay = config->GetMinDelay();
-                    spawner.maxDelay = config->GetMaxDelay();
-
-                    spawner.asteroidsToLunch.clear();
-
-                    for (const auto& [type, data] : config->GetAsteroids())
-                    {
-                        spawner.asteroidsToLunch.insert({ type, data.amount });
-                    }
-                }
-            }
-        });
+        InitSpawnerComponent();
     }
 
     sf::Vector2f AsteroidsSpawnerSystem::CalculateSpawnPosition() const

@@ -49,9 +49,14 @@ namespace asteroids
 
         const SpawnerLevelConfig::Ptr GetConfig(const std::string& id) const;
 
+        float GetMinTorque() const;
+        float GetMaxTorque() const;
+
         void Load() override;
 
     private:
         std::map<std::string, std::shared_ptr<SpawnerLevelConfig>> _levels;
+        float _minTorque = 30.f;
+        float _maxTorque = 100.f;
     };
 }
