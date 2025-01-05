@@ -1,17 +1,14 @@
-condition system
-levels changing (by conditions)
-hud
+fixed window size (engine)
+explosion animation
 level background (parallax?)
-player data
+saving/loading
 playre's object slowing down?
-rework loaders registration (engien)
+rework loaders registration (engine)
 get visible world rect function (engine)
 normalize ui nodes positioning (engine)
-saving/loading
-explosion animation
 particals system (engine rnd)
 async loading (engine)
 hide console (engine)
-templated update system for component
+templated update system for component (engine)
 rework asset's loading (engine)
 save manager (engiene)

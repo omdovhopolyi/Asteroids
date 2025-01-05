@@ -3,6 +3,7 @@
 #include "ECS/Systems/TimeSystem.h"
 #include "ECS/Systems/PhysicsBox2DSystem.h"
 #include "ECS/Systems/Sfml/SfmlSpritesCollection.h"
+#include "ECS/Systems/Sfml/SfmlRenderTargetsSystem.h"
 #include "ECS/World.h"
 #include "ECS/SystemsManager.h"
 #include "ECS/Components/Common.h"
@@ -63,8 +64,8 @@ namespace asteroids
 
                     AsteroidSpawnData spawnData;
                     spawnData.type = type;
-                    spawnData.position = { 0.f, 50.f };
-                    spawnData.direction = { 1.f, 1.f };
+                    spawnData.position = CalculateSpawnPosition();
+                    spawnData.direction = CalculateDirection();
 
                     Spawn(spawnData);
                 }
@@ -136,5 +137,59 @@ namespace asteroids
                 }
             }
         });
+    }
+
+    sf::Vector2f AsteroidsSpawnerSystem::CalculateSpawnPosition() const
+    {
+        sf::Vector2f position;
+
+        if (auto renderTargets = GetSystem<shen::SfmlRenderTargetsSystem>())
+        {
+            const auto rect = renderTargets->GetTargetWorldRect(shen::SfmlRenderTargetsSystem::WorldTargetId);
+            const auto side = static_cast<ScreenSide>(shen::RandomInt(0, static_cast<int>(ScreenSide::Count) - 1));
+            const auto normalPointOnSide = shen::RandomFloat(0.f, 1.f);
+
+            switch (side)
+            {
+            case ScreenSide::Top:
+            {
+                position.x = rect.width * normalPointOnSide;
+                position.y = 0.f;
+                break;
+            }
+            case ScreenSide::Right:
+            {
+                position.x = rect.width;
+                position.y = rect.height * normalPointOnSide;
+                break;
+            }
+            case ScreenSide::Bottom:
+            {
+                position.x = rect.width;
+                position.y = rect.height * normalPointOnSide;
+                break;
+            }
+            case ScreenSide::Left:
+            {
+                position.x = 0.f;
+                position.y = rect.height * normalPointOnSide;
+                break;
+            }
+            default:
+            {
+                // empty
+            }
+            }
+        }
+
+        return position;
+    }
+
+    sf::Vector2f AsteroidsSpawnerSystem::CalculateDirection() const
+    {
+        sf::Vector2f direction = { 1.f, 1.f };
+        const float angle = shen::RandomFloat(0.f, 360.f);
+        shen::RotateThis(direction, angle);
+        return direction;
     }
 }

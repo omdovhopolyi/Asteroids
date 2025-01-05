@@ -8,13 +8,14 @@
 
 namespace asteroids
 {
-    /*enum class ScreenSide
+    enum class ScreenSide
     {
         Top,
         Right,
         Bottom,
-        Left
-    };*/
+        Left,
+        Count
+    };
 
     struct AsteroidSpawnData
     {
@@ -22,12 +23,6 @@ namespace asteroids
         sf::Vector2f position;
         sf::Vector2f direction;
     };
-
-    /*struct StarupPosition
-    {
-        sf::Vector2f position;
-        sf::Vector2f direction;
-    };*/
 
     class AsteroidsSpawnerSystem
         : public shen::UpdateSystem
@@ -44,6 +39,9 @@ namespace asteroids
         void Spawn(const AsteroidSpawnData& spawnData);
 
         void OnMapLoaded();
+
+        sf::Vector2f CalculateSpawnPosition() const;
+        sf::Vector2f CalculateDirection() const;
 
     private:
         shen::SubcriptionsContainer _subscriptions;

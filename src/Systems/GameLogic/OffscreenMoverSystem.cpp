@@ -16,68 +16,56 @@ namespace asteroids
     {
         auto& world = _systems->GetWorld();
 
-        // TODO standalone function for getting world screen rect
-
         if (auto renderTextures = _systems->GetSystem<shen::SfmlRenderTargetsSystem>())
         {
-            if (auto target = renderTextures->GetRenderTexture(shen::SfmlRenderTargetsSystem::WorldTargetId))
+            const auto viewBounds = renderTextures->GetTargetWorldRect(shen::SfmlRenderTargetsSystem::WorldTargetId);
+
+            world.Each<OffscreenMove, shen::Transform>([&](const auto entity, const OffscreenMove&, shen::Transform& transform)
             {
-                const auto& view = target->getView();
-                const auto center = view.getCenter();
-                const auto size = view.getSize();
-                sf::FloatRect viewBounds;
-                viewBounds.width = size.x;
-                viewBounds.height = size.y;
-                viewBounds.left = center.x - size.x / 2.f;
-                viewBounds.top = center.y - size.y / 2.f;
+                sf::Vector2f position;
 
-                world.Each<OffscreenMove, shen::Transform>([&](const auto entity, const OffscreenMove&, shen::Transform& transform)
+                auto rigidBody = world.GetComponent<shen::RigidBody>(entity);
+                if (rigidBody)
                 {
-                    sf::Vector2f position;
+                    auto box2dPos = rigidBody->body->GetPosition();
+                    position = shen::PhysicsBox2DSystem::Box2dPosToWorld(box2dPos);
+                }
+                else
+                {
+                    position = transform.position;
+                }
 
-                    auto rigidBody = world.GetComponent<shen::RigidBody>(entity);
+                const bool needMove = !viewBounds.contains(position);
+                if (needMove)
+                {
+                    if (position.x > viewBounds.width)
+                    {
+                        position.x = 0.f;
+                    }
+                    if (position.x < 0.f)
+                    {
+                        position.x = viewBounds.width;
+                    }
+                    if (position.y > viewBounds.height)
+                    {
+                        position.y = 0.f;
+                    }
+                    if (position.y < 0.f)
+                    {
+                        position.y = viewBounds.height;
+                    }
+
                     if (rigidBody)
                     {
-                        auto box2dPos = rigidBody->body->GetPosition();
-                        position = shen::PhysicsBox2DSystem::Box2dPosToWorld(box2dPos);
+                        auto box2dPos = shen::PhysicsBox2DSystem::WorldToBox2dPos(position);
+                        rigidBody->body->SetTransform(box2dPos, rigidBody->body->GetAngle());
                     }
                     else
                     {
-                        position = transform.position;
+                        transform.position = position;
                     }
-
-                    const bool needMove = !viewBounds.contains(position);
-                    if (needMove)
-                    {
-                        if (position.x > viewBounds.width)
-                        {
-                            position.x = 0.f;
-                        }
-                        if (position.x < 0.f)
-                        {
-                            position.x = viewBounds.width;
-                        }
-                        if (position.y > viewBounds.height)
-                        {
-                            position.y = 0.f;
-                        }
-                        if (position.y < 0.f)
-                        {
-                            position.y = viewBounds.height;
-                        }
-
-                        if (rigidBody)
-                        {
-                            auto box2dPos = shen::PhysicsBox2DSystem::WorldToBox2dPos(position);
-                            rigidBody->body->SetTransform(box2dPos, rigidBody->body->GetAngle());
-                        }
-                        else
-                        {
-                            transform.position = position;
-                        }
-                    }
-                });
-            }
+                }
+            });
         }
     };
 }
