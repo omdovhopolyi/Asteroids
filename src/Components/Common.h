@@ -45,7 +45,7 @@ namespace asteroids
 
         float minDelay = 1.f;
         float maxDelay = 2.f;
-        float currentDelay = 0.f;
+        float currentDelay = 1.f;
         std::map<AsteroidType, int> asteroidsToLunch;
 
         static void Load(AsteroidSpawner& component, const shen::Serialization& serialization);

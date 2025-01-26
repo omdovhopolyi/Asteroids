@@ -10,5 +10,9 @@ namespace asteroids
     {
     public:
         void Execute(const shen::CommandContext& context) const override;
+
+    private:
+        std::string _bulletAssetId = "bullet";
+        float _angleDeviation = 3.f;
     };
 }

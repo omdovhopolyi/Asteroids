@@ -8,6 +8,7 @@
 #include "ECS/Systems/PhysicsBox2DSystem.h"
 #include "ECS/Systems/MapLoaderSystem.h"
 #include "Components/Common.h"
+#include "Utils/Math.h"
 
 namespace asteroids
 {
@@ -17,7 +18,7 @@ namespace asteroids
         {
             auto& world = context.systems->GetWorld();
 
-            if (auto bulletEntity = loader->InstantiateAsset("bullet"); world.IsValid(bulletEntity))
+            if (auto bulletEntity = loader->InstantiateAsset(_bulletAssetId); world.IsValid(bulletEntity))
             {
                 auto playerTransform = world.GetComponent<shen::Transform>(context.entity);
                 auto bulletTransform = world.GetComponent<shen::Transform>(bulletEntity);
@@ -31,10 +32,12 @@ namespace asteroids
                         auto velocity = sf::Vector2f{ 1.f, 0.f };
 
                         auto rotationTransform = sf::Transform::Identity;
-                        rotationTransform.rotate(playerTransform->rotation);
+                        const auto angle = shen::RandomFloat(playerTransform->rotation - _angleDeviation, playerTransform->rotation + _angleDeviation);
+                        rotationTransform.rotate(angle);
                         velocity = rotationTransform.transformPoint(velocity);
 
                         bulletTransform->position = playerTransform->position;
+                        bulletTransform->rotation = angle;
                         
                         velocity *= bullet->speed;
 
