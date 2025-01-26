@@ -1,19 +1,19 @@
 <?xml version = "1.0"?>
 <object>
    <component type="player"/>
-      <component type="sprite" texture="chopper">
-        <rect x="0" y="0" w="32" h="32"/>
-        <anchor x="16" y="16"/>
+      <component type="sprite" texture="space_craft">
+        <!--<rect x="0" y="0" w="32" h="32"/>-->
+        <!--<anchor x="16" y="16"/>-->
     </component>
     <component type="transform" rotation="0">
         <position x="600" y="300"/>
     </component>
-    <component type="spriteFrameAnimation" frameTime="0.5">
+    <!--<component type="spriteFrameAnimation" frameTime="0.5">
         <frames>
             <rect x="0" y="0" w="32" h="32"/>
             <rect x="32" y="0" w="32" h="32"/>
         </frames>
-    </component>
+    </component>-->
     <component type="rigidBody" bodyType="DynamicBody">
     </component>
     <component type="playerInput">

@@ -1,0 +1,14 @@
+<?xml version = "1.0"?>
+<root>
+   <<!--<component type="WinLevelWindow" id="winLevelWindow">
+      <refs>
+         <ref id="nextButton" compId="nextButtonComp"/>
+         <ref id="quitButton" compId="quitButtonComp"/>
+      </refs>
+   </component>-->
+   <node name="window">
+      <node name="background">
+         <component type="UISpriteComponent" texture="background_level_1"/>
+      </node>
+   </node>
+</root>

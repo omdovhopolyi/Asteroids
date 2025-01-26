@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<root>
+   <node name="window">
+      <node name="background">
+         <component type="UISpriteComponent" texture="background_level_3"/>
+      </node>
+   </node>
+</root>

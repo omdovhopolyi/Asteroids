@@ -12,4 +12,11 @@
    <entity>
       <component type="asteroidSpawner" config="level_1"/>
    </entity>
+   <entity>
+      <component type="sprite" texture="background_level_1" sorting="-1"/>
+      <component type="transform">
+         <position x="400" y="320"/>
+         <scale x="0.65" y="0.65"/>
+      </component>
+   </entity>
 </items>
