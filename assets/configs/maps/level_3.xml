@@ -12,4 +12,7 @@
    <entity>
       <component type="asteroidSpawner" config="level_3"/>
    </entity>
+   <entity>
+      <component type="endleveldelay"/>
+   </entity>
 </items>

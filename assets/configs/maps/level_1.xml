@@ -19,4 +19,7 @@
          <scale x="0.65" y="0.65"/>
       </component>
    </entity>
+   <entity>
+      <component type="endleveldelay"/>
+   </entity>
 </items>

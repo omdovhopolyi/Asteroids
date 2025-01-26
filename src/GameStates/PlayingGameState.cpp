@@ -5,6 +5,8 @@
 #include <ECS/Systems/UI/WindowsManager.h>
 
 // TODO refactor after new assets loading implementation
+#include "Conditions/AndCondition.h"
+#include "GameConditions/EndLevelDelayFinishedCondition.h"
 #include "GameConditions/WinLevelCondition.h"
 #include "GameConditions/LoseLevelCondition.h"
 #include "GameActions/ScheduleGameStateAction.h"
@@ -91,10 +93,18 @@ namespace asteroids
                     _loseActions.clear();
 
                     // TODO refactor after new assets loading implementation
-                    _winCondition = std::make_shared<WinLevelCondition>();
-                    _loseCondition = std::make_shared<LoseLevelCondition>();
+                    auto winCondition = std::make_shared<shen::AndCondition>();
+                    winCondition->AddCondition(std::make_shared<WinLevelCondition>());
+                    winCondition->AddCondition(std::make_shared<EndLevelDelayFinishedCondition>());
+                    _winCondition = winCondition;
 
+                    // TODO refactor after new assets loading implementation
+                    auto loseCondition = std::make_shared<shen::AndCondition>();
+                    loseCondition->AddCondition(std::make_shared<LoseLevelCondition>());
+                    loseCondition->AddCondition(std::make_shared<EndLevelDelayFinishedCondition>());
+                    _loseCondition = loseCondition;
 
+                    // TODO refactor after new assets loading implementation
                     _winActions.push_back(std::make_shared<ClearMapAction>());
                     _winActions.push_back(std::make_shared<ScheduleGameStateAction>("WinLevelState"));
                     _winActions.push_back(std::make_shared<IncPlayerLevelAction>());

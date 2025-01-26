@@ -58,4 +58,14 @@ namespace asteroids
     {
         serialization.SetFloat("time", component.time);
     }
+
+    void EndLevelDelay::Load(EndLevelDelay& component, const shen::Serialization& serialization)
+    {
+        component.delay = serialization.GetFloat("delay", 3.f);
+    }
+
+    void EndLevelDelay::Save(EndLevelDelay& component, shen::Serialization& serialization)
+    {
+        serialization.SetFloat("delay", component.delay);
+    }
 }

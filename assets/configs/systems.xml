@@ -31,6 +31,7 @@
     <system type="PlayerAsteroidCollisionSystem"/>
     <system type="AsteroidBulletCollisionSystem"/>
     <system type="LifetimeSystem"/>
+    <system type="EndLevelDelaySystem"/>
     <system type="OffscreenMoverSystem"/>
     <system type="CollisionCleanupSystem"/>
     <system type="CleanupSystem"/>

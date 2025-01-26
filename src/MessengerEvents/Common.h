@@ -10,4 +10,6 @@ namespace asteroids
     struct AfterLevelExit : shen::Event {};
     struct GameOverRetry : shen::Event {};
     struct UpdateHud : shen::Event {};
+    struct AsteroidDestroyed : shen::Event {};
+    struct PlayerDestroyed : shen::Event {};
 }

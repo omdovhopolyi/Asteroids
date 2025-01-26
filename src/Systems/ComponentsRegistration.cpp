@@ -17,6 +17,7 @@ namespace asteroids
             mapLoader->RegisterLoader<Lifetime>("lifetime");
             mapLoader->RegisterLoader<AsteroidSpawner>("asteroidSpawner");
             mapLoader->RegisterLoader<OffscreenMove>("offscreenMove");
+            mapLoader->RegisterLoader<EndLevelDelay>("endleveldelay");
         }
     }
 }

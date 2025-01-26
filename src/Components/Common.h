@@ -65,4 +65,13 @@ namespace asteroids
         static void Load(OffscreenMove& component, const shen::Serialization& serialization) {};
         static void Save(OffscreenMove& component, shen::Serialization& serialization) {};
     };
+
+    struct EndLevelDelay
+    {
+        float delay = 3.f;
+        float time = 0.f;
+
+        static void Load(EndLevelDelay& component, const shen::Serialization& serialization);
+        static void Save(EndLevelDelay& component, shen::Serialization& serialization);
+    };
 }

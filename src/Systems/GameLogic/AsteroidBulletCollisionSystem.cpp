@@ -29,6 +29,7 @@ namespace asteroids
                 if (needDestroy)
                 {
                     world.AddComponent<shen::Destroy>(asteroidEntity);
+                    shen::Messenger::Instance().Broadcast<AsteroidDestroyed>();
 
                     if (playerInfo)
                     {

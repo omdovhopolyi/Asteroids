@@ -2,6 +2,7 @@
 
 #include "ECS/Systems/GameStates/State.h"
 #include "Systems/Configs/LevelsConfig.h"
+#include "Conditions/ConditionBase.h"
 
 namespace asteroids
 {
