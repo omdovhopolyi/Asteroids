@@ -1,0 +1,9 @@
+<?xml version = "1.0"?>
+<explosions>
+    <item assetId="explosion_1"/>
+    <item assetId="explosion_2"/>
+    <item assetId="explosion_3"/>
+    <item assetId="explosion_4"/>
+    <item assetId="explosion_5"/>
+    <item assetId="explosion_6"/>
+</explosions>

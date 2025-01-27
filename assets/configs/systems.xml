@@ -12,6 +12,7 @@
     <system type="SpawnerConfig"/>
     <system type="AsteroidsConfig"/>
     <system type="LevelsConfig"/>
+    <system type="ExplosionsListConfig"/>
 
     <system type="TimeSystem"/>
     <system type="GameStatesSystem"/>

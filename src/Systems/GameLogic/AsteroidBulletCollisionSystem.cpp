@@ -3,10 +3,12 @@
 #include "ECS/SystemsManager.h"
 #include "ECS/Components/Common.h"
 #include "ECS/Components/Physics.h"
+#include "ECS/Systems/MapLoaderSystem.h"
 #include "Components/Common.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "MessengerEvents/Common.h"
 #include "Messenger/Messenger.h"
+#include "Systems/Configs/ExplosionsListConfig.h"
 
 namespace asteroids
 {
@@ -28,6 +30,24 @@ namespace asteroids
                 const bool needDestroy = (asteroid.lives <= 0);
                 if (needDestroy)
                 {
+                    auto loader = _systems->GetSystem<shen::MapLoaderSystem>();
+                    auto explosions = _systems->GetSystem<ExplosionsListConfig>();
+                    if (loader && explosions)
+                    {
+                        const auto explosionAssetId = explosions->GetRandomExplosion();
+
+                        if (auto explosionEntity = loader->InstantiateAsset(explosionAssetId); world.IsValid(explosionEntity))
+                        {
+                            auto explosionTransform = world.GetOrCreateComponent<shen::Transform>(explosionEntity);
+                            auto asteroidTransform = world.GetComponent<shen::Transform>(asteroidEntity);
+
+                            if (explosionTransform && asteroidTransform)
+                            {
+                                explosionTransform->position = asteroidTransform->position;
+                            }
+                        }
+                    }
+
                     world.AddComponent<shen::Destroy>(asteroidEntity);
                     shen::Messenger::Instance().Broadcast<AsteroidDestroyed>();
 

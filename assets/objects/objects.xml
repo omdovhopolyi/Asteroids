@@ -7,4 +7,10 @@
    <object id="asteroid_fast" path="assets/objects/asteroid_fast.xml"/>
    <object id="asteroid_fast_strong" path="assets/objects/asteroid_fast_strong.xml"/>
    <object id="asteroid_strong" path="assets/objects/asteroid_strong.xml"/>
+   <object id="explosion_1" path="assets/objects/explosion_1.xml"/>
+   <object id="explosion_2" path="assets/objects/explosion_2.xml"/>
+   <object id="explosion_3" path="assets/objects/explosion_3.xml"/>
+   <object id="explosion_4" path="assets/objects/explosion_4.xml"/>
+   <object id="explosion_5" path="assets/objects/explosion_5.xml"/>
+   <object id="explosion_6" path="assets/objects/explosion_6.xml"/>
 </objects>
