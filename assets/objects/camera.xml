@@ -4,11 +4,11 @@
         <position x="400" y="320"/>
         <size x="800" y="640"/>
     </component>
-    <component type="playerInput">
+    <!--<component type="playerInput">
         <input>
             <item val="CameraMoveCommand"/>
             <item val="CameraZoomCommand"/>
             <item val="CameraMouseMoveCommand"/>
         </input>
-    </component>
+    </component>-->
 </object>
