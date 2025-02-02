@@ -1,15 +1,15 @@
 <?xml version = "1.0"?>
 <items>
-    <item type="MoveCommand" id="MoveUpCommand" speed="5000">
+    <item type="MoveCommand" id="MoveUpCommand" speed="500">
         <direction x="0" y="-1"/>
     </item>
-    <item type="MoveCommand" id="MoveRightCommand" speed="5000">
+    <item type="MoveCommand" id="MoveRightCommand" speed="500">
         <direction x="1" y="0"/>
     </item>
-    <item type="MoveCommand" id="MoveDownCommand" speed="5000">
+    <item type="MoveCommand" id="MoveDownCommand" speed="500">
         <direction x="0" y="1"/>
     </item>
-    <item type="MoveCommand" id="MoveLeftCommand" speed="5000">
+    <item type="MoveCommand" id="MoveLeftCommand" speed="500">
         <direction x="-1" y="0"/>
     </item>
     <item type="RotateCommand" id="RotateCommand"/>
