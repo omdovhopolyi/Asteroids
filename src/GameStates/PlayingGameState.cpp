@@ -1,8 +1,9 @@
 #include "PlayingGameState.h"
 #include <ECS/Systems/MapLoaderSystem.h>
+#include <ECS/Systems/PhysicsBox2DSystem.h>
 #include <ECS/SystemsManager.h>
-#include "Systems/GameLogic/PlayerInfoSystem.h"
 #include <ECS/Systems/UI/WindowsManager.h>
+#include "Systems/GameLogic/PlayerInfoSystem.h"
 
 // TODO refactor after new assets loading implementation
 #include "Conditions/AndCondition.h"
@@ -13,6 +14,9 @@
 #include "GameActions/IncPlayerLevelAction.h"
 #include "GameActions/ClearMapAction.h"
 #include "GameActions/ResetPlayerLevelAction.h"
+#include "GameActions/ShowHUDAction.h"
+#include "Actions/PausePhysicsAction.h"
+#include "Actions/ResetPhysicsAccumulatedTimeAction.h"
 
 namespace asteroids
 {
@@ -40,7 +44,7 @@ namespace asteroids
             }
         }
 
-        ShowHud();
+        ExecuteStartActions();
     }
 
     void PlayingGameState::Update()
@@ -52,10 +56,7 @@ namespace asteroids
             const bool levelWon = _winCondition->Check(*_context);
             if (levelWon)
             {
-                for (const auto& action : _winActions)
-                {
-                    action->Execute(*_context);
-                }
+                ExecuteWinAction();
             }
         }
 
@@ -64,10 +65,7 @@ namespace asteroids
             const bool levelLose = _loseCondition->Check(*_context);
             if (levelLose)
             {
-                for (const auto& action : _loseActions)
-                {
-                    action->Execute(*_context);
-                }
+                ExecuteLoseAction();
             }
         }
     }
@@ -89,6 +87,7 @@ namespace asteroids
 
                     _winCondition = nullptr;
                     _loseCondition = nullptr;
+                    _startActions.clear();
                     _winActions.clear();
                     _loseActions.clear();
 
@@ -105,27 +104,43 @@ namespace asteroids
                     _loseCondition = loseCondition;
 
                     // TODO refactor after new assets loading implementation
+                    _startActions.push_back(std::make_shared<ShowHUDAction>());
+                    _startActions.push_back(std::make_shared<shen::PausePhisicsAction>(false));
+
+                    // TODO refactor after new assets loading implementation
                     _winActions.push_back(std::make_shared<ClearMapAction>());
                     _winActions.push_back(std::make_shared<ScheduleGameStateAction>("WinLevelState"));
                     _winActions.push_back(std::make_shared<IncPlayerLevelAction>());
+                    _winActions.push_back(std::make_shared<shen::PausePhisicsAction>(true));
                     _loseActions.push_back(std::make_shared<ClearMapAction>());
                     _loseActions.push_back(std::make_shared<ScheduleGameStateAction>("GameOverState"));
                     _loseActions.push_back(std::make_shared<ResetPlayerLevelAction>());
+                    _loseActions.push_back(std::make_shared<shen::PausePhisicsAction>(true));
                 }
             }
         }
     }
 
-    void PlayingGameState::ShowHud()
+    void PlayingGameState::ExecuteStartActions()
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            auto windowContext = shen::UIWindowContext{};
-            windowContext.windowId = "hud_window";
-            windowContext.systems = systems;
+        ExecuteActions(_startActions);
+    }
 
-            windowsManager->OpenWindow(windowContext);
+    void PlayingGameState::ExecuteWinAction()
+    {
+        ExecuteActions(_winActions);
+    }
+
+    void PlayingGameState::ExecuteLoseAction()
+    {
+        ExecuteActions(_loseActions);
+    }
+
+    void PlayingGameState::ExecuteActions(const std::vector<std::shared_ptr<shen::ActionBase>>& actions)
+    {
+        for (const auto& action : actions)
+        {
+            action->Execute(*_context);
         }
     }
 }

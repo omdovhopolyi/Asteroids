@@ -20,7 +20,12 @@ namespace asteroids
 
     private:
         void StartLevel(int index);
-        void ShowHud();
+
+        void ExecuteStartActions();
+        void ExecuteWinAction();
+        void ExecuteLoseAction();
+
+        void ExecuteActions(const std::vector<std::shared_ptr<shen::ActionBase>>& actions);
 
     private:
         std::shared_ptr<shen::ContextBase> _context;
@@ -28,6 +33,7 @@ namespace asteroids
         std::shared_ptr<shen::ConditionBase> _winCondition;
         std::shared_ptr<shen::ConditionBase> _loseCondition;
         std::shared_ptr<shen::ConditionBase> _winGameCondition;
+        std::vector<std::shared_ptr<shen::ActionBase>> _startActions;
         std::vector<std::shared_ptr<shen::ActionBase>> _winActions;
         std::vector<std::shared_ptr<shen::ActionBase>> _loseActions;
     };
