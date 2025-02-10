@@ -3,6 +3,7 @@
 #include "ECS/Systems/UI/WindowsManager.h"
 #include "MessengerEvents/Common.h"
 #include "Messenger/Events/Common.h"
+#include "Messenger/Events/Sounds.h"
 
 namespace asteroids
 {
@@ -20,11 +21,7 @@ namespace asteroids
     void WinLevelState::OnEnter(const std::string&)
     {
         OpenWindow();
-    }
-
-    void WinLevelState::Update()
-    {
-
+        shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_win");
     }
 
     void WinLevelState::OnExit(const std::string&)
@@ -34,6 +31,8 @@ namespace asteroids
         {
             windowsManager->CloseTopWindow();
         }
+
+        shen::Messenger::Instance().Broadcast<shen::StopMusicEvent>("track_win");
     }
 
     void WinLevelState::OpenWindow()

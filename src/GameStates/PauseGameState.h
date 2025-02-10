@@ -12,8 +12,6 @@ namespace asteroids
 
         PauseGameState(const std::string& id);
 
-        void Update() override;
-
     private:
     };
 }

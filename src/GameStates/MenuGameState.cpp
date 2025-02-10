@@ -2,6 +2,7 @@
 #include "ECS/SystemsManager.h"
 #include "ECS/Systems/UI/WindowsManager.h"
 #include "MessengerEvents/Common.h"
+#include "Messenger/Events/Sounds.h"
 
 namespace asteroids
 {
@@ -17,9 +18,9 @@ namespace asteroids
         OpenMenuWindow();
     }
 
-    void MenuGameState::Update()
+    void MenuGameState::OnEnter(const std::string&)
     {
-
+        shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_main");
     }
 
     void MenuGameState::OnExit(const std::string&)
@@ -29,6 +30,8 @@ namespace asteroids
         {
             windowsManager->CloseTopWindow();
         }
+
+        shen::Messenger::Instance().Broadcast<shen::StopMusicEvent>("track_main");
     }
 
     void MenuGameState::OpenMenuWindow()

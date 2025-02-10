@@ -5,9 +5,10 @@
 #include "ECS/Components/Physics.h"
 #include "ECS/Systems/MapLoaderSystem.h"
 #include "Components/Common.h"
-#include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "MessengerEvents/Common.h"
 #include "Messenger/Messenger.h"
+#include "Messenger/Events/Sounds.h"
+#include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "Systems/Configs/ExplosionsListConfig.h"
 
 namespace asteroids
@@ -46,7 +47,11 @@ namespace asteroids
                                 explosionTransform->position = asteroidTransform->position;
                             }
                         }
+
+                        shen::Messenger::Instance().Broadcast<shen::PlaySoundEvent>("sound_exposion");
                     }
+
+                    shen::Messenger::Instance().Broadcast<shen::PlaySoundEvent>("sound_hit");
 
                     world.AddComponent<shen::Destroy>(asteroidEntity);
                     shen::Messenger::Instance().Broadcast<AsteroidDestroyed>();

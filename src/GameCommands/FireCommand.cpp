@@ -9,6 +9,8 @@
 #include "ECS/Systems/MapLoaderSystem.h"
 #include "Components/Common.h"
 #include "Utils/Math.h"
+#include "Messenger/Events/Sounds.h"
+#include "Messenger/Messenger.h"
 
 namespace asteroids
 {
@@ -20,6 +22,8 @@ namespace asteroids
 
             if (auto bulletEntity = loader->InstantiateAsset(_bulletAssetId); world.IsValid(bulletEntity))
             {
+                shen::Messenger::Instance().Broadcast<shen::PlaySoundEvent>("sound_shot");
+
                 auto playerTransform = world.GetComponent<shen::Transform>(context.entity);
                 auto bulletTransform = world.GetComponent<shen::Transform>(bulletEntity);
                 auto bullet = world.GetComponent<Bullet>(bulletEntity);

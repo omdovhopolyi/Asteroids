@@ -14,7 +14,7 @@ namespace asteroids
         MenuGameState(const std::string& id);
 
         void Init(shen::StateMachineSystem* stateMachineSystem) override;
-        void Update() override;
+        void OnEnter(const std::string&) override;
         void OnExit(const std::string&) override;
 
     private:

@@ -4,6 +4,8 @@
 #include <ECS/SystemsManager.h>
 #include <ECS/Systems/UI/WindowsManager.h>
 #include "Systems/GameLogic/PlayerInfoSystem.h"
+#include "Messenger/Events/Sounds.h"
+#include "Messenger/Messenger.h"
 
 // TODO refactor after new assets loading implementation
 #include "Conditions/AndCondition.h"
@@ -45,6 +47,8 @@ namespace asteroids
         }
 
         ExecuteStartActions();
+
+        shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_game");
     }
 
     void PlayingGameState::Update()

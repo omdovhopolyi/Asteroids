@@ -7,9 +7,4 @@ namespace asteroids
     PauseGameState::PauseGameState(const std::string& id)
         : shen::State(id)
     {}
-
-    void PauseGameState::Update()
-    {
-
-    }
 }

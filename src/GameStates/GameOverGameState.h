@@ -15,7 +15,6 @@ namespace asteroids
 
         void Init(shen::StateMachineSystem* stateMachineSystem) override;
         void OnEnter(const std::string&) override;
-        void Update() override;
         void OnExit(const std::string&) override;
 
     private:
