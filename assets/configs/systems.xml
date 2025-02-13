@@ -13,6 +13,7 @@
     <system type="AsteroidsConfig"/>
     <system type="LevelsConfig"/>
     <system type="ExplosionsListConfig"/>
+    <system type="ExplosionCreationSystem"/>
 
     <system type="TimeSystem"/>
     <system type="GameStatesSystem"/>

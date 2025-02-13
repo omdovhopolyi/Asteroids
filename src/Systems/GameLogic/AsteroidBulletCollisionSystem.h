@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ECS/Systems/BaseSystems/UpdateSystem.h"
+#include "ECS/Entity.h"
 
 namespace asteroids
 {
@@ -11,5 +12,9 @@ namespace asteroids
 
     public:
         void Update() override;
+
+    private:
+        void CreateHit(shen::Entity bulletEntity);
+        void CreatedExplosion(shen::Entity asteroidEntity);
     };
 }

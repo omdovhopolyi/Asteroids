@@ -12,4 +12,19 @@ namespace asteroids
     struct UpdateHud : shen::Event {};
     struct AsteroidDestroyed : shen::Event {};
     struct PlayerDestroyed : shen::Event {};
+
+    struct ExplosionEvent : shen::Event
+    {
+        std::string assetId;
+        sf::Vector2f position;
+        sf::Vector2f scale;
+        std::string soundId;
+
+        /*ExplosionEvent(const std::string& id, const sf::Vector2f& pos, const sf::Vector2f& sl, std::string& sound)
+            : assetId(id)
+            , position(pos)
+            , scale(sl)
+            , soundId(sound)
+        {}*/
+    };
 }

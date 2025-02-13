@@ -26,32 +26,14 @@ namespace asteroids
 
             if (auto bullet = world.GetComponent<Bullet>(bulletEntity))
             {
+                CreateHit(bulletEntity);
+
                 asteroid.lives -= bullet->damage;
 
                 const bool needDestroy = (asteroid.lives <= 0);
                 if (needDestroy)
                 {
-                    auto loader = _systems->GetSystem<shen::MapLoaderSystem>();
-                    auto explosions = _systems->GetSystem<ExplosionsListConfig>();
-                    if (loader && explosions)
-                    {
-                        const auto explosionAssetId = explosions->GetRandomExplosion();
-
-                        if (auto explosionEntity = loader->InstantiateAsset(explosionAssetId); world.IsValid(explosionEntity))
-                        {
-                            auto explosionTransform = world.GetOrCreateComponent<shen::Transform>(explosionEntity);
-                            auto asteroidTransform = world.GetComponent<shen::Transform>(asteroidEntity);
-
-                            if (explosionTransform && asteroidTransform)
-                            {
-                                explosionTransform->position = asteroidTransform->position;
-                            }
-                        }
-
-                        shen::Messenger::Instance().Broadcast<shen::PlaySoundEvent>("sound_exposion");
-                    }
-
-                    shen::Messenger::Instance().Broadcast<shen::PlaySoundEvent>("sound_hit");
+                    CreatedExplosion(asteroidEntity);
 
                     world.AddComponent<shen::Destroy>(asteroidEntity);
                     shen::Messenger::Instance().Broadcast<AsteroidDestroyed>();
@@ -66,5 +48,39 @@ namespace asteroids
                 world.AddComponent<shen::Destroy>(bulletEntity);
             }
         });
+    }
+
+    void AsteroidBulletCollisionSystem::CreateHit(shen::Entity bulletEntity)
+    {
+        auto& world = _systems->GetWorld();
+        auto bulletTransform = world.GetComponent<shen::Transform>(bulletEntity);
+        if (auto loader = _systems->GetSystem<shen::MapLoaderSystem>())
+        {
+            ExplosionEvent event;
+            event.assetId = "hit_1";
+            event.position = bulletTransform->position;
+            event.soundId = "sound_hit";
+
+            shen::Messenger::Instance().Broadcast<ExplosionEvent>(event);
+        }
+    }
+
+    void AsteroidBulletCollisionSystem::CreatedExplosion(shen::Entity asteroidEntity)
+    {
+        auto& world = _systems->GetWorld();
+        if (auto asteroidTransform = world.GetComponent<shen::Transform>(asteroidEntity))
+        {
+            if (auto explosions = _systems->GetSystem<ExplosionsListConfig>())
+            {
+                const auto explosionAssetId = explosions->GetRandomExplosion();
+
+                ExplosionEvent event;
+                event.assetId = explosionAssetId;
+                event.position = asteroidTransform->position;
+                event.soundId = "sound_exposion";
+
+                shen::Messenger::Instance().Broadcast<ExplosionEvent>(event);
+            }
+        }
     }
 }

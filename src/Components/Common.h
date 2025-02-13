@@ -74,4 +74,12 @@ namespace asteroids
         static void Load(EndLevelDelay& component, const shen::Serialization& serialization);
         static void Save(EndLevelDelay& component, shen::Serialization& serialization);
     };
+
+    struct Explosion
+    {
+        std::string assetId;
+        sf::Vector2f position;
+        sf::Vector2f scale;
+        std::string soundId;
+    };
 }
