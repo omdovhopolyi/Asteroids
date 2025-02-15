@@ -11,17 +11,17 @@
    <item id="score_icon" path="assets/images/ui/points.png"/>
    <item id="space_craft" path="assets/images/player/space_craft.png"/>
    <item id="bullet" path="assets/images/player/bullet.png"/>
-   <item id="asteroid_default" path="assets/images/asteroids/asteroid_001.png"/>
-   <item id="asteroid_fast" path="assets/images/asteroids/asteroid_002.png"/>
-   <item id="asteroid_strong" path="assets/images/asteroids/asteroid_003.png"/>
-   <item id="asteroid_fast_strong" path="assets/images/asteroids/asteroid_004.png"/>
+   <item id="asteroid_default" path="assets/images/asteroids/asteroid_001.png" preload="true"/>
+   <item id="asteroid_fast" path="assets/images/asteroids/asteroid_002.png" preload="true"/>
+   <item id="asteroid_strong" path="assets/images/asteroids/asteroid_003.png" preload="true"/>
+   <item id="asteroid_fast_strong" path="assets/images/asteroids/asteroid_004.png" preload="true"/>
    <item id="background_level_1" path="assets/images/background/background_level_1.png"/>
    <item id="background_level_2" path="assets/images/background/background_level_2.png"/>
    <item id="background_level_3" path="assets/images/background/background_level_3.png"/>
-   <item id="explosion_1" path="assets/images/explosion/explosion_01.png"/>
-   <item id="explosion_2" path="assets/images/explosion/explosion_02.png"/>
-   <item id="explosion_3" path="assets/images/explosion/explosion_03.png"/>
-   <item id="explosion_4" path="assets/images/explosion/explosion_04.png"/>
-   <item id="explosion_5" path="assets/images/explosion/explosion_05.png"/>
-   <item id="explosion_6" path="assets/images/explosion/explosion_06.png"/>
+   <item id="explosion_1" path="assets/images/explosion/explosion_01.png" preload="true"/>
+   <item id="explosion_2" path="assets/images/explosion/explosion_02.png" preload="true"/>
+   <item id="explosion_3" path="assets/images/explosion/explosion_03.png" preload="true"/>
+   <item id="explosion_4" path="assets/images/explosion/explosion_04.png" preload="true"/>
+   <item id="explosion_5" path="assets/images/explosion/explosion_05.png" preload="true"/>
+   <item id="explosion_6" path="assets/images/explosion/explosion_06.png" preload="true"/>
 </items>
