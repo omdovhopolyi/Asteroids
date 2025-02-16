@@ -1,6 +1,7 @@
 #include "MenuGameState.h"
 #include "ECS/SystemsManager.h"
 #include "ECS/Systems/UI/WindowsManager.h"
+#include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "MessengerEvents/Common.h"
 #include "Messenger/Events/Sounds.h"
 
@@ -21,6 +22,14 @@ namespace asteroids
     void MenuGameState::OnEnter(const std::string&)
     {
         shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_main");
+
+        if (auto systems = GetSystemsManager())
+        {
+            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+            {
+                playerInfo->SetResource(ResourceType::Score, 0);
+            }
+        }
     }
 
     void MenuGameState::OnExit(const std::string&)

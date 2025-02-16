@@ -4,6 +4,7 @@
 #include "MessengerEvents/Common.h"
 #include "Messenger/Events/Common.h"
 #include "Messenger/Events/Sounds.h"
+#include "Systems/GameLogic/PlayerInfoSystem.h"
 
 namespace asteroids
 {
@@ -53,11 +54,23 @@ namespace asteroids
         _subscriptions.Subscribe<GameOverRetry>([this](const auto& event)
         {
             ScheduleState("GameState");
+            ResetScore();
         });
 
         _subscriptions.Subscribe<AfterLevelExit>([this](const auto& event)
         {
             shen::Messenger::Instance().Broadcast<shen::Quit>();
         });
+    }
+
+    void GameOverGameState::ResetScore()
+    {
+        if (auto systems = GetSystemsManager())
+        {
+            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+            {
+                playerInfo->SetResource(ResourceType::Score, 0);
+            }
+        }
     }
 }

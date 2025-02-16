@@ -20,6 +20,7 @@ namespace asteroids
     private:
         void OpenWindow();
         void InitSubscriptions();
+        void ResetScore();
 
     private:
         shen::SubcriptionsContainer _subscriptions;

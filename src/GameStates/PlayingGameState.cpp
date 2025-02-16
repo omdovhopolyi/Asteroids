@@ -17,6 +17,7 @@
 #include "GameActions/ClearMapAction.h"
 #include "GameActions/ResetPlayerLevelAction.h"
 #include "GameActions/ShowHUDAction.h"
+#include "GameActions/HideHUDAction.h"
 #include "Actions/PausePhysicsAction.h"
 #include "Actions/ResetPhysicsAccumulatedTimeAction.h"
 
@@ -116,16 +117,14 @@ namespace asteroids
                     _winActions.push_back(std::make_shared<ScheduleGameStateAction>("WinLevelState"));
                     _winActions.push_back(std::make_shared<IncPlayerLevelAction>());
                     _winActions.push_back(std::make_shared<shen::PausePhisicsAction>(true));
+                    _winActions.push_back(std::make_shared<HideHUDAction>());
+
                     _loseActions.push_back(std::make_shared<ClearMapAction>());
                     _loseActions.push_back(std::make_shared<ScheduleGameStateAction>("GameOverState"));
                     _loseActions.push_back(std::make_shared<ResetPlayerLevelAction>());
                     _loseActions.push_back(std::make_shared<shen::PausePhisicsAction>(true));
+                    _loseActions.push_back(std::make_shared<HideHUDAction>());
                 }
-            }
-
-            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
-            {
-                playerInfo->SetResource(ResourceType::Score, 0);
             }
         }
     }

@@ -24,6 +24,7 @@ namespace asteroids
 
     void HudWindow::InitSubscriptions()
     {
+        _subscriptions.Reset();
         _subscriptions.Subscribe<UpdateHud>([&](const auto&)
         {
             UpdateValues();
