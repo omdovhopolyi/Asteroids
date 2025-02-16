@@ -8,7 +8,7 @@
         <rect x="0" y="0" w="256" h="256"/>
         <anchor x="128" y="128"/>
     </component>
-    <component type="spriteFrameAnimation" frameTime="0.005" animType="OneShot" deleteOnDone="true">
+    <component type="spriteFrameAnimation" frameTime="0.01" animType="OneShot" deleteOnDone="true">
         <frames>
             <rect x="768" y="0" w="256" h="256"/>
             <rect x="1792" y="0" w="256" h="256"/>

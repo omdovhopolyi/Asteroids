@@ -3,7 +3,7 @@
     <component type="transform" rotation="0">
         <position x="600" y="300"/>
     </component>
-    <component type="sprite" texture="explosion_1">
+    <component type="sprite" texture="explosion_4">
         <rect x="0" y="0" w="256" h="256"/>
         <anchor x="128" y="128"/>
     </component>

@@ -122,6 +122,11 @@ namespace asteroids
                     _loseActions.push_back(std::make_shared<shen::PausePhisicsAction>(true));
                 }
             }
+
+            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+            {
+                playerInfo->SetResource(ResourceType::Score, 0);
+            }
         }
     }
 

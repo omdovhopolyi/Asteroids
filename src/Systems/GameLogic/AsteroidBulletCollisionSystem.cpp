@@ -77,7 +77,7 @@ namespace asteroids
                 ExplosionEvent event;
                 event.assetId = explosionAssetId;
                 event.position = asteroidTransform->position;
-                event.soundId = "sound_exposion";
+                event.soundId = "sound_explosion";
 
                 shen::Messenger::Instance().Broadcast<ExplosionEvent>(event);
             }

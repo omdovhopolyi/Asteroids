@@ -54,13 +54,13 @@ namespace asteroids
         {
             const auto explosionAssetId = explosions->GetRandomExplosion();
 
-            CreateExplosion(entity, explosionAssetId, "sound_big_hit");
+            CreateExplosion(entity, explosionAssetId, "sound_explosion");
         }
     }
 
     void PlayerAsteroidCollisionSystem::CreatePlayerExplosion(shen::Entity entity)
     {
-        CreateExplosion(entity, "big_explosion", "sound_big_hit");
+        CreateExplosion(entity, "big_explosion", "sound_big_explosion");
     }
 
     void PlayerAsteroidCollisionSystem::CreateExplosion(shen::Entity entity, const std::string& assetId, const std::string& soundId)

@@ -12,6 +12,8 @@
     <system type="SpawnerConfig"/>
     <system type="AsteroidsConfig"/>
     <system type="LevelsConfig"/>
+    <system type="SfmlSoundConfig"/>
+    <system type="SfmlSoundSystem"/>
     <system type="ExplosionsListConfig"/>
     <system type="ExplosionCreationSystem"/>
 
