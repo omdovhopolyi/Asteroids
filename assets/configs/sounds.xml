@@ -1,0 +1,10 @@
+<?xml version = "1.0"?>
+<sounds>
+   <sound id="sound_shot" path="assets/sounds/sound_laser_shot.wav"/>
+   <sound id="sound_hit" path="assets/sounds/sound_hit_1.wav"/>
+   <sound id="sound_explosion" path="assets/sounds/sound_explosion_1.wav"/>
+   <sound id="sound_big_explosion" path="assets/sounds/sound_big_explosion.wav"/>
+</sounds>
+<music>
+    <track id="track_main" path="assets/sounds/music_asteroids_main_theme.ogg"/>
+</music>
