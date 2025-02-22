@@ -15,7 +15,7 @@ namespace asteroids
 
         world.Each<Lifetime>([&](auto entity, Lifetime& lifetime)
         {
-            lifetime.time -= time.Dt();
+            lifetime.time -= time.GameDt();
             if (lifetime.time <= 0.f)
             {
                 world.AddComponent<shen::Destroy>(entity);

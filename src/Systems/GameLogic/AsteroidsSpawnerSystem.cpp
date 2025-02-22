@@ -34,7 +34,7 @@ namespace asteroids
 
         world.Each<AsteroidSpawner>([&](auto entity, AsteroidSpawner& spawner)
         {
-            spawner.currentDelay -= time.Dt();
+            spawner.currentDelay -= time.GameDt();
 
             if (spawner.currentDelay <= 0.f)
             {

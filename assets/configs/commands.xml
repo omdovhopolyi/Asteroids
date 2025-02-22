@@ -16,4 +16,6 @@
     <item type="CameraMouseMoveCommand" id="CameraMouseMoveCommand"/>
     <item type="CameraZoomCommand" id="CameraZoomCommand" speed="0.1"/>
     <item type="FireCommand" id="PlayerFireCommand"/>
+    <item type="PauseGameCommand" id="PauseGameCommand" global="true"/>
+    <item type="PauseGameEventCommand" id="PauseGameEventCommand" global="true"/>
 </items>

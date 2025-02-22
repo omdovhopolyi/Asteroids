@@ -3,6 +3,7 @@
 #include "ECS/Systems/GameStates/State.h"
 #include "Systems/Configs/LevelsConfig.h"
 #include "Conditions/ConditionBase.h"
+#include <Messenger/SubscriptionsContainer.h>
 
 namespace asteroids
 {
@@ -15,10 +16,16 @@ namespace asteroids
         PlayingGameState(const std::string& id);
 
         void Init(shen::StateMachineSystem* stateMachineSystem) override;
-        void OnEnter(const std::string&) override;
+        void OnEnter(const std::string& fromState) override;
         void Update() override;
+        void OnExit(const std::string&) override;
+
+        void AppActivated() override;
+        void AppDeactivated() override;
 
     private:
+        void InitSubscriptions();
+        void ResetSubscriptions();
         void StartLevel(int index);
 
         void ExecuteStartActions();
@@ -36,6 +43,8 @@ namespace asteroids
         std::vector<std::shared_ptr<shen::ActionBase>> _startActions;
         std::vector<std::shared_ptr<shen::ActionBase>> _winActions;
         std::vector<std::shared_ptr<shen::ActionBase>> _loseActions;
+
+        shen::SubcriptionsContainer _subscriptions;
     };
 }
 

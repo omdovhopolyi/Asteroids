@@ -31,7 +31,7 @@ namespace asteroids
         {
             if (endLevelDelay.time > 0.f)
             {
-                endLevelDelay.time -= time.Dt();
+                endLevelDelay.time -= time.GameDt();
             }
         });
     }

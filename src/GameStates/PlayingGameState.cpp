@@ -3,9 +3,12 @@
 #include <ECS/Systems/PhysicsBox2DSystem.h>
 #include <ECS/SystemsManager.h>
 #include <ECS/Systems/UI/WindowsManager.h>
+#include <ECS/Systems/TimeSystem.h>
+#include <Messenger/Events/Common.h>
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "Messenger/Events/Sounds.h"
 #include "Messenger/Messenger.h"
+#include <SFML/Window/Keyboard.hpp>
 
 // TODO refactor after new assets loading implementation
 #include "Conditions/AndCondition.h"
@@ -37,19 +40,24 @@ namespace asteroids
         _context->systems = GetSystemsManager();
     }
 
-    void PlayingGameState::OnEnter(const std::string&)
+    void PlayingGameState::OnEnter(const std::string& fromState)
     {
-        if (auto systems = GetSystemsManager())
+        if (fromState != "PauseState")
         {
-            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+            if (auto systems = GetSystemsManager())
             {
-                StartLevel(playerInfo->GetLevel());
+                if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+                {
+                    StartLevel(playerInfo->GetLevel());
+                }
             }
+
+            ExecuteStartActions();
+
+            shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_game");
         }
-
-        ExecuteStartActions();
-
-        shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_game");
+        
+        InitSubscriptions();
     }
 
     void PlayingGameState::Update()
@@ -73,6 +81,42 @@ namespace asteroids
                 ExecuteLoseAction();
             }
         }
+    }
+
+    void PlayingGameState::OnExit(const std::string&)
+    {
+        ResetSubscriptions();
+    }
+
+    void PlayingGameState::AppActivated()
+    {
+        if (auto systems = GetSystemsManager())
+        {
+            auto& time = systems->GetTime();
+            time.PauseGame(false);
+        }
+    }
+
+    void PlayingGameState::AppDeactivated()
+    {
+        if (auto systems = GetSystemsManager())
+        {
+            auto& time = systems->GetTime();
+            time.PauseGame(true);
+        }
+    }
+
+    void PlayingGameState::InitSubscriptions()
+    {
+        _subscriptions.Subscribe<shen::PauseGameEvent>([this](const auto& event)
+        {
+            ScheduleState("PauseState");
+        });
+    }
+
+    void PlayingGameState::ResetSubscriptions()
+    {
+        _subscriptions.Reset();
     }
 
     void PlayingGameState::StartLevel(int index)

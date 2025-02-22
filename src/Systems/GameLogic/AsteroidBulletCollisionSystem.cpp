@@ -35,7 +35,7 @@ namespace asteroids
                 {
                     CreatedExplosion(asteroidEntity);
 
-                    world.AddComponent<shen::Destroy>(asteroidEntity);
+                    world.AddOrReplaceComponent<shen::Destroy>(asteroidEntity);
                     shen::Messenger::Instance().Broadcast<AsteroidDestroyed>();
 
                     if (playerInfo)
@@ -45,7 +45,7 @@ namespace asteroids
                     }
                 }
 
-                world.AddComponent<shen::Destroy>(bulletEntity);
+                world.AddOrReplaceComponent<shen::Destroy>(bulletEntity);
             }
         });
     }

@@ -6,5 +6,5 @@
    <sound id="sound_big_explosion" path="assets/sounds/sound_big_explosion.wav"/>
 </sounds>
 <music>
-    <track id="track_main" path="assets/sounds/music_asteroids_main_theme.ogg"/>
+    <track id="track_main" path="assets/sounds/music_asteroids_main_theme.ogg" loop="true"/>
 </music>
