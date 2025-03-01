@@ -19,6 +19,10 @@ namespace asteroids
     private:
         void InitSubscriptions();
         void ResetSubscriptions();
+        void OpenWindow();
+        void CloseWindow();
+        void PauseGame();
+        void UnpauseGame();
 
     private:
         shen::SubcriptionsContainer _subscriptions;

@@ -1,11 +1,14 @@
 #pragma once
 
 #include <Messenger/Events/Event.h>
+#include <SFML/System/Vector2.hpp>
+#include <string>
 
 namespace asteroids
 {
     struct MenuStatePlayButtonPressedEvent : shen::Event {};
     struct MenuStateSettingsButtonPressedEvent : shen::Event {};
+    struct PauseStateResumeButtonPressedEvent : shen::Event {};
     struct WinLevelNextLevel : shen::Event {};
     struct AfterLevelExit : shen::Event {};
     struct GameOverRetry : shen::Event {};

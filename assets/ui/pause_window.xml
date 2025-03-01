@@ -1,0 +1,63 @@
+<?xml version = "1.0"?>
+<root>
+   <component type="PauseWindow" id="pauseWindow">
+      <refs>
+         <ref id="resumeButton" compId="resumeButtonComp"/>
+         <ref id="quitButton" compId="quitButtonComp"/>
+      </refs>
+   </component>
+   <node name="window">
+      <node name="background">
+         <component type="UISpriteComponent" texture="black" fill="true">
+            <color r="0" g="0" b="0" a="125"/>
+         </component>
+      </node>
+      <node name="text">
+         <component type="UITextComponent" text="PAUSE" font="oakside" size="80" letterSpace="4">
+            <color r="155" g="155" b="155" a="255"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <scale x="1" y="1"/>
+            <position x="130" y="70"/>
+         </component>
+      </node>
+      <node name="resumeButton">
+         <component type="UIButtonComponent" id="resumeButtonComp">
+            <sprite type="Idle" sprite="button_idle"/>
+            <sprite type="Pressed" sprite="button_pressed"/>
+            <sprite type="Hovered" sprite="button_hover"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <position x="300" y="300"/>
+         </component>
+         <component type="UIScreenNormComponent">
+         </component>
+         <node name="text">
+            <component type="UITextComponent" text="RESUME" font="oakside" size="24">
+               <color r="155" g="155" b="155" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <position x="15" y="10"/>
+            </component>
+         </node>
+      </node>
+      <node name="quitButton">
+         <component type="UIButtonComponent" id="quitButtonComp">
+            <sprite type="Idle" sprite="button_idle"/>
+            <sprite type="Pressed" sprite="button_pressed"/>
+            <sprite type="Hovered" sprite="button_hover"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <position x="300" y="400"/>
+         </component>
+         <node name="text">
+            <component type="UITextComponent" text="QUIT" font="oakside" size="24">
+               <color r="155" g="155" b="155" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <position x="45" y="10"/>
+            </component>
+         </node>
+      </node>
+   </node>
+</root>
