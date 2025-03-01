@@ -8,7 +8,17 @@
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="win_level_background" fill="true"/>
+         <component type="UISpriteComponent" texture="background_level_1">
+            <color r="200" g="255" b="200" a="255"/>
+         </component>
+      </node>
+      <node name="text">
+         <component type="UITextComponent" text="CONGRATULATIONS" font="oakside" size="48" letterSpace="1">
+            <color r="125" g="255" b="125" a="255"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <position x="15" y="70"/>
+         </component>
       </node>
       <node name="nextButton">
          <component type="UIButtonComponent" id="nextButtonComp">
@@ -17,12 +27,16 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="100" y="100"/>
+            <position x="300" y="300"/>
+         </component>
+         <component type="UIScreenNormComponent">
          </component>
          <node name="text">
-            <component type="UITextComponent" text="NEXT LEVEL" font="arial"/>
+            <component type="UITextComponent" text="NEXT" font="oakside">
+               <color r="100" g="200" b="100" a="255"/>
+            </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <position x="40" y="5"/>
             </component>
          </node>
       </node>
@@ -33,12 +47,14 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="100" y="400"/>
+            <position x="300" y="400"/>
          </component>
          <node name="text">
-            <component type="UITextComponent" text="QUIT" font="arial"/>
+            <component type="UITextComponent" text="QUIT" font="oakside">
+               <color r="100" g="200" b="100" a="255"/>
+            </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <position x="40" y="5"/>
             </component>
          </node>
       </node>

@@ -9,7 +9,18 @@
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="background_level_1"/>
+         <component type="UISpriteComponent" texture="background_level_1">
+            <color r="200" g="200" b="255" a="255"/>
+         </component>
+      </node>
+      <node name="text">
+         <component type="UITextComponent" text="SPACE 1" font="oakside" size="80" letterSpace="4">
+            <color r="0" g="125" b="255" a="255"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <scale x="1" y="1"/>
+            <position x="80" y="70"/>
+         </component>
       </node>
       <node name="playButton">
          <component type="UIButtonComponent" id="playButtonComp">
@@ -23,9 +34,11 @@
          <component type="UIScreenNormComponent">
          </component>
          <node name="text">
-            <component type="UITextComponent" text="PLAY" font="arial"/>
+            <component type="UITextComponent" text="PLAY" font="oakside">
+               <color r="0" g="125" b="255" a="255"/>
+            </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="60" y="5"/>
+               <position x="40" y="5"/>
             </component>
          </node>
       </node>
@@ -39,9 +52,11 @@
             <position x="300" y="400"/>
          </component>
          <node name="text">
-            <component type="UITextComponent" text="QUIT" font="arial"/>
+            <component type="UITextComponent" text="QUIT" font="oakside">
+               <color r="0" g="125" b="255" a="255"/>
+            </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="60" y="5"/>
+               <position x="40" y="5"/>
             </component>
          </node>
       </node>

@@ -8,7 +8,17 @@
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="game_over_background" fill="true"/>
+         <component type="UISpriteComponent" texture="background_level_1">
+            <color r="255" g="200" b="200" a="255"/>
+         </component>
+      </node>
+      <node name="text">
+         <component type="UITextComponent" text="GAME OVER" font="oakside" size="55" letterSpace="2">
+            <color r="255" g="125" b="125" a="255"/>
+         </component>
+         <component type="UITransformComponent" rotation="0">
+            <position x="120" y="70"/>
+         </component>
       </node>
       <node name="retryButton">
          <component type="UIButtonComponent" id="retryButtonComp">
@@ -17,12 +27,16 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="100" y="100"/>
+            <position x="300" y="300"/>
+         </component>
+         <component type="UIScreenNormComponent">
          </component>
          <node name="text">
-            <component type="UITextComponent" text="RESTART" font="arial"/>
+            <component type="UITextComponent" text="RETRY" font="oakside">
+               <color r="200" g="100" b="100" a="255"/>
+            </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <position x="20" y="5"/>
             </component>
          </node>
       </node>
@@ -33,12 +47,14 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="100" y="400"/>
+            <position x="300" y="400"/>
          </component>
          <node name="text">
-            <component type="UITextComponent" text="QUIT" font="arial"/>
+            <component type="UITextComponent" text="QUIT" font="oakside">
+               <color r="200" g="100" b="100" a="255"/>
+            </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <position x="40" y="5"/>
             </component>
          </node>
       </node>
