@@ -4,6 +4,7 @@
       <refs>
          <ref id="retryButton" compId="retryButtonComp"/>
          <ref id="quitButton" compId="quitButtonComp"/>
+         <ref id="score" compId="score"/>
       </refs>
    </component>
    <node name="window">
@@ -19,6 +20,27 @@
          <component type="UITransformComponent" rotation="0">
             <position x="120" y="70"/>
          </component>
+      </node>
+      <node name="scoreLabel">
+         <component type="UITransformComponent" rotation="0">
+               <position x="250" y="200"/>
+         </component>
+         <node name="label">
+            <component type="UITextComponent" text="Your score:" font="oakside" size="25">
+               <color r="200" g="200" b="200" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <position x="0" y="0"/>
+            </component>
+         </node>
+         <node name="amount">
+            <component type="UITextComponent" text="0" font="oakside" size="25" id="score">
+               <color r="200" g="200" b="200" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <position x="250" y="0"/>
+            </component>
+         </node>
       </node>
       <node name="retryButton">
          <component type="UIButtonComponent" id="retryButtonComp">
