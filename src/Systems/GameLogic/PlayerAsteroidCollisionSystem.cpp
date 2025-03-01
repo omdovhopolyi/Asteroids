@@ -17,7 +17,7 @@ namespace asteroids
 
     void PlayerAsteroidCollisionSystem::Update()
     {
-        if (auto playerInfo = GetSystem<PlayerInfoSystem>())
+        if (auto playerInfo = _systems->GetSystem<PlayerInfoSystem>())
         {
             auto& world = _systems->GetWorld();
             world.Each<Player, shen::Collision>([&](auto playerEntity, const Player&, shen::Collision& collision)

@@ -79,7 +79,7 @@ namespace asteroids
 
     void AsteroidsSpawnerSystem::InitSpawnerComponent()
     {
-        if (auto collection = GetSystem<SpawnerConfig>())
+        if (auto collection = _systems->GetSystem<SpawnerConfig>())
         {
             auto& world = _systems->GetWorld();
             world.Each<AsteroidSpawner>([&](auto entity, AsteroidSpawner& spawner)
@@ -103,9 +103,9 @@ namespace asteroids
     void AsteroidsSpawnerSystem::Spawn(const AsteroidSpawnData& spawnData)
     {
         auto& world = _systems->GetWorld();
-        auto assetsConfig = GetSystem<AsteroidsConfig>();
-        auto loader = GetSystem<shen::MapLoaderSystem>();
-        auto spawnerConfig = GetSystem<SpawnerConfig>();
+        auto assetsConfig = _systems->GetSystem<AsteroidsConfig>();
+        auto loader = _systems->GetSystem<shen::MapLoaderSystem>();
+        auto spawnerConfig = _systems->GetSystem<SpawnerConfig>();
 
         const float minTorque = spawnerConfig->GetMinTorque();
         const float maxTorque = spawnerConfig->GetMaxTorque();
@@ -124,7 +124,7 @@ namespace asteroids
                     const bool hasComponents = (asteroid && transform);
                     if (hasComponents)
                     {
-                        if (auto physicsSystem = GetSystem<shen::PhysicsBox2DSystem>())
+                        if (auto physicsSystem = _systems->GetSystem<shen::PhysicsBox2DSystem>())
                         {
                             transform->position = spawnData.position;
 
@@ -149,7 +149,7 @@ namespace asteroids
     {
         sf::Vector2f position;
 
-        if (auto renderTargets = GetSystem<shen::SfmlRenderTargetsSystem>())
+        if (auto renderTargets = _systems->GetSystem<shen::SfmlRenderTargetsSystem>())
         {
             const auto rect = renderTargets->GetTargetWorldRect(shen::SfmlRenderTargetsSystem::WorldTargetId);
             const auto side = static_cast<ScreenSide>(shen::RandomInt(0, static_cast<int>(ScreenSide::Count) - 1));
