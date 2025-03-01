@@ -9,7 +9,7 @@
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="menu_background" fill="true"/>
+         <component type="UISpriteComponent" texture="background_level_1"/>
       </node>
       <node name="playButton">
          <component type="UIButtonComponent" id="playButtonComp">
@@ -18,28 +18,14 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="100" y="100"/>
+            <position x="300" y="300"/>
+         </component>
+         <component type="UIScreenNormComponent">
          </component>
          <node name="text">
             <component type="UITextComponent" text="PLAY" font="arial"/>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
-            </component>
-         </node>
-      </node>
-      <node name="settingsButton">
-         <component type="UIButtonComponent" id="settingsButtonComp">
-            <sprite type="Idle" sprite="button_idle"/>
-            <sprite type="Pressed" sprite="button_pressed"/>
-            <sprite type="Hovered" sprite="button_hover"/>
-         </component>
-         <component type="UITransformComponent" rotation="0">
-            <position x="100" y="250"/>
-         </component>
-         <node name="text">
-            <component type="UITextComponent" text="SETTINGS" font="arial"/>
-            <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <position x="60" y="5"/>
             </component>
          </node>
       </node>
@@ -50,12 +36,12 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="100" y="400"/>
+            <position x="300" y="400"/>
          </component>
          <node name="text">
             <component type="UITextComponent" text="QUIT" font="arial"/>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <position x="60" y="5"/>
             </component>
          </node>
       </node>
