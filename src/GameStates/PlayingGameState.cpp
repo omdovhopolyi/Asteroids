@@ -53,9 +53,9 @@ namespace asteroids
             }
 
             ExecuteStartActions();
-
-            shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_game");
         }
+
+        shen::Messenger::Instance().Broadcast<shen::PlayMusicEvent>("track_gameplay");
         
         InitSubscriptions();
     }
@@ -86,6 +86,7 @@ namespace asteroids
     void PlayingGameState::OnExit(const std::string&)
     {
         ResetSubscriptions();
+        shen::Messenger::Instance().Broadcast<shen::StopMusicEvent>("track_gameplay");
     }
 
     void PlayingGameState::AppActivated()

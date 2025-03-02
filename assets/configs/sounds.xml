@@ -9,5 +9,8 @@
    <sound id="button_release" path="assets/sounds/button_click_1.wav" volume="30"/>
 </sounds>
 <music>
-    <track id="track_main" path="assets/sounds/music_asteroids_main_theme.ogg" loop="true" volume="0"/>
+    <track id="track_main" path="assets/sounds/music/music_asteroids_main_theme.ogg" loop="true" volume="30"/>
+    <track id="track_gameplay" path="assets/sounds/music/music_asteroids_gameplay_theme.ogg" loop="true" volume="20"/>
+    <track id="track_win" path="assets/sounds/music/music_asteroids_main_theme.ogg" loop="true" volume="30"/>
+    <track id="track_lose" path="assets/sounds/music/music_asteroids_main_theme.ogg" loop="true" volume="30"/>
 </music>

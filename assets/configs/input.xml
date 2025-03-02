@@ -8,5 +8,5 @@
     <item mouseBtn="Left" inputEventType="MouseMove" command="CameraMouseMoveCommand"/>
     <item mouseBtn="None" inputEventType="Scroll" command="CameraZoomCommand"/>
     <item key=" " inputEventType="Up" command="PlayerFireCommand"/>
-    <item key="p" inputEventType="Up" command="PauseGameEventCommand"/>
+    <item key="Esc" inputEventType="Up" command="PauseGameEventCommand"/>
 </items>
