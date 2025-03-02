@@ -23,7 +23,7 @@
          </component>
       </node>
       <node name="playButton">
-         <component type="UIButtonComponent" id="playButtonComp">
+         <component type="UIButtonComponent" id="playButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
             <sprite type="Idle" sprite="button_idle"/>
             <sprite type="Pressed" sprite="button_pressed"/>
             <sprite type="Hovered" sprite="button_hover"/>
@@ -43,7 +43,7 @@
          </node>
       </node>
       <node name="quitButton">
-         <component type="UIButtonComponent" id="quitButtonComp">
+         <component type="UIButtonComponent" id="quitButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
             <sprite type="Idle" sprite="button_idle"/>
             <sprite type="Pressed" sprite="button_pressed"/>
             <sprite type="Hovered" sprite="button_hover"/>

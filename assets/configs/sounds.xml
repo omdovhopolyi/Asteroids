@@ -4,6 +4,9 @@
    <sound id="sound_hit" path="assets/sounds/sound_hit_1.wav" volume="30"/>
    <sound id="sound_explosion" path="assets/sounds/sound_explosion_1.wav" volume="30"/>
    <sound id="sound_big_explosion" path="assets/sounds/sound_big_explosion.wav" volume="30"/>
+   <sound id="button_hover" path="assets/sounds/button_click_1.wav" volume="30"/>
+   <sound id="button_press" path="assets/sounds/button_click_2.wav" volume="30"/>
+   <sound id="button_release" path="assets/sounds/button_click_1.wav" volume="30"/>
 </sounds>
 <music>
     <track id="track_main" path="assets/sounds/music_asteroids_main_theme.ogg" loop="true" volume="0"/>
