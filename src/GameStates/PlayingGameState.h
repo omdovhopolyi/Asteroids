@@ -23,6 +23,10 @@ namespace asteroids
         void AppActivated() override;
         void AppDeactivated() override;
 
+#ifdef _DEBUG
+        void CheatWinLevel();
+#endif
+
     private:
         void InitSubscriptions();
         void ResetSubscriptions();

@@ -18,4 +18,6 @@
     <item type="FireCommand" id="PlayerFireCommand"/>
     <item type="PauseGameCommand" id="PauseGameCommand" global="true"/>
     <item type="PauseGameEventCommand" id="PauseGameEventCommand" global="true"/>
+    <item type="CheatLoseLevelCommand" id="CheatLoseLevelCommand" global="true"/>
+    <item type="CheatDestroyAllAsteroidsCommand" id="CheatDestroyAllAsteroidsCommand" global="true"/>
 </items>

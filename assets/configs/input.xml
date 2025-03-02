@@ -9,4 +9,8 @@
     <item mouseBtn="None" inputEventType="Scroll" command="CameraZoomCommand"/>
     <item key=" " inputEventType="Up" command="PlayerFireCommand"/>
     <item key="Esc" inputEventType="Up" command="PauseGameEventCommand"/>
+
+    <item key="1" inputEventType="Up" ctrl="true" command="CheatDestroyAllAsteroidsCommand"/>
+    <item key="2" inputEventType="Up" ctrl="true" command="CheatLoseLevelCommand"/>
+    
 </items>

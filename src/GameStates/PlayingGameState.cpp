@@ -4,10 +4,12 @@
 #include <ECS/SystemsManager.h>
 #include <ECS/Systems/UI/WindowsManager.h>
 #include <ECS/Systems/TimeSystem.h>
+#include <ECS/Components/Common.h>
 #include <Messenger/Events/Common.h>
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "Messenger/Events/Sounds.h"
 #include "Messenger/Messenger.h"
+#include "Components/Common.h"
 #include <SFML/Window/Keyboard.hpp>
 
 // TODO refactor after new assets loading implementation
@@ -106,6 +108,20 @@ namespace asteroids
             time.PauseGame(true);
         }
     }
+
+#ifdef _DEBUG
+    void PlayingGameState::CheatWinLevel()
+    {
+        if (auto systems = GetSystemsManager())
+        {
+            auto& world = systems->GetWorld();
+            world.Each<Asteroid>([&](auto entity, const Asteroid&)
+            {
+                world.AddComponent<shen::Destroy>(entity);
+            });
+        }
+    }
+#endif
 
     void PlayingGameState::InitSubscriptions()
     {
