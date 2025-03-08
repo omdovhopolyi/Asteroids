@@ -5,7 +5,7 @@
 
 namespace asteroids
 {
-    class MenuWindow
+    class ManualWindow
         : public shen::UIWindowComponent
     {
     public:
@@ -16,9 +16,6 @@ namespace asteroids
         void InitButtonsSubscriptions();
 
     private:
-        shen::UIComponentWrapper<shen::UIButtonComponent> _playButton;
-        shen::UIComponentWrapper<shen::UIButtonComponent> _manualButton;
-        shen::UIComponentWrapper<shen::UIButtonComponent> _quitButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _backButton;
     };
 }
-

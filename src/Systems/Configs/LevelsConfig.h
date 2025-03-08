@@ -28,6 +28,7 @@ namespace asteroids
         void Load() override;
 
         std::shared_ptr<LevelConfig> GetConfig(int index) const;
+        bool HasLevel(int index) const;
 
     private:
         std::map<int, std::shared_ptr<LevelConfig>> _levels;

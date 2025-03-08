@@ -4,6 +4,7 @@
 #include "MessengerEvents/Common.h"
 #include "Messenger/Events/Common.h"
 #include "Messenger/Events/Sounds.h"
+#include "Messenger/Events/UIEvents.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 
 namespace asteroids
@@ -27,26 +28,13 @@ namespace asteroids
 
     void GameOverGameState::OnExit(const std::string&)
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            windowsManager->CloseTopWindow();
-        }
-
+        shen::Messenger::Instance().Broadcast<shen::CloseTopWindowEvent>();
         shen::Messenger::Instance().Broadcast<shen::StopMusicEvent>("track_lose");
     }
 
     void GameOverGameState::OpenWindow()
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            auto windowContext = shen::UIWindowContext{};
-            windowContext.windowId = "game_over_window";
-            windowContext.systems = systems;
-
-            windowsManager->OpenWindow(windowContext);
-        }
+        shen::Messenger::Instance().Broadcast<shen::OpenWindowEvent>({ "game_over_window" });
     }
 
     void GameOverGameState::InitSubscriptions()

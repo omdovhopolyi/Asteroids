@@ -1,10 +1,10 @@
 <?xml version = "1.0"?>
 <root>
-   <component type="MenuWindow" id="menuWindow">
+   <component type="WinGameWindow" id="winGameWindow">
       <refs>
-         <ref id="playButton" compId="playButtonComp"/>
-         <ref id="manualButton" compId="manualButtonComp"/>
+         <ref id="retryButton" compId="retryButtonComp"/>
          <ref id="quitButton" compId="quitButtonComp"/>
+         <ref id="score" compId="score"/>
       </refs>
    </component>
    <node name="window">
@@ -14,16 +14,36 @@
          </component>
       </node>
       <node name="text">
-         <component type="UITextComponent" text="SPACE 1" font="oakside" size="80" letterSpace="4">
+         <component type="UITextComponent" text="COMPLETED" font="oakside" size="55" letterSpace="3">
             <color r="0" g="125" b="255" a="255"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <scale x="1" y="1"/>
-            <position x="80" y="70"/>
+            <position x="100" y="70"/>
          </component>
       </node>
-      <node name="playButton">
-         <component type="UIButtonComponent" id="playButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
+      <node name="scoreLabel">
+         <component type="UITransformComponent" rotation="0">
+               <position x="250" y="200"/>
+         </component>
+         <node name="label">
+            <component type="UITextComponent" text="Your score:" font="oakside" size="25">
+               <color r="200" g="200" b="200" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <position x="0" y="0"/>
+            </component>
+         </node>
+         <node name="amount">
+            <component type="UITextComponent" text="0" font="oakside" size="25" id="score">
+               <color r="200" g="200" b="200" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <position x="250" y="0"/>
+            </component>
+         </node>
+      </node>
+      <node name="retryButton">
+         <component type="UIButtonComponent" id="retryButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
             <sprite type="Idle" sprite="button_idle"/>
             <sprite type="Pressed" sprite="button_pressed"/>
             <sprite type="Hovered" sprite="button_hover"/>
@@ -34,31 +54,11 @@
          <component type="UIScreenNormComponent">
          </component>
          <node name="text">
-            <component type="UITextComponent" text="PLAY" font="oakside">
+            <component type="UITextComponent" text="RETRY" font="oakside">
                <color r="0" g="125" b="255" a="255"/>
             </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="40" y="5"/>
-            </component>
-         </node>
-      </node>
-      <node name="manualButton">
-         <component type="UIButtonComponent" id="manualButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_idle"/>
-            <sprite type="Pressed" sprite="button_pressed"/>
-            <sprite type="Hovered" sprite="button_hover"/>
-         </component>
-         <component type="UITransformComponent" rotation="0">
-            <position x="300" y="400"/>
-         </component>
-         <component type="UIScreenNormComponent">
-         </component>
-         <node name="text">
-            <component type="UITextComponent" text="MANUAL" font="oakside">
-               <color r="0" g="125" b="255" a="255"/>
-            </component>
-            <component type="UITransformComponent" rotation="0">
-               <position x="0" y="5"/>
+               <position x="20" y="5"/>
             </component>
          </node>
       </node>
@@ -69,7 +69,7 @@
             <sprite type="Hovered" sprite="button_hover"/>
          </component>
          <component type="UITransformComponent" rotation="0">
-            <position x="300" y="500"/>
+            <position x="300" y="400"/>
          </component>
          <node name="text">
             <component type="UITextComponent" text="QUIT" font="oakside">

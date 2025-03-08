@@ -1,9 +1,11 @@
 #include "WinLevelState.h"
-#include "ECS/SystemsManager.h"
-#include "ECS/Systems/UI/WindowsManager.h"
 #include "MessengerEvents/Common.h"
 #include "Messenger/Events/Common.h"
 #include "Messenger/Events/Sounds.h"
+#include "Messenger/Events/UIEvents.h"
+#include <ECS/SystemsManager.h>
+#include "Systems/GameLogic/PlayerInfoSystem.h"
+#include "Systems/Configs/LevelsConfig.h"
 
 namespace asteroids
 {
@@ -26,26 +28,26 @@ namespace asteroids
 
     void WinLevelState::OnExit(const std::string&)
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            windowsManager->CloseTopWindow();
-        }
-
+        shen::Messenger::Instance().Broadcast<shen::CloseTopWindowEvent>();
         shen::Messenger::Instance().Broadcast<shen::StopMusicEvent>("track_win");
     }
 
     void WinLevelState::OpenWindow()
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            auto windowContext = shen::UIWindowContext{};
-            windowContext.windowId = "win_level_window";
-            windowContext.systems = systems;
+        bool isGameWin = false;
 
-            windowsManager->OpenWindow(windowContext);
+        if (auto systems = GetSystemsManager())
+        {
+            const auto levelsConfig = systems->GetSystem<LevelsConfig>();
+            const auto playerInfo = systems->GetSystem<PlayerInfoSystem>();
+
+            if (levelsConfig && playerInfo)
+            {
+                isGameWin = !levelsConfig->HasLevel(playerInfo->GetLevel());
+            }
         }
+        
+        shen::Messenger::Instance().Broadcast<shen::OpenWindowEvent>(isGameWin ? "win_game_window" : "win_level_window");
     }
 
     void WinLevelState::InitSubscriptions()
@@ -59,5 +61,22 @@ namespace asteroids
         {
             shen::Messenger::Instance().Broadcast<shen::Quit>();
         });
+
+        _subscriptions.Subscribe<GameOverRetry>([this](const auto& event)
+        {
+            ResetLevel();
+            ScheduleState("GameState");
+        });
+    }
+
+    void WinLevelState::ResetLevel()
+    {
+        if (auto systems = GetSystemsManager())
+        {
+            if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+            {
+                playerInfo->ResetLevel();
+            }
+        }
     }
 }

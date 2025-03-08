@@ -1,9 +1,9 @@
 #include "PauseGameState.h"
 #include "MessengerEvents/Common.h"
 #include <Messenger/Events/Common.h>
+#include <Messenger/Events/UIEvents.h>
 #include <ECS/SystemsManager.h>
 #include <ECS/Systems/TimeSystem.h>
-#include "ECS/Systems/UI/WindowsManager.h"
 
 namespace asteroids
 {
@@ -47,24 +47,12 @@ namespace asteroids
 
     void PauseGameState::OpenWindow()
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            auto windowContext = shen::UIWindowContext{};
-            windowContext.windowId = "pause_window";
-            windowContext.systems = systems;
-
-            windowsManager->OpenWindow(windowContext);
-        }
+        shen::Messenger::Instance().Broadcast<shen::OpenWindowEvent>({ "pause_window" });
     }
 
     void PauseGameState::CloseWindow()
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            windowsManager->CloseTopWindow();
-        }
+        shen::Messenger::Instance().Broadcast<shen::CloseTopWindowEvent>();
     }
 
     void PauseGameState::PauseGame()

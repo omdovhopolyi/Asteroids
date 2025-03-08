@@ -2,10 +2,11 @@
 
 #include <UI/Components/UIWindowComponent.h>
 #include <UI/Components/UIButtonComponent.h>
+#include <UI/Components/UITextComponent.h>
 
 namespace asteroids
 {
-    class MenuWindow
+    class WinGameWindow
         : public shen::UIWindowComponent
     {
     public:
@@ -14,11 +15,12 @@ namespace asteroids
 
     private:
         void InitButtonsSubscriptions();
+        void SetupScore();
+        void OnWindowOpen();
 
     private:
-        shen::UIComponentWrapper<shen::UIButtonComponent> _playButton;
-        shen::UIComponentWrapper<shen::UIButtonComponent> _manualButton;
+        shen::UIComponentWrapper<shen::UIButtonComponent> _retryButton;
         shen::UIComponentWrapper<shen::UIButtonComponent> _quitButton;
+        shen::UIComponentWrapper<shen::UITextComponent> _score;
     };
 }
-

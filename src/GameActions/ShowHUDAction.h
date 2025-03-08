@@ -8,6 +8,6 @@ namespace asteroids
         : public shen::ActionBase
     {
     public:
-        void Execute(const shen::ContextBase& context) const override;
+        void Execute(const shen::ContextBase&) const override;
     };
 }

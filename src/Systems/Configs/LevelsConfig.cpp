@@ -38,4 +38,9 @@ namespace asteroids
 
         return nullptr;
     }
+
+    bool LevelsConfig::HasLevel(int index) const
+    {
+        return GetConfig(index) != nullptr;
+    }
 }

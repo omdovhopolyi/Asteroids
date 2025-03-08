@@ -9,6 +9,8 @@ namespace asteroids
     struct MenuStatePlayButtonPressedEvent : shen::Event {};
     struct MenuStateSettingsButtonPressedEvent : shen::Event {};
     struct PauseStateResumeButtonPressedEvent : shen::Event {};
+    struct ManualWindowBackButtonPressedEvent : shen::Event {};
+    struct MenuStateManualButtonPressedEvent : shen::Event {};
     struct WinLevelNextLevel : shen::Event {};
     struct AfterLevelExit : shen::Event {};
     struct GameOverRetry : shen::Event {};

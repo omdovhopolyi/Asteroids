@@ -1,14 +1,12 @@
 #include "HideHUDAction.h"
-#include "ECS/SystemsManager.h"
-#include "ECS/Systems/UI/WindowsManager.h"
+#include "Messenger/Messenger.h"
+#include "Messenger/Events/UIEvents.h"
+#include "UI/UIWindowContext.h"
 
 namespace asteroids
 {
-    void HideHUDAction::Execute(const shen::ContextBase& context) const
+    void HideHUDAction::Execute(const shen::ContextBase&) const
     {
-        if (auto windowsManager = context.systems->GetSystem<shen::WindowsManager>())
-        {
-            windowsManager->CloseWindow("hud_window");
-        }
+        shen::Messenger::Instance().Broadcast<shen::CloseWindowEvent>("hud_window");
     }
 }

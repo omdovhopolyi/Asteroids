@@ -4,6 +4,7 @@
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "MessengerEvents/Common.h"
 #include "Messenger/Events/Sounds.h"
+#include "Messenger/Events/UIEvents.h"
 
 namespace asteroids
 {
@@ -34,26 +35,13 @@ namespace asteroids
 
     void MenuGameState::OnExit(const std::string&)
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            windowsManager->CloseTopWindow();
-        }
-
+        shen::Messenger::Instance().Broadcast<shen::CloseTopWindowEvent>();
         shen::Messenger::Instance().Broadcast<shen::StopMusicEvent>("track_main");
     }
 
     void MenuGameState::OpenMenuWindow()
     {
-        auto systems = GetSystemsManager();
-        if (auto windowsManager = systems->GetSystem<shen::WindowsManager>())
-        {
-            auto windowContext = shen::UIWindowContext{};
-            windowContext.windowId = "menu_window";
-            windowContext.systems = systems;
-
-            windowsManager->OpenWindow(windowContext);
-        }
+        shen::Messenger::Instance().Broadcast<shen::OpenWindowEvent>({ "menu_window" });
     }
 
     void MenuGameState::InitSubscriptions()
@@ -61,6 +49,18 @@ namespace asteroids
         _subscriptions.Subscribe<MenuStatePlayButtonPressedEvent>([this](const auto& event)
         {
             ScheduleState("GameState");
+        });
+
+        _subscriptions.Subscribe<ManualWindowBackButtonPressedEvent>([this](const auto& event)
+        {
+            shen::Messenger::Instance().Broadcast<shen::CloseTopWindowEvent>();
+            shen::Messenger::Instance().Broadcast<shen::OpenWindowEvent>({ "menu_window" });
+        });
+
+        _subscriptions.Subscribe<MenuStateManualButtonPressedEvent>([this](const auto& event)
+        {
+            shen::Messenger::Instance().Broadcast<shen::CloseTopWindowEvent>();
+            shen::Messenger::Instance().Broadcast<shen::OpenWindowEvent>({ "manual_window" });
         });
     }
 }

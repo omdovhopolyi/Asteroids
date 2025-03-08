@@ -9,7 +9,7 @@ namespace asteroids
     void MenuWindow::RegisterReferences()
     {
         RegisterReference("playButton", _playButton);
-        RegisterReference("settingsButton", _settingsButton);
+        RegisterReference("manualButton", _manualButton);
         RegisterReference("quitButton", _quitButton);
     }
 
@@ -28,11 +28,11 @@ namespace asteroids
             });
         }
 
-        if (auto button = _settingsButton.Get())
+        if (auto button = _manualButton.Get())
         {
             button->GetSignal().Subscribe(shen::ButtonSignalType::Up, [this]()
             {
-                shen::Messenger::Instance().Broadcast<MenuStatePlayButtonPressedEvent>();
+                shen::Messenger::Instance().Broadcast<MenuStateManualButtonPressedEvent>();
             });
         }
 
