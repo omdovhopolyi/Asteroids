@@ -9,54 +9,37 @@
    <node name="window">
       <node name="background">
          <component type="UISpriteComponent" texture="background_level_1">
-            <color r="200" g="255" b="200" a="255"/>
+            <color r="200" g="235" b="200" a="255"/>
          </component>
       </node>
-      <node name="text">
-         <component type="UITextComponent" text="CONGRATULATIONS" font="oakside" size="48" letterSpace="1">
-            <color r="125" g="255" b="125" a="255"/>
+      <node name="title">
+         <component type="UISpriteComponent" texture="titles">
+            <color r="200" g="200" b="255" a="255"/>
+            <rect x="0" y="280" w="800" h="140"/>
          </component>
-         <component type="UITransformComponent" rotation="0">
-            <position x="15" y="70"/>
+         <component type="UITransformComponent">
+            <position x="0" y="100"/>
          </component>
       </node>
       <node name="nextButton">
          <component type="UIButtonComponent" id="nextButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_idle"/>
-            <sprite type="Pressed" sprite="button_pressed"/>
-            <sprite type="Hovered" sprite="button_hover"/>
+            <sprite type="Idle" sprite="button_next_level_normal"/>
+            <sprite type="Pressed" sprite="button_next_level_press"/>
+            <sprite type="Hovered" sprite="button_next_level_hover"/>
          </component>
-         <component type="UITransformComponent" rotation="0">
-            <position x="300" y="300"/>
+         <component type="UITransformComponent">
+            <position x="248" y="310"/>
          </component>
-         <component type="UIScreenNormComponent">
-         </component>
-         <node name="text">
-            <component type="UITextComponent" text="NEXT" font="oakside">
-               <color r="100" g="200" b="100" a="255"/>
-            </component>
-            <component type="UITransformComponent" rotation="0">
-               <position x="40" y="5"/>
-            </component>
-         </node>
       </node>
       <node name="quitButton">
          <component type="UIButtonComponent" id="quitButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_idle"/>
-            <sprite type="Pressed" sprite="button_pressed"/>
-            <sprite type="Hovered" sprite="button_hover"/>
+            <sprite type="Idle" sprite="button_quit_normal"/>
+            <sprite type="Pressed" sprite="button_quit_press"/>
+            <sprite type="Hovered" sprite="button_quit_hover"/>
          </component>
-         <component type="UITransformComponent" rotation="0">
-            <position x="300" y="400"/>
+         <component type="UITransformComponent">
+            <position x="248" y="380"/>
          </component>
-         <node name="text">
-            <component type="UITextComponent" text="QUIT" font="oakside">
-               <color r="100" g="200" b="100" a="255"/>
-            </component>
-            <component type="UITransformComponent" rotation="0">
-               <position x="40" y="5"/>
-            </component>
-         </node>
       </node>
    </node>
 </root>

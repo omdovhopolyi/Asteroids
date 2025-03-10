@@ -1,4 +1,4 @@
 <?xml version = "1.0"?>
-<window name="Asteroids" resize="false" titlebar="false" close="false">
+<window name="Asteroids" resize="false" titlebar="true" close="false">
    <size x="800" y="640"/>
 </window>

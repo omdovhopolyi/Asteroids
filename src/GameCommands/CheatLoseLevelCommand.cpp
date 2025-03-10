@@ -16,6 +16,15 @@ namespace asteroids
             playerInfo->SetResource(ResourceType::Lives, 0);
         }
 
+        if (context.systems)
+        {
+            auto& world = context.systems->GetWorld();
+            world.Each<Player>([&](auto entity, const Player&)
+            {
+                world.AddOrReplaceComponent<shen::Destroy>(entity);
+            });
+        }
+
         shen::Messenger::Instance().Broadcast<PlayerDestroyed>();
 #endif
     }

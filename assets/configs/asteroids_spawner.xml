@@ -5,8 +5,11 @@
    </asset>
    <asset id="level_2">
       <item type="Strong" amount="10"/>
+      <item type="Default" amount="10"/>
    </asset>
    <asset id="level_3">
       <item type="FastStrong" amount="10"/>
+      <item type="Strong" amount="10"/>
+      <item type="Default" amount="10"/>
    </asset>
 </assets>

@@ -1,12 +1,101 @@
 <?xml version = "1.0"?>
 <items>
-   <sprite id="button_idle" tex="button">
-      <rect  x="0" y="0" w="200" h="50"/>
+   <sprite id="button_play_normal" tex="buttons">
+      <rect  x="0" y="0" w="304" h="52"/>
    </sprite>
-   <sprite id="button_pressed" tex="button">
-      <rect  x="0" y="50" w="200" h="50"/>
+   <sprite id="button_play_hover" tex="buttons">
+      <rect  x="0" y="52" w="304" h="52"/>
    </sprite>
-   <sprite id="button_hover" tex="button">
-      <rect  x="0" y="100" w="200" h="50"/>
+   <sprite id="button_play_press" tex="buttons">
+      <rect  x="0" y="104" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_resume_normal" tex="buttons">
+      <rect  x="0" y="156" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_resume_hover" tex="buttons">
+      <rect  x="0" y="208" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_resume_press" tex="buttons">
+      <rect  x="0" y="260" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_restart_normal" tex="buttons">
+      <rect  x="0" y="312" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_restart_hover" tex="buttons">
+      <rect  x="0" y="364" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_restart_press" tex="buttons">
+      <rect  x="0" y="416" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_manual_normal" tex="buttons">
+      <rect  x="305" y="0" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_manual_hover" tex="buttons">
+      <rect  x="305" y="52" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_manual_press" tex="buttons">
+      <rect  x="305" y="104" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_menu_normal" tex="buttons">
+      <rect  x="305" y="156" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_menu_hover" tex="buttons">
+      <rect  x="305" y="208" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_menu_press" tex="buttons">
+      <rect  x="305" y="260" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_quit_normal" tex="buttons">
+      <rect  x="610" y="0" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_quit_hover" tex="buttons">
+      <rect  x="610" y="52" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_quit_press" tex="buttons">
+      <rect  x="610" y="104" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_next_level_normal" tex="buttons">
+      <rect  x="610" y="156" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_next_level_hover" tex="buttons">
+      <rect  x="610" y="208" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_next_level_press" tex="buttons">
+      <rect  x="610" y="260" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="button_back_normal" tex="buttons">
+      <rect  x="305" y="312" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_back_hover" tex="buttons">
+      <rect  x="305" y="364" w="304" h="52"/>
+   </sprite>
+   <sprite id="button_back_press" tex="buttons">
+      <rect  x="305" y="416" w="304" h="52"/>
+   </sprite>
+
+   <sprite id="title_main" tex="titles">
+      <rect  x="305" y="416" w="304" h="52"/>
+   </sprite>
+   <sprite id="title_pause" tex="titles">
+      <rect  x="305" y="416" w="304" h="52"/>
+   </sprite>
+   <sprite id="title_level_completed" tex="titles">
+      <rect  x="305" y="416" w="304" h="52"/>
+   </sprite>
+   <sprite id="title_game_over" tex="titles">
+      <rect  x="305" y="416" w="304" h="52"/>
+   </sprite>
+   <sprite id="title_game_completed" tex="titles">
+      <rect  x="305" y="416" w="304" h="52"/>
+   </sprite>
+   <sprite id="title_manual" tex="titles">
+      <rect  x="305" y="416" w="304" h="52"/>
    </sprite>
 </items>

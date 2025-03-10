@@ -1,12 +1,8 @@
 <?xml version = "1.0"?>
 <items>
-   <item id="button_idle" path="assets/images/button_idle.png"/>
-   <item id="button_pressed" path="assets/images/button_pressed.png"/>
-   <item id="button_hover" path="assets/images/button_hover.png"/>
-   <item id="button" path="assets/images/ui/button.png"/>
+   <item id="buttons" path="assets/images/ui/buttons.png"/>
    <item id="menu_background" path="assets/images/ui/menu_background.png"/>
-   <item id="win_level_background" path="assets/images/ui/win_level_background.png"/>
-   <item id="game_over_background" path="assets/images/ui/game_over_background.png"/>
+   <item id="titles" path="assets/images/ui/asteroids_titles.png"/>
    <item id="lives_icon" path="assets/images/ui/lives.png"/>
    <item id="score_icon" path="assets/images/ui/points.png"/>
    <item id="space_craft" path="assets/images/player/space_craft.png"/>

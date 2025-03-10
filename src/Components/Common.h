@@ -12,9 +12,6 @@ namespace asteroids
 {
     struct Player : shen::TagBaseComponent
     {
-        //int lives = 3;
-        //int level = 1;
-
         static void Load(Player& component, const shen::Serialization& serialization);
         static void Save(Player& component, shen::Serialization& serialization);
     };
