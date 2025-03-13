@@ -1,5 +1,5 @@
 # Asteroids
-In root directory:__
-mkdir build__
-cd .\build\__
+In root directory:<br />
+mkdir build<br />
+cd .\build\<br />
 cmake ..
