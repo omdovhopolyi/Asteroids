@@ -3,10 +3,10 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(LoseLevelConditionLoader);
+    /*REGISTER_CLASS_LOADER(LoseLevelConditionLoader);
 
-    std::unique_ptr<shen::ConditionBase> LoseLevelConditionLoader::LoadCondition(const shen::Serialization&)
+    std::unique_ptr<shen::ConditionBase> LoseLevelConditionLoader::LoadCondition(const shen::DataElementWrapper&)
     {
         return std::make_unique<LoseLevelCondition>();
-    }
+    }*/
 }

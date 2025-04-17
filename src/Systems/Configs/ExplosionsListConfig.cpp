@@ -2,7 +2,7 @@
 #include "Utils/Math.h"
 #include "Utils/FilePath.h"
 #include "Utils/Assert.h"
-#include "Serialization/Serialization.h"
+#include "Serialization/WrapperTypes/XmlDataElementWrapper.h"
 
 namespace asteroids
 {
@@ -12,12 +12,12 @@ namespace asteroids
     {
         _explosionAssetsIds.clear();
 
-        const auto fileName = shen::FilePath::Path("assets/configs/explosionsList.xml");
-        auto serialization = shen::Serialization{ _systems, fileName };
+        auto elementWrapper = shen::XmlDataElementWrapper{ _systems };
+        elementWrapper.LoadFile(shen::FilePath::Path("assets/configs/explosionsList.xml"));
 
-        if (serialization.IsValid())
+        if (elementWrapper.IsValid())
         {
-            serialization.ForAllChildElements("item", [&](const shen::Serialization& element)
+            elementWrapper.ForAllChildren("item", [&](const shen::DataElementWrapper& element)
             {
                 const auto assetId = element.GetStr("assetId");
                 _explosionAssetsIds.push_back(assetId);

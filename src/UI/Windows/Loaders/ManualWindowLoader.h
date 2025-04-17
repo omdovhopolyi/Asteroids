@@ -5,9 +5,9 @@
 
 namespace asteroids
 {
-    class ManualWindowLoader
+    /*class ManualWindowLoader
         : public shen::WindowComponentBaseLoader<ManualWindow>
     {
         CLASS_LOADER(shen::UIWindowLoader, ManualWindow)
-    };
+    };*/
 }

@@ -1,7 +1,7 @@
 #include "LevelsConfig.h"
 #include "Utils/FilePath.h"
 #include "Utils/Assert.h"
-#include "Serialization/Serialization.h"
+#include "Serialization/WrapperTypes/XmlDataElementWrapper.h"
 
 namespace asteroids
 {
@@ -9,13 +9,11 @@ namespace asteroids
 
     void LevelsConfig::Load()
     {
-        const auto fileName = shen::FilePath::Path("assets/configs/levels.xml");
-        auto serialization = shen::Serialization{ _systems, fileName };
-        serialization.SetupElement("levels");
-
-        if (serialization.IsValid())
+        auto elementWrapper = shen::XmlDataElementWrapper{ _systems };
+        elementWrapper.LoadFile(shen::FilePath::Path("assets/configs/levels.xml"));
+        if (elementWrapper.IsValid())
         {
-            serialization.ForAllChildElements("level", [&](const shen::Serialization& element)
+            elementWrapper.ForAllChildren("level", [&](const shen::DataElementWrapper& element)
             {
                 auto levelConfig = std::make_shared<LevelConfig>();
 

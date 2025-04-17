@@ -4,7 +4,7 @@
 
 namespace asteroids
 {
-    class WinLevelCondition;
+    /*class WinLevelCondition;
 
     class WinLevelConditionLoader
         : public shen::ConditionLoader
@@ -12,6 +12,6 @@ namespace asteroids
         CLASS_LOADER(shen::ConditionLoadersCollection, WinLevelCondition)
 
     public:
-        std::unique_ptr<shen::ConditionBase> LoadCondition(const shen::Serialization& serialization) override;
-    };
+        std::unique_ptr<shen::ConditionBase> LoadCondition(const shen::DataElementWrapper& elementWrapper) override;
+    };*/
 }

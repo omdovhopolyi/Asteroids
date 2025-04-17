@@ -1,7 +1,7 @@
 #include "PlayerInfoSystem.h"
 #include "Utils/Assert.h"
 #include "Utils/FilePath.h"
-#include "Serialization/Serialization.h"
+#include "Serialization/WrapperTypes/XmlDataElementWrapper.h"
 
 namespace asteroids
 {
@@ -111,12 +111,12 @@ namespace asteroids
 
     void PlayerInfoSystem::LoadConfig()
     {
-        const auto fileName = shen::FilePath::Path("assets/configs/player_info.xml");
-        auto serialization = shen::Serialization{ _systems, fileName };
-        if (serialization.IsValid())
+        auto elementWrapper = shen::XmlDataElementWrapper{ _systems };
+        elementWrapper.LoadFile(shen::FilePath::Path("assets/configs/player_info.xml"));
+        if (elementWrapper.IsValid())
         {
-            auto resourcesElement = serialization.GetElement("resources");
-            resourcesElement.ForAllChildElements("item", [this](const auto& itemElement)
+            const auto& resourcesElement = elementWrapper.GetChildElement("resources");
+            resourcesElement->ForAllChildren("item", [this](const auto& itemElement)
             {
                 const auto typeStr = itemElement.GetStr("type");
                 const auto type = ResourceTypeEnum.FromString(typeStr);
@@ -125,8 +125,8 @@ namespace asteroids
                 _resources[type] = amount;
             });
             
-            auto flagsElement = serialization.GetElement("flags");
-            flagsElement.ForAllChildElements("flag", [this](const auto& flagElement)
+            auto flagsElement = elementWrapper.GetChildElement("flags");
+            flagsElement->ForAllChildren("flag", [this](const auto& flagElement)
             {
                 _flags.insert(flagElement.GetStr("flag"));
             });

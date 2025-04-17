@@ -2,5 +2,5 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(MenuWindowLoader)
+    //REGISTER_CLASS_LOADER(MenuWindowLoader)
 }

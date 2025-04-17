@@ -5,9 +5,9 @@
 
 namespace asteroids
 {
-    class WinLevelWindowLoader
+    /*class WinLevelWindowLoader
         : public shen::WindowComponentBaseLoader<WinLevelWindow>
     {
         CLASS_LOADER(shen::UIWindowLoader, WinLevelWindow)
-    };
+    };*/
 }

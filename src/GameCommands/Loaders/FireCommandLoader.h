@@ -4,7 +4,7 @@
 
 namespace asteroids
 {
-    class FireCommand;
+    /*class FireCommand;
 
     class FireCommandLoader
         : public shen::InputCommandLoader
@@ -12,6 +12,6 @@ namespace asteroids
         CLASS_LOADER(shen::InputCommandsLoadersCollection, FireCommand)
 
     public:
-        std::unique_ptr<shen::Command> LoadCommand(const shen::Serialization& serialization) override;
-    };
+        std::unique_ptr<shen::Command> LoadCommand(const shen::DataElementWrapper& elementWrapper) override;
+    };*/
 }

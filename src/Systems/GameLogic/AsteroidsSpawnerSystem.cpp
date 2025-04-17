@@ -10,7 +10,6 @@
 #include "ECS/Components/Physics.h"
 #include "ECS/Components/Render.h"
 #include "Components/Common.h"
-#include "Serialization/Serialization.h"
 #include "Messenger/Events/Common.h"
 #include "Systems/Configs/AsteroidsSpawnerConfig.h"
 #include "Systems/Configs/AsteroidsConfig.h"

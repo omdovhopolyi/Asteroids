@@ -5,9 +5,9 @@
 
 namespace asteroids
 {
-    class WinGameWindowLoader
+    /*class WinGameWindowLoader
         : public shen::WindowComponentBaseLoader<WinGameWindow>
     {
         CLASS_LOADER(shen::UIWindowLoader, WinGameWindow)
-    };
+    };*/
 }

@@ -5,9 +5,9 @@
 
 namespace asteroids
 {
-    class GameOverWindowLoader
+    /*class GameOverWindowLoader
         : public shen::WindowComponentBaseLoader<GameOverWindow>
     {
         CLASS_LOADER(shen::UIWindowLoader, GameOverWindow)
-    };
+    };*/
 }

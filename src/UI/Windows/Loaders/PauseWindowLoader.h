@@ -5,9 +5,9 @@
 
 namespace asteroids
 {
-    class PauseWindowLoader
+    /*class PauseWindowLoader
         : public shen::WindowComponentBaseLoader<PauseWindow>
     {
         CLASS_LOADER(shen::UIWindowLoader, PauseWindow)
-    };
+    };*/
 }

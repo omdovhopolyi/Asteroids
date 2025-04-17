@@ -1,5 +1,5 @@
 #include "AsteroidsConfig.h"
-#include "Serialization/Serialization.h"
+#include "Serialization/WrapperTypes/XmlDataElementWrapper.h"
 #include "Utils/FilePath.h"
 
 namespace asteroids
@@ -38,13 +38,11 @@ namespace asteroids
 
     void AsteroidsConfig::Load()
     {
-        const auto fileName = shen::FilePath::Path("assets/configs/asteroids.xml");
-        auto serialization = shen::Serialization{ _systems, fileName };
-        serialization.SetupElement("asteroids");
-
-        if (serialization.IsValid())
+        auto elementWrapper = shen::XmlDataElementWrapper{ _systems };
+        elementWrapper.LoadFile(shen::FilePath::Path("assets/configs/asteroids.xml"));
+        if (elementWrapper.IsValid())
         {
-            serialization.ForAllChildElements("asteroid", [&](const shen::Serialization& element)
+            elementWrapper.ForAllChildren("asteroid", [&](const shen::DataElementWrapper& element)
             {
                 const auto asteroid = std::make_shared<AsteroidConfig>();
 

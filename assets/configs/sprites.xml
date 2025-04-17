@@ -98,4 +98,7 @@
    <sprite id="title_manual" tex="titles">
       <rect  x="305" y="416" w="304" h="52"/>
    </sprite>
+   <sprite id="menu_window_backgrounds" tex="background_level_1">
+      <rect  x="0" y="0" w="1920" h="1080"/>
+   </sprite>
 </items>

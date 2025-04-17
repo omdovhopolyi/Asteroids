@@ -1,5 +1,5 @@
 #include "AsteroidsSpawnerConfig.h"
-#include "Serialization/Serialization.h"
+#include "Serialization/WrapperTypes/XmlDataElementWrapper.h"
 #include "GameEnums/AsteroidTypeEnum.h"
 #include "Utils/FilePath.h"
 
@@ -80,17 +80,16 @@ namespace asteroids
 
     void SpawnerConfig::Load()
     {
-        const auto fileName = shen::FilePath::Path("assets/configs/asteroids_spawner.xml");
-        auto serialization = shen::Serialization{ _systems, fileName };
-        serialization.SetupElement("assets");
-        serialization.ForAllChildElements("asset", [&](const shen::Serialization& element)
+        auto elementWrapper = shen::XmlDataElementWrapper{ _systems };
+        elementWrapper.LoadFile(shen::FilePath::Path("assets/configs/asteroids_spawner.xml"));
+        elementWrapper.ForAllChildren("asset", [&](const shen::DataElementWrapper& element)
         {
             const auto id = element.GetStr("id");
             auto [it, isInserted] = _levels.insert({ id, std::make_shared<SpawnerLevelConfig>() });
 
             if (isInserted)
             {
-                element.ForAllChildElements("item", [&, levelConfig = it->second](const shen::Serialization& item)
+                element.ForAllChildren("item", [&, levelConfig = it->second](const shen::DataElementWrapper& item)
                 {
                     const auto type = AsteroidTypeEnum.FromString(item.GetStr("type"));
                     const auto amount = item.GetInt("amount");

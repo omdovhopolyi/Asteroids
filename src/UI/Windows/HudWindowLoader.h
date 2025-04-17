@@ -5,9 +5,9 @@
 
 namespace asteroids
 {
-    class HudWindowLoader
+    /*class HudWindowLoader
         : public shen::WindowComponentBaseLoader<HudWindow>
     {
         CLASS_LOADER(shen::UIWindowLoader, HudWindow)
-    };
+    };*/
 }

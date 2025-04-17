@@ -1,71 +1,69 @@
 #include "Common.h"
-#include "Serialization/Serialization.h"
+#include "Serialization/DataElementWrapper.h"
 
 namespace asteroids
 {
-    void Player::Load(Player& component, const shen::Serialization& serialization)
+    void Player::Load(Player& component, const shen::DataElementWrapper& elementWrapper)
     {
-        //component.lives = serialization.GetInt("lives", component.lives);
     }
 
-    void Player::Save(Player& component, shen::Serialization& serialization)
+    void Player::Save(Player& component, shen::DataElementWrapper& elementWrapper)
     {
-        //serialization.SetInt("lives", component.lives);
     }
 
-    void Bullet::Load(Bullet& component, const shen::Serialization& serialization)
+    void Bullet::Load(Bullet& component, const shen::DataElementWrapper& elementWrapper)
     {
-        component.damage = serialization.GetInt("damage", component.damage);
-        component.speed = serialization.GetFloat("speed", component.speed);
+        component.damage = elementWrapper.GetInt("damage", component.damage);
+        component.speed = elementWrapper.GetFloat("speed", component.speed);
     }
 
-    void Bullet::Save(Bullet& component, shen::Serialization& serialization)
+    void Bullet::Save(Bullet& component, shen::DataElementWrapper& elementWrapper)
     {
-        serialization.SetInt("damage", component.damage);
-        serialization.SetFloat("speed", component.speed);
+        elementWrapper.SetInt("damage", component.damage);
+        elementWrapper.SetFloat("speed", component.speed);
     }
 
-    void Asteroid::Load(Asteroid& component, const shen::Serialization& serialization)
+    void Asteroid::Load(Asteroid& component, const shen::DataElementWrapper& elementWrapper)
     {
-        component.damage = serialization.GetInt("damage", component.damage);
-        component.lives = serialization.GetInt("lives", component.lives);
-        component.speed = serialization.GetFloat("speed", component.speed);
+        component.damage = elementWrapper.GetInt("damage", component.damage);
+        component.lives = elementWrapper.GetInt("lives", component.lives);
+        component.speed = elementWrapper.GetFloat("speed", component.speed);
     }
 
-    void Asteroid::Save(Asteroid& component, shen::Serialization& serialization)
+    void Asteroid::Save(Asteroid& component, shen::DataElementWrapper& elementWrapper)
     {
-        serialization.SetInt("damage", component.damage);
-        serialization.SetInt("lives", component.lives);
-        serialization.SetFloat("speed", component.speed);
+        elementWrapper.SetInt("damage", component.damage);
+        elementWrapper.SetInt("lives", component.lives);
+        elementWrapper.SetFloat("speed", component.speed);
     }
 
-    void AsteroidSpawner::Load(AsteroidSpawner& component, const shen::Serialization& serialization)
+    void AsteroidSpawner::Load(AsteroidSpawner& component, const shen::DataElementWrapper& elementWrapper)
     {
-        component.config = serialization.GetStr("config");
+        component.config = elementWrapper.GetStr("config");
     }
 
-    void AsteroidSpawner::Save(AsteroidSpawner& component, shen::Serialization& serialization)
+    void AsteroidSpawner::Save(AsteroidSpawner& component, shen::DataElementWrapper& elementWrapper)
     {
-        serialization.SetStr("config", component.config);
+        elementWrapper.SetStr("config", component.config);
     }
 
-    void Lifetime::Load(Lifetime& component, const shen::Serialization& serialization)
+    void Lifetime::Load(Lifetime& component, const shen::DataElementWrapper& elementWrapper)
     {
-        component.time = serialization.GetFloat("time", component.time);
+        component.time = elementWrapper.GetFloat("time", component.time);
     }
 
-    void Lifetime::Save(Lifetime& component, shen::Serialization& serialization)
+    void Lifetime::Save(Lifetime& component, shen::DataElementWrapper& elementWrapper)
     {
-        serialization.SetFloat("time", component.time);
+        elementWrapper.SetFloat("time", component.time);
     }
 
-    void EndLevelDelay::Load(EndLevelDelay& component, const shen::Serialization& serialization)
+    void EndLevelDelay::Load(EndLevelDelay& component, const shen::DataElementWrapper& elementWrapper)
     {
-        component.delay = serialization.GetFloat("delay", 3.f);
+        component.delay = elementWrapper.GetFloat("delay", 3.f);
     }
 
-    void EndLevelDelay::Save(EndLevelDelay& component, shen::Serialization& serialization)
+    void EndLevelDelay::Save(EndLevelDelay& component, shen::DataElementWrapper& elementWrapper)
     {
-        serialization.SetFloat("delay", component.delay);
+        elementWrapper.SetFloat("delay", component.delay);
     }
 }
