@@ -8,9 +8,11 @@ namespace asteroids
     class PauseWindow
         : public shen::UIWindowComponent
     {
+        SERIALIZABLE(PauseWindow)
+
     public:
         void Init() override;
-        void RegisterReferences() override;
+        void RegisterProperties() override;
 
     private:
         void InitButtonsSubscriptions();

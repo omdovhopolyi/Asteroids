@@ -8,9 +8,11 @@ namespace asteroids
     class MenuWindow
         : public shen::UIWindowComponent
     {
+        SERIALIZABLE(MenuWindow)
+
     public:
         void Init() override;
-        void RegisterReferences() override;
+        void RegisterProperties() override;
 
     private:
         void InitButtonsSubscriptions();

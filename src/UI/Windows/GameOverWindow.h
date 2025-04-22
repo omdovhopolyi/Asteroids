@@ -9,10 +9,12 @@ namespace asteroids
     class GameOverWindow
         : public shen::UIWindowComponent
     {
+        SERIALIZABLE(GameOverWindow)
+
     public:
         void Init() override;
         void OnWindowOpen() override;
-        void RegisterReferences() override;
+        void RegisterProperties() override;
 
     private:
         void InitButtonsSubscriptions();

@@ -3,13 +3,18 @@
 #include <UI/UIWindow.h>
 #include <UI/Components/UIButtonComponent.h>
 #include <Messenger/Events/Common.h>
+#include <Serialization/Types/SerializationFieldRef.h>
 
 namespace asteroids
 {
-    void WinLevelWindow::RegisterReferences()
+    REGISTER_CLASS_LOADER_TEST(WinLevelWindow);
+
+    void WinLevelWindow::RegisterProperties()
     {
-        RegisterReference("nextButton", _nextButton);
-        RegisterReference("quitButton", _quitButton);
+        shen::UIWindowComponent::RegisterProperties();
+
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_nextButton, "nextButton", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_quitButton, "quitButton", weak_from_this());
     }
 
     void WinLevelWindow::Init()

@@ -8,9 +8,11 @@ namespace asteroids
     class ManualWindow
         : public shen::UIWindowComponent
     {
+        SERIALIZABLE(ManualWindow)
+
     public:
         void Init() override;
-        void RegisterReferences() override;
+        void RegisterProperties() override;
 
     private:
         void InitButtonsSubscriptions();

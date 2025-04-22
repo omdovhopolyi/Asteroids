@@ -3,14 +3,19 @@
 #include <UI/UIWindow.h>
 #include <UI/Components/UIButtonComponent.h>
 #include <Messenger/Events/Common.h>
+#include <Serialization/Types/SerializationFieldRef.h>
 
 namespace asteroids
 {
-    void MenuWindow::RegisterReferences()
+    REGISTER_CLASS_LOADER_TEST(MenuWindow);
+
+    void MenuWindow::RegisterProperties()
     {
-        RegisterReference("playButton", _playButton);
-        RegisterReference("manualButton", _manualButton);
-        RegisterReference("quitButton", _quitButton);
+        shen::UIWindowComponent::RegisterProperties();
+
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_playButton, "playButton", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_manualButton, "manualButton", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_quitButton, "quitButton", weak_from_this());
     }
 
     void MenuWindow::Init()

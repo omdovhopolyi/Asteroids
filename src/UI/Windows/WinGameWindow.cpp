@@ -5,19 +5,24 @@
 #include <Messenger/Events/Common.h>
 #include "ECS/SystemsManager.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
+#include <Serialization/Types/SerializationFieldRef.h>
 
 namespace asteroids
 {
+    REGISTER_CLASS_LOADER_TEST(WinGameWindow);
+
     void WinGameWindow::Init()
     {
         InitButtonsSubscriptions();
     }
 
-    void WinGameWindow::RegisterReferences()
+    void WinGameWindow::RegisterProperties()
     {
-        RegisterReference("retryButton", _retryButton);
-        RegisterReference("quitButton", _quitButton);
-        RegisterReference("score", _score);
+        shen::UIWindowComponent::RegisterProperties();
+
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_retryButton, "retryButton", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_quitButton, "quitButton", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UITextComponent>>>(_score, "score", weak_from_this());
     }
 
     void WinGameWindow::OnWindowOpen()

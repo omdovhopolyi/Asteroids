@@ -8,9 +8,11 @@ namespace asteroids
     class WinLevelWindow
         : public shen::UIWindowComponent
     {
+        SERIALIZABLE(WinLevelWindow)
+
     public:
         void Init() override;
-        void RegisterReferences() override;
+        void RegisterProperties() override;
 
     private:
         void InitButtonsSubscriptions();

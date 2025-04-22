@@ -9,10 +9,12 @@ namespace asteroids
     class HudWindow
         : public shen::UIWindowComponent
     {
+        SERIALIZABLE(HudWindow)
+
     public:
         void Init() override;
         void OnWindowOpen() override;
-        void RegisterReferences() override;
+        void RegisterProperties() override;
 
     private:
         void InitSubscriptions();

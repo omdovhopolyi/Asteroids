@@ -3,9 +3,12 @@
 #include "ECS/SystemsManager.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "UI/UIWindow.h"
+#include <Serialization/Types/SerializationFieldRef.h>
 
 namespace asteroids
 {
+    REGISTER_CLASS_LOADER_TEST(HudWindow);
+
     void HudWindow::Init()
     {
         InitSubscriptions();
@@ -16,10 +19,12 @@ namespace asteroids
         UpdateValues();
     }
 
-    void HudWindow::RegisterReferences()
+    void HudWindow::RegisterProperties()
     {
-        RegisterReference("lives", _lives);
-        RegisterReference("score", _score);
+        shen::UIWindowComponent::RegisterProperties();
+
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UITextComponent>>>(_lives, "lives", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UITextComponent>>>(_score, "score", weak_from_this());
     }
 
     void HudWindow::InitSubscriptions()
