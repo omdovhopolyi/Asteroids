@@ -1,16 +1,14 @@
 <?xml version = "1.0"?>
-<sounds>
-   <sound id="sound_shot" path="assets/sounds/sound_laser_shot.wav" volume="30"/>
-   <sound id="sound_hit" path="assets/sounds/sound_hit_1.wav" volume="30"/>
-   <sound id="sound_explosion" path="assets/sounds/sound_explosion_1.wav" volume="20"/>
-   <sound id="sound_big_explosion" path="assets/sounds/sound_big_explosion.wav" volume="30"/>
-   <sound id="button_hover" path="assets/sounds/button_click_1.wav" volume="30"/>
-   <sound id="button_press" path="assets/sounds/button_click_2.wav" volume="30"/>
-   <sound id="button_release" path="assets/sounds/button_click_1.wav" volume="30"/>
-</sounds>
-<music>
+<items>
+    <sound id="sound_shot" path="assets/sounds/sound_laser_shot.wav" volume="30"/>
+    <sound id="sound_hit" path="assets/sounds/sound_hit_1.wav" volume="30"/>
+    <sound id="sound_explosion" path="assets/sounds/sound_explosion_1.wav" volume="20"/>
+    <sound id="sound_big_explosion" path="assets/sounds/sound_big_explosion.wav" volume="30"/>
+    <sound id="button_hover" path="assets/sounds/button_click_1.wav" volume="30"/>
+    <sound id="button_press" path="assets/sounds/button_click_2.wav" volume="30"/>
+    <sound id="button_release" path="assets/sounds/button_click_1.wav" volume="30"/>
     <track id="track_main" path="assets/sounds/music/music_asteroids_main_theme.ogg" loop="true" volume="50"/>
     <track id="track_gameplay" path="assets/sounds/music/music_asteroids_gameplay_theme.ogg" loop="true" volume="20"/>
     <track id="track_win" path="assets/sounds/music/music_asteroids_main_theme.ogg" loop="true" volume="50"/>
     <track id="track_lose" path="assets/sounds/music/music_asteroids_main_theme.ogg" loop="true" volume="50"/>
-</music>
+</items>
