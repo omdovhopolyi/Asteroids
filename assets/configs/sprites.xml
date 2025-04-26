@@ -84,7 +84,7 @@
       <rect  x="0" y="0" w="800" h="140"/>
    </sprite>
    <sprite id="title_pause" tex="titles">
-      <rect  x="0" y="416" w="304" h="52"/>
+      <rect x="0" y="150" w="800" h="140"/>
    </sprite>
    <sprite id="title_level_completed" tex="titles">
       <rect  x="0" y="416" w="304" h="52"/>
@@ -98,7 +98,18 @@
    <sprite id="title_manual" tex="titles">
       <rect x="0" y="650" w="800" h="140"/>
    </sprite>
+
    <sprite id="menu_window_backgrounds" tex="background_level_1">
       <rect  x="0" y="0" w="1920" h="1080"/>
+   </sprite>
+   <sprite id="black" tex="black">
+      <rect  x="0" y="0" w="1920" h="1080"/>
+   </sprite>
+
+   <sprite id="lives_icon" tex="lives_icon">
+      <rect  x="0" y="0" w="32" h="32"/>
+   </sprite>
+   <sprite id="score_icon" tex="score_icon">
+      <rect  x="0" y="0" w="32" h="32"/>
    </sprite>
 </items>

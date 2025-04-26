@@ -14,6 +14,8 @@
 
 namespace asteroids
 {
+    REGISTER_CLASS_LOADER_TEST(FireCommand);
+
     void FireCommand::Execute(const shen::CommandContext& context) const
     {
         if (auto loader = context.systems->GetSystem<shen::MapLoaderSystem>())

@@ -7,6 +7,8 @@
 
 namespace asteroids
 {
+    REGISTER_CLASS_LOADER_TEST(CheatDestroyAllAsteroidsCommand);
+
     void CheatDestroyAllAsteroidsCommand::Execute(const shen::CommandContext& context) const
     {
 #ifdef _DEBUG

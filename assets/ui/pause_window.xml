@@ -1,46 +1,39 @@
 <?xml version = "1.0"?>
 <root>
    <component type="PauseWindow" id="pauseWindow">
-      <refs>
-         <ref id="resumeButton" compId="resumeButtonComp"/>
-         <ref id="quitButton" compId="quitButtonComp"/>
-      </refs>
+      <resumeButton compId="resumeButtonComp"/>
+      <quitButton compId="quitButtonComp"/>
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="black" fill="true">
+         <component type="UISpriteComponent" sprite="black" fill="true">
             <color r="0" g="0" b="0" a="125"/>
          </component>
       </node>
       <node name="subtitle">
-         <component type="UISpriteComponent" texture="titles">
+         <component type="UISpriteComponent" sprite="title_pause">
             <color r="200" g="200" b="255" a="255"/>
-            <rect x="0" y="150" w="800" h="140"/>
          </component>
          <component type="UITransformComponent">
-            <position x="0" y="150"/>
+            <transform>
+               <position x="0" y="150"/>
+            </transform>
          </component>
       </node>
       <node name="resumeButton">
-         <component type="UIButtonComponent" id="resumeButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_resume_normal"/>
-            <sprite type="Pressed" sprite="button_resume_press"/>
-            <sprite type="Hovered" sprite="button_resume_hover"/>
-         </component>
-         <component type="UITransformComponent" rotation="0">
-            <position x="248" y="310"/>
-         </component>
-         <component type="UIScreenNormComponent">
+         <component type="UIButtonComponent" id="resumeButtonComp" sprite_idle="button_resume_normal" sprite_pressed="button_resume_press" sprite_hovered="button_resume_hover" sound_hover="button_hover" sound_press="button_press" sound_release="button_release"/>
+         <component type="UITransformComponent">
+            <transform>
+               <position x="248" y="310"/>
+            </transform>
          </component>
       </node>
       <node name="quitButton">
-         <component type="UIButtonComponent" id="quitButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_quit_normal"/>
-            <sprite type="Pressed" sprite="button_quit_press"/>
-            <sprite type="Hovered" sprite="button_quit_hover"/>
-         </component>
-         <component type="UITransformComponent" >
-            <position x="248" y="380"/>
+         <component type="UIButtonComponent" id="quitButtonComp" sprite_idle="button_quit_normal" sprite_pressed="button_quit_press" sprite_hovered="button_quit_hover" sound_hover="button_hover" sound_press="button_press" sound_release="button_release"/>
+         <component type="UITransformComponent">
+            <transform>
+               <position x="248" y="380"/>
+            </transform>
          </component>
       </node>
    </node>

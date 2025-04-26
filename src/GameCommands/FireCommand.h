@@ -8,6 +8,8 @@ namespace asteroids
     class FireCommand
         : public shen::Command
     {
+        SERIALIZABLE(FireCommand);
+
     public:
         void Execute(const shen::CommandContext& context) const override;
 

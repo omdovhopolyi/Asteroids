@@ -1,37 +1,43 @@
 <?xml version = "1.0"?>
 <root>
    <component type="HudWindow" id="hudWindow">
-      <refs>
-         <ref id="lives" compId="lives"/>
-         <ref id="score" compId="score"/>
-      </refs>
+        <lives compId="lives"/>
+        <score compId="score"/>
    </component>
    <node name="top">
         <node name="livesHolder">
-            <component type="UITransformComponent" rotation="0">
-                <position x="10" y="10"/>
+            <component type="UITransformComponent">
+                <transform>
+                    <position x="10" y="10"/>
+                </transform>
             </component>
             <node name="icon">
-                <component type="UISpriteComponent" texture="lives_icon"/>
+                <component type="UISpriteComponent" sprite="lives_icon"/>
             </node>
             <node name="amount">
-                <component type="UITextComponent" text="0" font="arial" id="lives"/>
-                <component type="UITransformComponent" rotation="0">
-                    <position x="50" y="0"/>
+                <component type="UITextComponent" text="0" size="24" font="arial" id="lives"/>
+                <component type="UITransformComponent">
+                    <transform>
+                        <position x="50" y="0"/>
+                    </transform>
                 </component>
             </node>
         </node>
         <node name="scoreHolder">
-            <component type="UITransformComponent" rotation="0">
-                <position x="700" y="10"/>
+            <component type="UITransformComponent">
+                <transform>
+                    <position x="700" y="10"/>
+                </transform>
             </component>
             <node name="icon">
-                <component type="UISpriteComponent" texture="score_icon"/>
+                <component type="UISpriteComponent" sprite="score_icon"/>
             </node>
             <node name="amount">
-                <component type="UITextComponent" text="0" font="arial" id="score"/>
-                <component type="UITransformComponent" rotation="0">
-                    <position x="50" y="0"/>
+                <component type="UITextComponent" text="0" size="24" font="arial" id="score"/>
+                <component type="UITransformComponent">
+                    <transform>
+                        <position x="50" y="0"/>
+                    </transform>
                 </component>
             </node>
         </node>
