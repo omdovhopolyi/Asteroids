@@ -1,44 +1,67 @@
 <?xml version = "1.0"?>
 <root>
    <component type="WinLevelWindow" id="winLevelWindow">
-      <refs>
-         <ref id="nextButton" compId="nextButtonComp"/>
-         <ref id="quitButton" compId="quitButtonComp"/>
-      </refs>
+      <nextButton compId="nextButtonComp"/>
+      <quitButton compId="quitButtonComp"/>
+      <score compId="score"/>
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="background_level_1">
+         <component type="UISpriteComponent" sprite="menu_window_backgrounds">
             <color r="200" g="235" b="200" a="255"/>
          </component>
       </node>
       <node name="title">
-         <component type="UISpriteComponent" texture="titles">
+         <component type="UISpriteComponent" sprite="title_level_completed">
             <color r="200" g="200" b="255" a="255"/>
-            <rect x="0" y="280" w="800" h="140"/>
          </component>
          <component type="UITransformComponent">
-            <position x="0" y="100"/>
+            <transform>
+               <position x="0" y="100"/>
+            </transform>
          </component>
       </node>
-      <node name="nextButton">
-         <component type="UIButtonComponent" id="nextButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_next_level_normal"/>
-            <sprite type="Pressed" sprite="button_next_level_press"/>
-            <sprite type="Hovered" sprite="button_next_level_hover"/>
-         </component>
+      <node name="scoreLabel">
          <component type="UITransformComponent">
-            <position x="248" y="310"/>
+            <transform>
+               <position x="250" y="200"/>
+            </transform>
+         </component>
+         <node name="label">
+            <component type="UITextComponent" text="Your score:" font="oakside" size="25">
+               <color r="200" g="200" b="200" a="255"/>
+            </component>
+            <component type="UITransformComponent" rotation="0">
+               <transform>
+                  <position x="0" y="0"/>
+               </transform>
+            </component>
+         </node>
+         <node name="amount">
+            <component type="UITextComponent" text="0" font="oakside" size="25" id="score">
+               <color r="200" g="200" b="200" a="255"/>
+            </component>
+            <component type="UITransformComponent">
+               <transform>
+                  <position x="250" y="0"/>
+               </transform>
+            </component>
+         </node>
+      </node>
+      <node name="nextButton">
+         <component type="UIButtonComponent" id="nextButtonComp" sprite_idle="button_next_level_normal" sprite_pressed="button_next_level_press" sprite_hovered="button_next_level_hover" sound_hover="button_hover" sound_press="button_press" sound_release="button_release"/>
+         <component type="UITransformComponent">
+            <transform>
+               <position x="248" y="310"/>
+            </transform>
          </component>
       </node>
       <node name="quitButton">
-         <component type="UIButtonComponent" id="quitButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_quit_normal"/>
-            <sprite type="Pressed" sprite="button_quit_press"/>
-            <sprite type="Hovered" sprite="button_quit_hover"/>
-         </component>
+         <component type="UIButtonComponent" id="quitButtonComp" sprite_idle="button_quit_normal" sprite_pressed="button_quit_press" sprite_hovered="button_quit_hover" sound_hover="button_hover" sound_press="button_press" sound_release="button_release"/>
          <component type="UITransformComponent">
-            <position x="248" y="380"/>
+            <transform>
+               <position x="248" y="380"/>
+            </transform>
          </component>
       </node>
    </node>

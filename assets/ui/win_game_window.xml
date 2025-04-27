@@ -1,66 +1,67 @@
 <?xml version = "1.0"?>
 <root>
    <component type="WinGameWindow" id="winGameWindow">
-      <refs>
-         <ref id="retryButton" compId="retryButtonComp"/>
-         <ref id="quitButton" compId="quitButtonComp"/>
-         <ref id="score" compId="score"/>
-      </refs>
+      <retryButton compId="retryButtonComp"/>
+      <quitButton compId="quitButtonComp"/>
+      <score compId="score"/>
    </component>
    <node name="window">
       <node name="background">
-         <component type="UISpriteComponent" texture="background_level_1">
+         <component type="UISpriteComponent" sprite="menu_window_backgrounds">
             <color r="200" g="200" b="255" a="255"/>
          </component>
       </node>
       <node name="title">
-         <component type="UISpriteComponent" texture="titles">
+         <component type="UISpriteComponent" sprite="title_game_completed">
             <color r="200" g="200" b="255" a="255"/>
-            <rect x="0" y="510" w="800" h="140"/>
          </component>
          <component type="UITransformComponent">
-            <position x="0" y="100"/>
+            <transform>
+               <position x="0" y="100"/>
+            </transform>
          </component>
       </node>
       <node name="scoreLabel">
-         <component type="UITransformComponent" rotation="0">
+         <component type="UITransformComponent">
+            <transform>
                <position x="250" y="200"/>
+            </transform>
          </component>
          <node name="label">
             <component type="UITextComponent" text="Your score:" font="oakside" size="25">
                <color r="200" g="200" b="200" a="255"/>
             </component>
             <component type="UITransformComponent" rotation="0">
-               <position x="0" y="0"/>
+               <transform>
+                  <position x="0" y="0"/>
+               </transform>
             </component>
          </node>
          <node name="amount">
             <component type="UITextComponent" text="0" font="oakside" size="25" id="score">
                <color r="200" g="200" b="200" a="255"/>
             </component>
-            <component type="UITransformComponent" rotation="0">
-               <position x="250" y="0"/>
+            <component type="UITransformComponent">
+               <transform>
+                  <position x="250" y="0"/>
+               </transform>
             </component>
          </node>
       </node>
       <node name="retryButton">
-         <component type="UIButtonComponent" id="retryButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_restart_normal"/>
-            <sprite type="Pressed" sprite="button_restart_press"/>
-            <sprite type="Hovered" sprite="button_restart_hover"/>
-         </component>
+         <component type="UIButtonComponent" id="retryButtonComp" sprite_idle="button_restart_normal" sprite_pressed="button_restart_press" sprite_hovered="button_restart_hover" sound_hover="button_hover" sound_press="button_press" sound_release="button_release"/>
          <component type="UITransformComponent">
-            <position x="248" y="310"/>
+            <transform>
+               <position x="248" y="310"/>
+            </transform>
          </component>
       </node>
       <node name="quitButton">
-         <component type="UIButtonComponent" id="quitButtonComp" sound_hover="button_hover" sound_press="button_press" sound_release="button_release">
-            <sprite type="Idle" sprite="button_quit_normal"/>
-            <sprite type="Pressed" sprite="button_quit_press"/>
-            <sprite type="Hovered" sprite="button_quit_hover"/>
-         </component>
+         <component type="UIButtonComponent" id="quitButtonComp" sprite_idle="button_quit_normal" sprite_pressed="button_quit_press" sprite_hovered="button_quit_hover" sound_hover="button_hover" sound_press="button_press" sound_release="button_release"/>
          <component type="UITransformComponent">
-            <position x="248" y="380"/>
+            <transform>
+               <position x="248" y="380"/>
+            </transform>
          </component>
       </node>
    </node>

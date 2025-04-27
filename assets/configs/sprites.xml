@@ -87,13 +87,13 @@
       <rect x="0" y="150" w="800" h="140"/>
    </sprite>
    <sprite id="title_level_completed" tex="titles">
-      <rect  x="0" y="416" w="304" h="52"/>
+      <rect x="0" y="280" w="800" h="120"/>
    </sprite>
    <sprite id="title_game_over" tex="titles">
-      <rect  x="0" y="416" w="304" h="52"/>
+      <rect x="0" y="400" w="800" h="120"/>
    </sprite>
    <sprite id="title_game_completed" tex="titles">
-      <rect  x="0" y="416" w="304" h="52"/>
+      <rect x="0" y="510" w="800" h="140"/>
    </sprite>
    <sprite id="title_manual" tex="titles">
       <rect x="0" y="650" w="800" h="140"/>

@@ -1,5 +1,7 @@
 #include "WinLevelWindow.h"
 #include "MessengerEvents/Common.h"
+#include <ECS/SystemsManager.h>
+#include <Systems/GameLogic/PlayerInfoSystem.h>
 #include <UI/UIWindow.h>
 #include <UI/Components/UIButtonComponent.h>
 #include <Messenger/Events/Common.h>
@@ -15,6 +17,7 @@ namespace asteroids
 
         RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_nextButton, "nextButton", weak_from_this());
         RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UIButtonComponent>>>(_quitButton, "quitButton", weak_from_this());
+        RegisterVar<shen::SerializableFieldRef<shen::UIComponentWrapper<shen::UITextComponent>>>(_score, "score", weak_from_this());
     }
 
     void WinLevelWindow::Init()
@@ -38,6 +41,25 @@ namespace asteroids
             {
                 shen::Messenger::Instance().Broadcast<shen::Quit>();
             });
+        }
+    }
+
+    void WinLevelWindow::OnWindowOpen()
+    {
+        SetupScore();
+    }
+
+    void WinLevelWindow::SetupScore()
+    {
+        auto window = GetWindow();
+        auto systems = window->GetSystemsManager();
+        if (auto playerInfo = systems->GetSystem<PlayerInfoSystem>())
+        {
+            if (auto score = _score.Get())
+            {
+                const int scoreValue = playerInfo->GetResource(ResourceType::Score);
+                score->SetText(std::to_string(scoreValue));
+            }
         }
     }
 }
