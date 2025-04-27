@@ -7,7 +7,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER_TEST(HudWindow);
+    REGISTER_CLASS_LOADER(HudWindow);
 
     void HudWindow::Init()
     {

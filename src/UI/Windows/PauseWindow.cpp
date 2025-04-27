@@ -7,7 +7,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER_TEST(PauseWindow);
+    REGISTER_CLASS_LOADER(PauseWindow);
 
     void PauseWindow::RegisterProperties()
     {

@@ -8,7 +8,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER_TEST(CheatLoseLevelCommand);
+    REGISTER_CLASS_LOADER(CheatLoseLevelCommand);
 
     void CheatLoseLevelCommand::Execute(const shen::CommandContext& context) const
     {

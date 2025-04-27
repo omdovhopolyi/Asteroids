@@ -7,7 +7,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER_TEST(ManualWindow);
+    REGISTER_CLASS_LOADER(ManualWindow);
 
     void ManualWindow::Init()
     {

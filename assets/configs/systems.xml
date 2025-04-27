@@ -1,6 +1,7 @@
 <?xml version = "1.0"?>
 <systems>
     <system type="WindowsManager"/>
+    <system type="UIWindowLoader"/>
     <system type="SfmlTexturesCollection"/>
     <system type="SfmlFontsCollection"/>
     <system type="SfmlSpritesCollection"/>

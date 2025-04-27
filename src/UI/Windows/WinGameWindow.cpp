@@ -9,7 +9,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER_TEST(WinGameWindow);
+    REGISTER_CLASS_LOADER(WinGameWindow);
 
     void WinGameWindow::Init()
     {

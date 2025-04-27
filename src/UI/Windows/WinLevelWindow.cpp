@@ -9,7 +9,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER_TEST(WinLevelWindow);
+    REGISTER_CLASS_LOADER(WinLevelWindow);
 
     void WinLevelWindow::RegisterProperties()
     {
