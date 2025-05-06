@@ -14,7 +14,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(FireCommand);
+    REGISTER_LOADER(FireCommand);
 
     void FireCommand::Execute(const shen::CommandContext& context) const
     {

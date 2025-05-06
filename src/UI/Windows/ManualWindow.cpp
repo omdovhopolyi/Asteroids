@@ -3,11 +3,11 @@
 #include <UI/UIWindow.h>
 #include <UI/Components/UIButtonComponent.h>
 #include <Messenger/Events/Common.h>
-#include <Serialization/Types/SerializationFieldRef.h>
+#include <Serialization/Types/SerializableFieldRef.h>
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(ManualWindow);
+    REGISTER_LOADER(ManualWindow);
 
     void ManualWindow::Init()
     {

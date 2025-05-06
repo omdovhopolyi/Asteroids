@@ -5,11 +5,11 @@
 #include <Messenger/Events/Common.h>
 #include "ECS/SystemsManager.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
-#include <Serialization/Types/SerializationFieldRef.h>
+#include <Serialization/Types/SerializableFieldRef.h>
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(WinGameWindow);
+    REGISTER_LOADER(WinGameWindow);
 
     void WinGameWindow::Init()
     {

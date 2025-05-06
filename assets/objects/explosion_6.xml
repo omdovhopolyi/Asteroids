@@ -1,13 +1,13 @@
 <?xml version = "1.0"?>
 <object>
-    <component type="transform" rotation="0">
+    <component type="Transform" rotation="0">
         <position x="600" y="300"/>
     </component>
-    <component type="sprite" texture="explosion_6">
+    <component type="Sprite" texture="explosion_6" autoRect="false" autoAnchor="false">
         <rect x="0" y="0" w="256" h="256"/>
         <anchor x="128" y="128"/>
     </component>
-    <component type="spriteFrameAnimation" frameTime="0.02" animType="OneShot" deleteOnDone="true">
+    <component type="SpriteFrameAnimation" frameTime="0.02" animType="OneShot" deleteOnDone="true">
         <frames>
             <rect x="0" y="0" w="256" h="256"/>
             <rect x="256" y="0" w="256" h="256"/>

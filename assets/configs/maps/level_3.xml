@@ -5,23 +5,23 @@
    </entity>
    <entity>
       <asset id="player"/>
-      <component type="transform" rotation="0">
+      <component type="Transform" rotation="0">
          <position x="700" y="100"/>
       </component>
    </entity>
    <entity>
-      <component type="asteroidSpawner" config="level_3"/>
+      <component type="AsteroidSpawner" config="level_3"/>
    </entity>
    <entity>
-      <component type="endleveldelay"/>
+      <component type="EndLevelDelay"/>
    </entity>
    <entity>
-      <component type="sprite" texture="background_level_3" sorting="-1"/>
-      <component type="transform">
+      <component type="Sprite" texture="background_level_3" sorting="-1"/>
+      <component type="Transform">
          <position x="400" y="320"/>
          <scale x="0.65" y="0.65"/>
       </component>
-      <component type="color">
+      <component type="Color">
          <color r="225" g="125" b="125" a="255"/>
       </component>
    </entity>

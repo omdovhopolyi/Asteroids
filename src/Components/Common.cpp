@@ -1,69 +1,50 @@
 #include "Common.h"
 #include "Serialization/DataElementWrapper.h"
+#include "Serialization/Types/SerializableFieldInt.h"
+#include "Serialization/Types/SerializableFieldFloat.h"
+#include "Serialization/Types/SerializableFieldString.h"
 
 namespace asteroids
 {
-    void Player::Load(Player& component, const shen::DataElementWrapper& elementWrapper)
+    REGISTER_LOADER(Player)
+
+    REGISTER_LOADER(Bullet)
+
+    void Bullet::RegisterProperties()
     {
+        RegisterVar<shen::SerializableFieldInt>(damage, "damage");
+        RegisterVar<shen::SerializableFieldFloat>(speed, "speed");
     }
 
-    void Player::Save(Player& component, shen::DataElementWrapper& elementWrapper)
+    REGISTER_LOADER(Asteroid)
+
+    void Asteroid::RegisterProperties()
     {
+        RegisterVar<shen::SerializableFieldInt>(damage, "damage");
+        RegisterVar<shen::SerializableFieldInt>(lives, "lives");
+        RegisterVar<shen::SerializableFieldFloat>(speed, "speed");
     }
 
-    void Bullet::Load(Bullet& component, const shen::DataElementWrapper& elementWrapper)
+    REGISTER_LOADER(AsteroidSpawner)
+
+    void AsteroidSpawner::RegisterProperties()
     {
-        component.damage = elementWrapper.GetInt("damage", component.damage);
-        component.speed = elementWrapper.GetFloat("speed", component.speed);
+        RegisterVar<shen::SerializableFieldString>(config, "config");
     }
 
-    void Bullet::Save(Bullet& component, shen::DataElementWrapper& elementWrapper)
+    REGISTER_LOADER(Lifetime)
+
+    void Lifetime::RegisterProperties()
     {
-        elementWrapper.SetInt("damage", component.damage);
-        elementWrapper.SetFloat("speed", component.speed);
+        RegisterVar<shen::SerializableFieldFloat>(time, "time");
     }
 
-    void Asteroid::Load(Asteroid& component, const shen::DataElementWrapper& elementWrapper)
-    {
-        component.damage = elementWrapper.GetInt("damage", component.damage);
-        component.lives = elementWrapper.GetInt("lives", component.lives);
-        component.speed = elementWrapper.GetFloat("speed", component.speed);
-    }
+    REGISTER_LOADER(OffscreenMove)
 
-    void Asteroid::Save(Asteroid& component, shen::DataElementWrapper& elementWrapper)
-    {
-        elementWrapper.SetInt("damage", component.damage);
-        elementWrapper.SetInt("lives", component.lives);
-        elementWrapper.SetFloat("speed", component.speed);
-    }
+    REGISTER_LOADER(EndLevelDelay)
 
-    void AsteroidSpawner::Load(AsteroidSpawner& component, const shen::DataElementWrapper& elementWrapper)
+    void EndLevelDelay::RegisterProperties()
     {
-        component.config = elementWrapper.GetStr("config");
-    }
-
-    void AsteroidSpawner::Save(AsteroidSpawner& component, shen::DataElementWrapper& elementWrapper)
-    {
-        elementWrapper.SetStr("config", component.config);
-    }
-
-    void Lifetime::Load(Lifetime& component, const shen::DataElementWrapper& elementWrapper)
-    {
-        component.time = elementWrapper.GetFloat("time", component.time);
-    }
-
-    void Lifetime::Save(Lifetime& component, shen::DataElementWrapper& elementWrapper)
-    {
-        elementWrapper.SetFloat("time", component.time);
-    }
-
-    void EndLevelDelay::Load(EndLevelDelay& component, const shen::DataElementWrapper& elementWrapper)
-    {
-        component.delay = elementWrapper.GetFloat("delay", 3.f);
-    }
-
-    void EndLevelDelay::Save(EndLevelDelay& component, shen::DataElementWrapper& elementWrapper)
-    {
-        elementWrapper.SetFloat("delay", component.delay);
+        RegisterVar<shen::SerializableFieldFloat>(delay, "delay");
     }
 }

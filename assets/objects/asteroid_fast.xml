@@ -1,13 +1,10 @@
 <?xml version = "1.0"?>
 <object>
-   <component type="asteroid" damage="1" lives="1" speed="5"/>
-   <component type="transform" rotation="0"/>
-   <component type="rigidBody" bodyType="DynamicBody" sensor="true">
+   <component type="Asteroid" damage="1" lives="1" speed="5"/>
+   <component type="Transform" rotation="0"/>
+   <component type="RigidBody" bodyType="DynamicBody" sensor="true">
       <size x="1.5" y="1.5"/>
    </component>
-   <component type="sprite" texture="asteroid_fast">
-      <!--<rect x="0" y="0" w="32" h="32"/>-->
-      <!--<anchor x="16" y="16"/>-->
-   </component>
-   <component type="offscreenMove"/>
+   <component type="Sprite" texture="asteroid_fast"/>
+   <component type="OffscreenMove"/>
 </object>

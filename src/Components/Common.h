@@ -2,6 +2,7 @@
 
 #include "ECS/Components/TagComponent.h"
 #include "GameEnums/AsteroidTypeEnum.h"
+#include "Serialization/Serializable.h"
 
 namespace shen
 {
@@ -10,34 +11,41 @@ namespace shen
 
 namespace asteroids
 {
-    struct Player : shen::TagBaseComponent
+    struct Player
+        : public shen::Serializable
     {
-        static void Load(Player& component, const shen::DataElementWrapper& elementWrapper);
-        static void Save(Player& component, shen::DataElementWrapper& elementWrapper);
+        SERIALIZABLE_COMP(Player)
     };
 
     struct Bullet
+        : public shen::Serializable
     {
+        SERIALIZABLE_COMP(Bullet)
+
         int damage = 1;
         float speed = 10;
 
-        static void Load(Bullet& component, const shen::DataElementWrapper& elementWrapper);
-        static void Save(Bullet& component, shen::DataElementWrapper& elementWrapper);
+        void RegisterProperties() override;
     };
 
     struct Asteroid
+        : public shen::Serializable
     {
+        SERIALIZABLE_COMP(Asteroid)
+
         int damage = 1;
         int lives = 3;
         float speed = 1.f;
         int points = 1;
 
-        static void Load(Asteroid& component, const shen::DataElementWrapper& elementWrapper);
-        static void Save(Asteroid& component, shen::DataElementWrapper& elementWrapper);
+        void RegisterProperties() override;
     };
 
     struct AsteroidSpawner
+        : public shen::Serializable
     {
+        SERIALIZABLE_COMP(AsteroidSpawner)
+
         std::string config;
 
         float minDelay = 1.f;
@@ -45,31 +53,34 @@ namespace asteroids
         float currentDelay = 1.f;
         std::map<AsteroidType, int> asteroidsToLunch;
 
-        static void Load(AsteroidSpawner& component, const shen::DataElementWrapper& elementWrapper);
-        static void Save(AsteroidSpawner& component, shen::DataElementWrapper& elementWrapper);
+        void RegisterProperties() override;
     };
 
     struct Lifetime
+        : public shen::Serializable
     {
+        SERIALIZABLE_COMP(Lifetime)
+
         float time = 0.f;
 
-        static void Load(Lifetime& component, const shen::DataElementWrapper& elementWrapper);
-        static void Save(Lifetime& component, shen::DataElementWrapper& elementWrapper);
+        void RegisterProperties() override;
     };
 
-    struct OffscreenMove : shen::TagBaseComponent
+    struct OffscreenMove
+        : public shen::Serializable
     {
-        static void Load(OffscreenMove& component, const shen::DataElementWrapper& elementWrapper) {};
-        static void Save(OffscreenMove& component, shen::DataElementWrapper& elementWrapper) {};
+        SERIALIZABLE_COMP(OffscreenMove)
     };
 
     struct EndLevelDelay
+        : public shen::Serializable
     {
+        SERIALIZABLE_COMP(EndLevelDelay)
+
         float delay = 3.f;
         float time = 0.f;
 
-        static void Load(EndLevelDelay& component, const shen::DataElementWrapper& elementWrapper);
-        static void Save(EndLevelDelay& component, shen::DataElementWrapper& elementWrapper);
+        void RegisterProperties() override;
     };
 
     struct Explosion

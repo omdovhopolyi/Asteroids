@@ -7,7 +7,7 @@
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(CheatDestroyAllAsteroidsCommand);
+    REGISTER_LOADER(CheatDestroyAllAsteroidsCommand);
 
     void CheatDestroyAllAsteroidsCommand::Execute(const shen::CommandContext& context) const
     {

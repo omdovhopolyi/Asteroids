@@ -11,13 +11,13 @@ namespace asteroids
     {
         if (auto mapLoader = _systems->GetSystem<shen::MapLoaderSystem>())
         {
-            mapLoader->RegisterLoader<Bullet>("bullet");
+            /*mapLoader->RegisterLoader<Bullet>("bullet");
             mapLoader->RegisterLoader<Asteroid>("asteroid");
             mapLoader->RegisterLoader<Player>("player");
             mapLoader->RegisterLoader<Lifetime>("lifetime");
             mapLoader->RegisterLoader<AsteroidSpawner>("asteroidSpawner");
             mapLoader->RegisterLoader<OffscreenMove>("offscreenMove");
-            mapLoader->RegisterLoader<EndLevelDelay>("endleveldelay");
+            mapLoader->RegisterLoader<EndLevelDelay>("endleveldelay");*/
         }
     }
 }

@@ -3,11 +3,11 @@
 #include "ECS/SystemsManager.h"
 #include "Systems/GameLogic/PlayerInfoSystem.h"
 #include "UI/UIWindow.h"
-#include <Serialization/Types/SerializationFieldRef.h>
+#include <Serialization/Types/SerializableFieldRef.h>
 
 namespace asteroids
 {
-    REGISTER_CLASS_LOADER(HudWindow);
+    REGISTER_LOADER(HudWindow);
 
     void HudWindow::Init()
     {
