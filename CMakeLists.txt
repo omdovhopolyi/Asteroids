@@ -23,7 +23,7 @@ target_compile_features(${TARGET_NAME} PUBLIC cxx_std_20)
 
 include_directories(src)
 
-target_compile_definitions(${TARGET_NAME} PRIVATE SHEN_NO_MAIN)
+#target_compile_definitions(${TARGET_NAME} PUBLIC SHEN_NO_MAIN)
 set(SHEN_STATIC ON CACHE BOOL "" FORCE)
 
 add_subdirectory(submodules/ShapesEngine2)
@@ -44,5 +44,6 @@ add_compile_definitions(_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING)
 set_target_properties(${TARGET_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
 
 if(WIN32)
+    target_compile_definitions(ShapesEngine2 PUBLIC SHEN_WIN_MAIN)
     set_target_properties(${TARGET_NAME} PROPERTIES LINK_FLAGS "/SUBSYSTEM:WINDOWS")
 endif()
