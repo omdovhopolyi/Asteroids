@@ -25,5 +25,5 @@
 *.pdb
 
 # Dirs
-/build
+/build*
 /CMakeFiles
